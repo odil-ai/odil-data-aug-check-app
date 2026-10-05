@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{#
+  Home page: overall progress and the list of manuscripts.
+
+  Context:
+    rows  -- one dict per manuscript: name, folios (number of folios), empty (folios
+             without candidate), pairs (source/target pairs) and done (pairs checked).
+    todo  -- (manuscript, index) of the next folio to check, or None if all are checked.
+    done  -- number of pairs checked overall.
+    total -- number of pairs overall.
+#}
+{% block content %}
+<h1>O.D.I.L Vérification des appariements</h1>
+<h3>École nationale des chartes - PSL</h3>
+<p>
+  {{ done }} / {{ total }} paires vérifiées —
+  {% if todo %}
+  <a class="button" href="{{ url_for('folio', manuscript=todo[0], index=todo[1]) }}">Continuer</a>
+  {% else %}
+  tout est vérifié.
+  {% endif %}
+</p>
+<table>
+  <thead>
+    <tr><th>Manuscrit</th><th>Folios</th><th>Sans candidat</th><th>Paires vérifiées</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    {# A manuscript is shown as done once all its pairs are checked. #}
+    <tr class="{{ 'done' if r.pairs and r.done == r.pairs }}">
+      <td><a href="{{ url_for('manuscript', manuscript=r.name) }}">{{ r.name }}</a></td>
+      <td>{{ r.folios }}</td>
+      <td>{{ r.empty or '' }}</td>
+      <td>{{ r.done }} / {{ r.pairs }}</td>
+      <td><progress max="{{ r.pairs }}" value="{{ r.done }}"></progress></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

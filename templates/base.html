@@ -1,0 +1,63 @@
+{#-
+  Base layout shared by every page.
+
+  Blocks:
+    title   -- page title.
+    head    -- extra <head> content (scripts, styles) needed by a given page.
+    content -- page body.
+-#}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Vérification des appariements{% endblock %}</title>
+  <style>
+    /* Layout and typography */
+    body { font-family: system-ui, sans-serif; margin: 1rem 2rem; color: #222; background: #fafafa; }
+    a { color: #0b5394; }
+    h2 { font-size: 1rem; margin: 0 0 .25rem; }
+    nav { display: flex; gap: 1rem; align-items: baseline; margin-bottom: 1rem; }
+    .button { padding: .3rem .8rem; background: #0b5394; color: #fff; border-radius: 4px; text-decoration: none; }
+    .meta { font-size: .85rem; color: #666; margin: 0 0 .5rem; word-break: break-all; }
+
+    /* Home page: list of manuscripts */
+    table { border-collapse: collapse; }
+    th, td { padding: .25rem .75rem; border-bottom: 1px solid #ddd; text-align: left; }
+    tr.done td { color: #2e7d32; }
+
+    /* Folio page: the source image (sticky) next to the candidates */
+    .compare { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .source { flex: 0 0 40%; position: sticky; top: 1rem; }
+    .candidates { flex: 1; display: flex; flex-wrap: wrap; gap: 1rem; }
+    .viewer { height: 75vh; background: #222; border-radius: 4px; }
+
+    /* Candidate card, framed with the colour of its verdict */
+    .candidate { flex: 1 1 300px; padding: .5rem; border: 4px solid #ddd; border-radius: 6px; background: #fff; }
+    .candidate.valid { border-color: #2e7d32; }
+    .candidate.not_valid { border-color: #c62828; }
+    .score { font-weight: normal; color: #666; }
+
+    /* Verdict buttons: the one matching the saved verdict is coloured */
+    form { display: flex; gap: .5rem; margin-top: .5rem; }
+    button { flex: 1; padding: .6rem; font-size: 1rem; cursor: pointer; border: 1px solid #aaa; border-radius: 4px; background: #eee; }
+    button[value=valid].selected { background: #2e7d32; color: #fff; }
+    button[value=not_valid].selected { background: #c62828; color: #fff; }
+
+    /* Messages shown instead of the candidates or of a viewer */
+    .empty, .missing { flex: 1; padding: 2rem; background: #fff3cd; border-radius: 6px; color: #222; }
+
+    /* Login page and logout link */
+    form.login { flex-direction: column; gap: 1rem; max-width: 20rem; margin: 4rem auto; }
+    .login h1 { font-size: 1.5rem; margin: 0; }
+    .login label { display: flex; flex-direction: column; gap: .25rem; }
+    .login input { padding: .5rem; font-size: 1rem; }
+    .error { color: #c62828; margin: 0; }
+    .logout { position: absolute; top: 1rem; right: 2rem; font-size: .9rem; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+{% if session.logged_in %}<a class="logout" href="{{ url_for('logout') }}">Se déconnecter</a>{% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_006750002008056454_ca7c3e",
+      "folio": "89R",
+      "alhoma_id": "VAT_08159",
+      "filename": "ahloma_006750002008056454_ca7c3e.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.421/canvas/p0183",
+        "@type": "sc:Canvas",
+        "label": "89r",
+        "width": 1375,
+        "height": 2043,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.421/res/anno0183",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.421/res/img0183",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.421/Vat.lat.421_0183_fa_0089r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1375,
+              "height": 2043
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.421/canvas/p0183"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.421/thumb/Vat.lat.421_0183_fa_0089r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 100,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 182,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.421/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

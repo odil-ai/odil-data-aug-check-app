@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{#
+  Login page: a single username / password pair, set in config.yml.
+
+  Context:
+    error -- error message after a failed attempt, or None.
+#}
+{% block title %}Connexion{% endblock %}
+{% block content %}
+<form class="login" method="post">
+  <h1>O.D.I.L appariements — Connexion</h1>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <label>Identifiant <input name="username" autocomplete="username" required autofocus></label>
+  <label>Mot de passe <input type="password" name="password" autocomplete="current-password" required></label>
+  <button>Se connecter</button>
+</form>
+{% endblock %}

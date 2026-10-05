@@ -1,0 +1,50 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_010270300012258100_83aab8",
+      "folio": "1V",
+      "alhoma_id": "REG_06420",
+      "filename": "ahloma_010270300012258100_83aab8.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.645/canvas/p0006",
+        "@type": "sc:Canvas",
+        "label": "1v",
+        "width": 1179,
+        "height": 1778,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.645/res/anno0006",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.645/res/img0006",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.645/Reg.lat.645_0006_fa_0001v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1179,
+              "height": 1778
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.645/canvas/p0006"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.645/thumb/Reg.lat.645_0006_fa_0001v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 99,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 5,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.645/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

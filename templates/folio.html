@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{#
+  Comparison page of one folio: the source image on the left, the candidate canvases on
+  the right, each with its matching score and its "Valid" / "Not valid" buttons.
+
+  Context:
+    manuscript   -- manuscript name.
+    index        -- position of the folio in the manuscript (0-based).
+    count        -- number of folios in the manuscript.
+    folio        -- folio metadata (id, folio, alhoma_id, filename).
+    source_tiles -- OpenSeadragon tile sources of the source image, tried in order.
+    candidates   -- candidate canvases: id, label, tiles (tile sources), manifest,
+                    score (matching score or None) and verdict (saved verdict or None).
+#}
+{# OpenSeadragon build (script and control icons) served by jsDelivr. #}
+{% set osd = "https://cdn.jsdelivr.net/npm/openseadragon@6.1.1/build/openseadragon" %}
+{% block title %}{{ manuscript }} — {{ folio.folio }}{% endblock %}
+{% block head %}
+<script src="{{ osd }}/openseadragon.min.js"></script>
+<script>
+  /**
+   * Turn an element into a zoomable OpenSeadragon viewer.
+   *
+   * The tile sources are read from the element's `data-sources` attribute (a JSON
+   * array) and tried in order: whenever one fails to open, the next one is opened.
+   * If none works, or if the server does not answer within 30 s, the viewer is
+   * replaced by an error message.
+   *
+   * @param {HTMLElement} element - Container with a `data-sources` attribute.
+   * @returns {void}
+   */
+  function viewer(element) {
+    const sources = JSON.parse(element.dataset.sources);
+    const osd = OpenSeadragon({
+      element,
+      tileSources: sources.shift(),
+      prefixUrl: "{{ osd }}/images/",
+      // The WebGL drawer cannot draw images served without CORS headers.
+      drawer: "canvas",
+      showRotationControl: true,
+    });
+
+    /**
+     * Destroy the viewer and show a message in its place.
+     *
+     * @param {string} message - Message displayed to the user.
+     * @returns {void}
+     */
+    const fail = (message) => {
+      clearTimeout(timer);
+      osd.destroy();
+      element.className = "missing";
+      element.textContent = message;
+    };
+
+    // A server that does not answer at all (e.g. unreachable Gallica) never triggers
+    // "open-failed": give up after 30 s.
+    const timer = setTimeout(() => fail("Image introuvable (le serveur ne répond pas)"), 30000);
+    osd.addHandler("open", () => clearTimeout(timer));
+    osd.addHandler("open-failed", () => {
+      if (sources.length) {
+        osd.open(sources.shift());
+      } else {
+        fail("Image introuvable");
+      }
+    });
+  }
+
+  // Start a viewer for every image of the page once the DOM is ready.
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".viewer").forEach(viewer);
+  });
+</script>
+{% endblock %}
+{% block content %}
+{# Navigation between the folios of the manuscript. #}
+<nav>
+  <a href="{{ url_for('index') }}">← Manuscrits</a>
+  <strong>{{ manuscript }}</strong>
+  <span>folio {{ index + 1 }} / {{ count }}</span>
+  {% if index > 0 %}<a href="{{ url_for('folio', manuscript=manuscript, index=index - 1) }}">‹ Précédent</a>{% endif %}
+  {% if index + 1 < count %}<a href="{{ url_for('folio', manuscript=manuscript, index=index + 1) }}">Suivant ›</a>{% endif %}
+</nav>
+<main class="compare">
+  <section class="source">
+    <h2>Source : {{ folio.folio }}</h2>
+    <p class="meta">{{ folio.id }} · alhoma {{ folio.alhoma_id }}</p>
+    <div class="viewer" data-sources='{{ source_tiles|tojson }}'></div>
+  </section>
+  <section class="candidates">
+  {% for c in candidates %}
+    <article class="candidate {{ c.verdict or '' }}">
+      <h2>
+        {{ c.label }}
+        <span class="score">— {{ 'score %.3f'|format(c.score) if c.score is not none else 'sans score' }}</span>
+      </h2>
+      <p class="meta">
+        <a href="{{ c.id }}" target="_blank">canvas</a>
+        {% if c.manifest %} · <a href="{{ c.manifest }}" target="_blank">manifeste</a>{% endif %}
+      </p>
+      <div class="viewer" data-sources='{{ c.tiles|tojson }}'></div>
+      {# One form per candidate: the clicked button sends the verdict. #}
+      <form method="post" action="{{ url_for('verify') }}">
+        <input type="hidden" name="manuscript" value="{{ manuscript }}">
+        <input type="hidden" name="index" value="{{ index }}">
+        <input type="hidden" name="target" value="{{ c.id }}">
+        <button name="verification" value="valid" class="{{ 'selected' if c.verdict == 'valid' }}">Valid</button>
+        <button name="verification" value="not_valid" class="{{ 'selected' if c.verdict == 'not_valid' }}">Not valid</button>
+      </form>
+    </article>
+  {% else %}
+    <p class="empty">Aucun canvas candidat pour ce folio.</p>
+  {% endfor %}
+  </section>
+</main>
+{% endblock %}

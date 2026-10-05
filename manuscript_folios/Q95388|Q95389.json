@@ -1,0 +1,128 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_009055162010807774_3b4064",
+      "folio": "1R",
+      "alhoma_id": "VAT_08417",
+      "filename": "ahloma_009055162010807774_3b4064.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/canvas/p0009",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 2466,
+        "height": 3365,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/res/anno0009",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/res/img0009",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.451.pt.1/Vat.lat.451.pt.1_0009_fa_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2466,
+              "height": 3365
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/canvas/p0009"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.451.pt.1/thumb/Vat.lat.451.pt.1_0009_fa_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 109,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 8,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.451.pt.1/Vat.lat.451.pt.1_0009_fa_0001r.jp2",
+          "score": 0.9501170960187354,
+          "bbox": [
+            -42,
+            31,
+            712,
+            583
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      8,
+      2,
+      484,
+      398
+    ]
+  },
+  {
+    "folio": {
+      "id": "ahloma_009055162010807774_68ff8f",
+      "folio": "37R",
+      "alhoma_id": "VAT_08421",
+      "filename": "ahloma_009055162010807774_68ff8f.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/canvas/p0081",
+        "@type": "sc:Canvas",
+        "label": "37r",
+        "width": 2466,
+        "height": 3365,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/res/anno0081",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/res/img0081",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.451.pt.1/Vat.lat.451.pt.1_0081_fa_0037r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2466,
+              "height": 3365
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/canvas/p0081"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.451.pt.1/thumb/Vat.lat.451.pt.1_0081_fa_0037r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 109,
+          "height": 150
+        },
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.451.pt.1/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 80,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.451.pt.1/Vat.lat.451.pt.1_0081_fa_0037r.jp2",
+          "score": 0.9662721893491124,
+          "bbox": [
+            -143,
+            249,
+            720,
+            888
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      80
+    ]
+  }
+]

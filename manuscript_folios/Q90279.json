@@ -1,0 +1,51 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_012247201014617627_280cc2",
+      "folio": "51R",
+      "alhoma_id": "REG_06168",
+      "filename": "ahloma_012247201014617627_280cc2.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/bav_reg_lat_586/canvas/p0105",
+        "@type": "sc:Canvas",
+        "label": "51r",
+        "width": 1724,
+        "height": 2413,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/bav_reg_lat_586/res/anno0105",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/bav_reg_lat_586/res/img0105",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/bav_reg_lat_586/Reg.lat.586.f.051r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1724,
+              "height": 2413
+            },
+            "on": "https://digi.vatlib.it/iiif/bav_reg_lat_586/canvas/p0105"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/bav_reg_lat_586/thumb/Reg.lat.586.f.051r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 113,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "sequence_index": 0,
+        "canvas_index": 104,
+        "manifest_url": "https://digi.vatlib.it/iiif/bav_reg_lat_586/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

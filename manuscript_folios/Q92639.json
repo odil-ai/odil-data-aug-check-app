@@ -1,0 +1,70 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_017544729020940483_1d2f80",
+      "folio": "1DR",
+      "alhoma_id": "URB_16218",
+      "filename": "ahloma_017544729020940483_1d2f80.jpg"
+    },
+    "canvases": [],
+    "testedCanvasesIndices": []
+  },
+  {
+    "folio": {
+      "id": "ahloma_017544729020940483_a654f1",
+      "folio": "1DV",
+      "alhoma_id": "URB_16220",
+      "filename": "ahloma_017544729020940483_a654f1.jpg"
+    },
+    "canvases": [],
+    "testedCanvasesIndices": []
+  },
+  {
+    "folio": {
+      "id": "ahloma_017544729020940483_aec8c6",
+      "folio": "3R",
+      "alhoma_id": "URB_16222",
+      "filename": "ahloma_017544729020940483_aec8c6.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1510/canvas/p0019",
+        "@type": "sc:Canvas",
+        "label": "3r",
+        "width": 1405,
+        "height": 2048,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1510/res/anno0019",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1510/res/img0019",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.1510/Urb.lat.1510_0019_fa_0003r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1405,
+              "height": 2048
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1510/canvas/p0019"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.1510/thumb/Urb.lat.1510_0019_fa_0003r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 18,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1510/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

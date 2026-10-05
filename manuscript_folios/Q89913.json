@@ -1,0 +1,50 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_010987609013114243_8f80bc",
+      "folio": "20V",
+      "alhoma_id": "REG_01628",
+      "filename": "ahloma_010987609013114243_8f80bc.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.97/canvas/p0045",
+        "@type": "sc:Canvas",
+        "label": "20v",
+        "width": 2252,
+        "height": 3065,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.97/res/anno0045",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.97/res/img0045",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.97/Reg.lat.97_0045_fa_0020v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2252,
+              "height": 3065
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.97/canvas/p0045"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.97/thumb/Reg.lat.97_0045_fa_0020v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 116,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 44,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.97/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

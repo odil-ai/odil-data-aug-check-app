@@ -1,0 +1,50 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_007483369008931763_64ce9f",
+      "folio": "5R",
+      "alhoma_id": "URB_14768",
+      "filename": "ahloma_007483369008931763_64ce9f.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1124/canvas/p0015",
+        "@type": "sc:Canvas",
+        "label": "5r",
+        "width": 1083,
+        "height": 1406,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1124/res/anno0015",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1124/res/img0015",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.1124/Urb.lat.1124_0015_fa_0005r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1083,
+              "height": 1406
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1124/canvas/p0015"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.1124/thumb/Urb.lat.1124_0015_fa_0005r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 122,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 14,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1124/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

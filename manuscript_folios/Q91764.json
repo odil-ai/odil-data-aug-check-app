@@ -1,0 +1,61 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_013073320015603640_a018e7",
+      "folio": "IIV",
+      "alhoma_id": "URB_12745",
+      "filename": "ahloma_013073320015603640_a018e7.jpg"
+    },
+    "canvases": [],
+    "testedCanvasesIndices": []
+  },
+  {
+    "folio": {
+      "id": "ahloma_013073320015603640_ee4807",
+      "folio": "11R",
+      "alhoma_id": "URB_12747",
+      "filename": "ahloma_013073320015603640_ee4807.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.583/canvas/p0023",
+        "@type": "sc:Canvas",
+        "label": "11r.[01.xy.0004]",
+        "width": 1612,
+        "height": 2293,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.583/res/anno0023",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.583/res/img0023",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.583/Urb.lat.583_0023_fa_0011r.%5B01.xy.0004%5D.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1612,
+              "height": 2293
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.583/canvas/p0023"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.583/thumb/Urb.lat.583_0023_fa_0011r.%5B01.xy.0004%5D.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 105,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "sequence_index": 0,
+        "canvas_index": 22,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.583/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

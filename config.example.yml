@@ -1,0 +1,7 @@
+# Login settings of the app (a single user).
+# Copy this file to config.yml and change the values: config.yml is not versioned.
+username: odil
+password: change-me
+# Key used to sign the session cookie: any long random string, e.g. the output of
+#   python -c "import secrets; print(secrets.token_hex())"
+secret_key: change-me-too
