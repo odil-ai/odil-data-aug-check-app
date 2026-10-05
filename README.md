@@ -1,6 +1,6 @@
 # odil-data-aug-check-app
 
-Petite app Flask pour vérifier les appariements entre les images sources (ahloma)
+Application Flask pour vérifier les appariements entre les images sources (ahloma)
 et les canvases IIIF candidats listés dans `manuscript_folios/*.json`.
 
 ## Configuration
