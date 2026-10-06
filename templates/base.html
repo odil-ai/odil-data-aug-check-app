@@ -25,6 +25,22 @@
     th, td { padding: .25rem .75rem; border-bottom: 1px solid #ddd; text-align: left; }
     tr.done td { color: #2e7d32; }
 
+    /* Home page: pairs by verdict (tiles and stacked bars). Colours checked for
+       colour-blind separation; labels and tooltips always name the verdicts. */
+    .stats { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 .75rem; }
+    .stat { display: grid; grid-template-columns: auto 1fr; column-gap: .5rem; align-items: center;
+            min-width: 9rem; padding: .6rem .9rem; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+    .stat strong { grid-column: 1 / -1; font-size: 1.6rem; }
+    .stat .share { grid-column: 1 / -1; color: #666; font-size: .9rem; }
+    .swatch { width: .75rem; height: .75rem; border-radius: 2px; }
+    .verdict-bar { display: flex; gap: 2px; height: 1rem; max-width: 40rem; margin-bottom: 1.5rem;
+                   border-radius: 4px; overflow: hidden; }
+    .verdict-bar span { flex-basis: 0; min-width: 3px; }
+    td .verdict-bar { width: 10rem; height: .6rem; margin: 0; }
+    .verdict-bar .valid, .swatch.valid { background: #1b5e20; }
+    .verdict-bar .not_valid, .swatch.not_valid { background: #ef5350; }
+    .verdict-bar .unresolved, .swatch.unresolved { background: #bdbdbd; }
+
     /* Folio page: the source image (sticky) next to the candidates */
     .compare { display: flex; gap: 1.5rem; align-items: flex-start; }
     .source { flex: 0 0 40%; position: sticky; top: 1rem; }

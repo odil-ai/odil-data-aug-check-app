@@ -33,6 +33,7 @@ import csv
 import hmac
 import json
 import threading
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -57,6 +58,8 @@ DATA_DIR = BASE_DIR / "manuscript_folios"
 RESULTS_TSV = BASE_DIR / "verifications.tsv"
 FIELDS = ["manuscript", "source", "target", "score", "verification", "timestamp"]
 VERDICTS = {"valid", "not_valid"}
+# Labels of the verdicts on the home page, "unresolved" being a pair without verdict.
+VERDICT_LABELS = {"valid": "Valid", "not_valid": "Not valid", "unresolved": "Non résolu"}
 BOOKMARKS_TSV = BASE_DIR / "bookmarks.tsv"
 BOOKMARK_FIELDS = ["manuscript", "source", "folio", "note", "timestamp"]
 
@@ -392,28 +395,36 @@ def logout() -> Response:
 def index() -> str:
     """Home page: overall progress and verification progress of each manuscript.
 
+    Pairs are counted by current verdict: ``valid``, ``not_valid`` or ``unresolved``
+    (no verdict yet), overall and for each manuscript.
+
     :return: Rendered ``index.html`` page.
     :rtype: str
     """
     rows = []
     for name, items in MANUSCRIPTS.items():
         pairs = [(it["folio"]["id"], c["@id"]) for it in items for c in it["canvases"]]
+        counts = Counter(RESULTS.get((name, s, t), "unresolved") for s, t in pairs)
         rows.append(
             {
                 "name": name,
                 "folios": len(items),
                 "empty": sum(not it["canvases"] for it in items),
                 "pairs": len(pairs),
-                "done": sum((name, s, t) in RESULTS for s, t in pairs),
+                "done": counts["valid"] + counts["not_valid"],
+                "counts": counts,
             }
         )
     todo = next_todo(next(iter(MANUSCRIPTS))) if MANUSCRIPTS else None
+    totals = sum((r["counts"] for r in rows), Counter())
     return render_template(
         "index.html",
         rows=rows,
         todo=todo,
-        done=sum(r["done"] for r in rows),
+        done=totals["valid"] + totals["not_valid"],
         total=sum(r["pairs"] for r in rows),
+        totals=totals,
+        verdicts=VERDICT_LABELS,
     )
 
 
