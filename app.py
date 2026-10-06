@@ -13,6 +13,10 @@ Verdicts are appended to ``verifications.tsv`` with the columns ``manuscript``,
 ``verification`` and ``timestamp``. The file keeps the whole history in chronological
 order: the last row of a pair gives its current verdict.
 
+Folios judged special can also be bookmarked, with an optional note, without leaving the
+verification flow. Bookmarks are stored in ``bookmarks.tsv`` with the columns
+``manuscript``, ``source``, ``folio``, ``note`` and ``timestamp`` (the most recent last).
+
 Access is protected by a single username / password pair read from ``config.yml``,
 together with the secret key used to sign the session cookie (see
 ``config.example.yml``).
@@ -21,7 +25,8 @@ Usage::
 
     uv run flask --app app run --debug
 
-The current verdicts are kept in memory, so the app must run in a single process.
+The current verdicts and bookmarks are kept in memory, so the app must run in a single
+process.
 """
 
 import csv
@@ -33,7 +38,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from flask import Flask, abort, redirect, render_template, request, session, url_for
+from flask import Flask, abort, jsonify, redirect, render_template, request, session, url_for
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.wrappers import Response
 
@@ -41,6 +46,8 @@ from werkzeug.wrappers import Response
 type Json = dict[str, Any]
 # Key of a verdict: (manuscript, source image id, target canvas @id).
 type ResultKey = tuple[str, str, str]
+# Key of a bookmark: (manuscript, source image id).
+type FolioKey = tuple[str, str]
 # OpenSeadragon tile source: an info.json URL or a simple image {"type": "image", "url": ...}.
 type TileSource = str | dict[str, str]
 
@@ -50,6 +57,8 @@ DATA_DIR = BASE_DIR / "manuscript_folios"
 RESULTS_TSV = BASE_DIR / "verifications.tsv"
 FIELDS = ["manuscript", "source", "target", "score", "verification", "timestamp"]
 VERDICTS = {"valid", "not_valid"}
+BOOKMARKS_TSV = BASE_DIR / "bookmarks.tsv"
+BOOKMARK_FIELDS = ["manuscript", "source", "folio", "note", "timestamp"]
 
 SOURCE_IIIF = "https://iiif.chartes.psl.eu/images/ahloma_images"
 # Extensions tried in order when the source image cannot be found.
@@ -119,6 +128,15 @@ def load_scores() -> dict[ResultKey, float]:
     }
 
 
+def now() -> str:
+    """Return the current local time, used to timestamp verdicts and bookmarks.
+
+    :return: Date and time in ISO 8601 format with the UTC offset, to the second.
+    :rtype: str
+    """
+    return datetime.now().astimezone().isoformat(timespec="seconds")
+
+
 def load_results() -> dict[ResultKey, str]:
     """Load the current verdicts from the history saved in :data:`RESULTS_TSV`.
 
@@ -153,15 +171,45 @@ def append_result(key: ResultKey, verdict: str) -> None:
     rows = RESULTS_TSV.read_text() if RESULTS_TSV.exists() else ""
     if rows and not rows.endswith("\n"):
         rows += "\n"
-    timestamp = datetime.now().astimezone().isoformat(timespec="seconds")
     tmp = RESULTS_TSV.with_suffix(".tmp")
     with tmp.open("w", newline="") as f:
         f.write(rows)
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
         if not rows:
             writer.writerow(FIELDS)
-        writer.writerow([*key, SCORES.get(key, ""), verdict, timestamp])
+        writer.writerow([*key, SCORES.get(key, ""), verdict, now()])
     tmp.replace(RESULTS_TSV)
+
+
+def load_bookmarks() -> dict[FolioKey, dict[str, str]]:
+    """Load the bookmarked folios from :data:`BOOKMARKS_TSV`.
+
+    :return: Bookmark rows (``manuscript``, ``source``, ``folio``, ``note``,
+        ``timestamp``) keyed by ``(manuscript, source)``, in the order of the file;
+        empty if the file does not exist yet.
+    :rtype: dict[FolioKey, dict[str, str]]
+    """
+    if not BOOKMARKS_TSV.exists():
+        return {}
+    with BOOKMARKS_TSV.open(newline="") as f:
+        return {(r["manuscript"], r["source"]): r for r in csv.DictReader(f, delimiter="\t")}
+
+
+def save_bookmarks() -> None:
+    """Write all bookmarks to :data:`BOOKMARKS_TSV`, the most recent last.
+
+    As in :func:`append_result`, the rows are written to a temporary file which then
+    replaces the TSV file, so that only write access to the directory is needed.
+
+    :return: None
+    :rtype: None
+    """
+    tmp = BOOKMARKS_TSV.with_suffix(".tmp")
+    with tmp.open("w", newline="") as f:
+        writer = csv.DictWriter(f, BOOKMARK_FIELDS, delimiter="\t", lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(BOOKMARKS.values())
+    tmp.replace(BOOKMARKS_TSV)
 
 
 CONFIG = load_config()
@@ -169,6 +217,7 @@ app.secret_key = CONFIG["secret_key"]
 MANUSCRIPTS = load_manuscripts()
 SCORES = load_scores()
 RESULTS = load_results()
+BOOKMARKS = load_bookmarks()
 
 
 def check_credentials(username: str, password: str) -> bool:
@@ -258,6 +307,30 @@ def next_todo(manuscript: str, index: int = -1) -> tuple[str, int] | None:
             if not is_done(name, items[i]):
                 return name, i
     return None
+
+
+def folio_index(manuscript: str, source: str) -> int | None:
+    """Find the position of a folio in its manuscript.
+
+    :param manuscript: Manuscript name.
+    :param source: Source image id of the folio.
+    :return: Position of the folio (0-based), or None if it is not in the data anymore.
+    :rtype: int | None
+    """
+    items = MANUSCRIPTS.get(manuscript, [])
+    return next((i for i, it in enumerate(items) if it["folio"]["id"] == source), None)
+
+
+def wants_json() -> bool:
+    """Tell whether the current request comes from the folio page's JavaScript.
+
+    The script asks for JSON so that the page is updated in place; a plain form
+    submission (without JavaScript) asks for HTML and gets a redirection.
+
+    :return: True if JSON is the preferred response type.
+    :rtype: bool
+    """
+    return request.accept_mimetypes.best == "application/json"
 
 
 def get_item(manuscript: str, index: int) -> tuple[list[Json], Json]:
@@ -389,6 +462,7 @@ def folio(manuscript: str, index: int) -> str:
         folio=item["folio"],
         source_tiles=source_tiles(item["folio"]),
         candidates=candidates,
+        bookmark=BOOKMARKS.get((manuscript, source)),
     )
 
 
@@ -397,10 +471,12 @@ def verify() -> Response:
     """Save the verdict of one (source, target) pair sent by a folio page form.
 
     Expects the form fields ``manuscript``, ``index``, ``target`` and ``verification``.
-    When this verdict completes the folio, redirects to the next folio to check;
-    otherwise (or when correcting an already checked folio) goes back to the same page.
+    When this verdict completes the folio, the next page is the next folio to check;
+    otherwise (or when correcting an already checked folio) it is the same page.
 
-    :return: Redirection to a folio page.
+    :return: For the page's JavaScript, JSON ``{"verdict": ..., "next": ...}`` where
+        ``next`` is the URL of the next folio, or null to stay on the page; otherwise a
+        redirection to the next page.
     :rtype: Response
     :raises NotFound: If the manuscript or the folio does not exist.
     :raises BadRequest: If a field is missing or the verdict or the target is invalid.
@@ -417,9 +493,61 @@ def verify() -> Response:
     with lock:
         RESULTS[key] = verdict
         append_result(key, verdict)
+    next_url = None
     if not was_done and is_done(manuscript, item) and (todo := next_todo(manuscript, index)):
-        manuscript, index = todo
+        next_url = url_for("folio", manuscript=todo[0], index=todo[1])
+    if wants_json():
+        return jsonify(verdict=verdict, next=next_url)
+    return redirect(next_url or url_for("folio", manuscript=manuscript, index=index))
+
+
+@app.post("/bookmark")
+def bookmark() -> Response:
+    """Add, update or remove the bookmark of a folio, sent by a folio page form.
+
+    Expects the form fields ``manuscript``, ``index``, ``action`` (``add`` or ``remove``)
+    and, for ``add``, an optional ``note``. Adding an already bookmarked folio updates its
+    note and moves it to the end of the list. The folio stays in the verification flow.
+
+    :return: For the page's JavaScript, JSON ``{"bookmark": ...}`` with the saved
+        bookmark, or null once removed; otherwise a redirection to the same folio page.
+    :rtype: Response
+    :raises NotFound: If the manuscript or the folio does not exist.
+    :raises BadRequest: If a field is missing or the action is invalid.
+    """
+    manuscript = request.form["manuscript"]
+    index = request.form.get("index", -1, type=int)
+    action = request.form["action"]
+    _, item = get_item(manuscript, index)
+    if action not in ("add", "remove"):
+        abort(400)
+    key = (manuscript, item["folio"]["id"])
+    with lock:
+        BOOKMARKS.pop(key, None)
+        if action == "add":
+            BOOKMARKS[key] = {
+                "manuscript": manuscript,
+                "source": key[1],
+                "folio": item["folio"]["folio"],
+                # Tabs and line breaks would split the TSV row: collapse whitespace.
+                "note": " ".join(request.form.get("note", "").split()),
+                "timestamp": now(),
+            }
+        save_bookmarks()
+    if wants_json():
+        return jsonify(bookmark=BOOKMARKS.get(key))
     return redirect(url_for("folio", manuscript=manuscript, index=index))
+
+
+@app.route("/bookmarks")
+def bookmarks() -> str:
+    """Bookmarks page: the folios set aside, the most recent last.
+
+    :return: Rendered ``bookmarks.html`` page.
+    :rtype: str
+    """
+    rows = [{**b, "index": folio_index(b["manuscript"], b["source"])} for b in BOOKMARKS.values()]
+    return render_template("bookmarks.html", rows=rows)
 
 
 if __name__ == "__main__":

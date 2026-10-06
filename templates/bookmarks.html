@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{#
+  Bookmarks page: the folios set aside as special cases, the most recent last.
+
+  Context:
+    rows -- one dict per bookmark: manuscript, source, folio, note, timestamp and index
+            (position of the folio in the manuscript, or None if it is not in the data
+            anymore).
+#}
+{% block title %}Marque-pages{% endblock %}
+{% block content %}
+<nav><a href="{{ url_for('index') }}">← Manuscrits</a></nav>
+<h1>Marque-pages</h1>
+{% if rows %}
+<table>
+  <thead>
+    <tr><th>Manuscrit</th><th>Folio</th><th>Source</th><th>Note</th><th>Date</th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.manuscript }}</td>
+      <td>
+        {% if r.index is not none %}
+        <a href="{{ url_for('folio', manuscript=r.manuscript, index=r.index) }}">{{ r.folio }}</a>
+        {% else %}
+        {{ r.folio }}
+        {% endif %}
+      </td>
+      <td class="meta">{{ r.source }}</td>
+      <td>{{ r.note }}</td>
+      <td class="meta">{{ r.timestamp }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Aucun folio mis de côté.</p>
+{% endif %}
+{% endblock %}

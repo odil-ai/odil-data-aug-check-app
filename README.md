@@ -40,6 +40,23 @@ la dernière ligne qui compte.
 
 Pour repartir de zéro, ne garder que la ligne d'en-tête du fichier puis relancer l'app.
 
+### Marque-pages
+
+Sur la page de vérification, le bouton « Mettre de côté » ajoute le folio (avec une
+note facultative) à `bookmarks.tsv`, sans le retirer du parcours de vérification. La
+page « Marque-pages » liste les folios mis de côté.
+
+| colonne      | contenu                                     |
+|--------------|---------------------------------------------|
+| `manuscript` | nom du fichier JSON                         |
+| `source`     | identifiant de l'image source (`ahloma_…`)  |
+| `folio`      | folio de l'image source (ex. `12V`)         |
+| `note`       | note facultative                            |
+| `timestamp`  | date et heure de la mise de côté (ISO 8601) |
+
+Le fichier contient les marque-pages actuels, le plus récent en dernier : retirer un
+marque-page supprime sa ligne, mettre à jour sa note le replace en dernier.
+
 ## Dev
 
 ```bash

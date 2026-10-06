@@ -2,6 +2,8 @@
 {#
   Comparison page of one folio: the source image on the left, the candidate canvases on
   the right, each with its matching score and its "Valid" / "Not valid" buttons.
+  Verdicts and bookmarks are sent in the background and the page is updated in place;
+  without JavaScript, the forms are submitted normally and the page is reloaded.
 
   Context:
     manuscript   -- manuscript name.
@@ -11,6 +13,7 @@
     source_tiles -- OpenSeadragon tile sources of the source image, tried in order.
     candidates   -- candidate canvases: id, label, tiles (tile sources), manifest,
                     score (matching score or None) and verdict (saved verdict or None).
+    bookmark     -- bookmark of the folio (note, timestamp, ...), or None.
 #}
 {# OpenSeadragon build (script and control icons) served by jsDelivr. #}
 {% set osd = "https://cdn.jsdelivr.net/npm/openseadragon@6.1.1/build/openseadragon" %}
@@ -66,9 +69,92 @@
     });
   }
 
-  // Start a viewer for every image of the page once the DOM is ready.
+  /**
+   * Send a form in the background and return the JSON answer of the server.
+   *
+   * If the server answers with a page instead (e.g. the login page once the session has
+   * expired), the browser goes to that page. On error, the user is told that the action
+   * was not saved.
+   *
+   * @param {HTMLFormElement} form - Form to send.
+   * @param {HTMLElement|null} submitter - Clicked button, whose name and value are sent.
+   * @returns {Promise<Object|null>} The JSON answer, or null if there is none.
+   */
+  async function send(form, submitter) {
+    try {
+      // getAttribute: form.action would return the buttons named "action".
+      const response = await fetch(form.getAttribute("action"), {
+        method: "POST",
+        body: new FormData(form, submitter),
+        headers: { Accept: "application/json" },
+      });
+      const type = response.headers.get("Content-Type") || "";
+      if (response.ok && type.startsWith("application/json")) {
+        return await response.json();
+      }
+      if (response.ok && response.redirected) {
+        location.href = response.url;
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    alert("L'action n'a pas pu être enregistrée, réessayez.");
+    return null;
+  }
+
+  /**
+   * Save a verdict without reloading the page: colour the candidate card and its
+   * selected button, or go to the next folio once the current one is fully checked.
+   *
+   * @param {SubmitEvent} event - Submission of a verdict form.
+   * @returns {Promise<void>}
+   */
+  async function saveVerdict(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const result = await send(form, event.submitter);
+    if (!result) return;
+    if (result.next) {
+      location.href = result.next;
+      return;
+    }
+    const card = form.closest(".candidate");
+    card.classList.remove("valid", "not_valid");
+    card.classList.add(result.verdict);
+    for (const button of form.querySelectorAll("button")) {
+      button.classList.toggle("selected", button.value === result.verdict);
+    }
+  }
+
+  /**
+   * Save or remove the bookmark of the folio without reloading the page.
+   *
+   * @param {SubmitEvent} event - Submission of the bookmark form.
+   * @returns {Promise<void>}
+   */
+  async function saveBookmark(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const result = await send(form, event.submitter);
+    if (!result) return;
+    form.closest(".source").classList.toggle("marked", result.bookmark !== null);
+    form.elements.note.value = result.bookmark ? result.bookmark.note : "";
+    // Brief highlight to confirm the save, as the page may not change otherwise.
+    form.classList.add("saved");
+    setTimeout(() => form.classList.remove("saved"), 1000);
+  }
+
+  // Once the DOM is ready, start a viewer for every image and send the forms in the
+  // background.
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".viewer").forEach(viewer);
+    for (const form of document.querySelectorAll("form.verdict")) {
+      form.addEventListener("submit", saveVerdict);
+    }
+    for (const form of document.querySelectorAll("form.bookmark")) {
+      form.addEventListener("submit", saveBookmark);
+    }
   });
 </script>
 {% endblock %}
@@ -82,9 +168,20 @@
   {% if index + 1 < count %}<a href="{{ url_for('folio', manuscript=manuscript, index=index + 1) }}">Suivant ›</a>{% endif %}
 </nav>
 <main class="compare">
-  <section class="source">
-    <h2>Source : {{ folio.folio }}</h2>
+  {# The "marked" class shows the elements of a bookmarked folio (.if-marked) and hides
+     the others (.if-unmarked). #}
+  <section class="source {{ 'marked' if bookmark }}">
+    <h2>Source : {{ folio.folio }} <span class="bookmarked if-marked">★ mis de côté</span></h2>
     <p class="meta">{{ folio.id }} · alhoma {{ folio.alhoma_id }}</p>
+    {# Bookmark of the folio, with an optional note; it does not affect the verdicts. #}
+    <form class="bookmark" method="post" action="{{ url_for('bookmark') }}">
+      <input type="hidden" name="manuscript" value="{{ manuscript }}">
+      <input type="hidden" name="index" value="{{ index }}">
+      <input name="note" value="{{ bookmark.note if bookmark }}" placeholder="Note (facultative)">
+      <button name="action" value="add" class="if-unmarked">☆ Mettre de côté</button>
+      <button name="action" value="add" class="if-marked">Mettre à jour</button>
+      <button name="action" value="remove" class="if-marked">Retirer</button>
+    </form>
     <div class="viewer" data-sources='{{ source_tiles|tojson }}'></div>
   </section>
   <section class="candidates">
@@ -100,7 +197,7 @@
       </p>
       <div class="viewer" data-sources='{{ c.tiles|tojson }}'></div>
       {# One form per candidate: the clicked button sends the verdict. #}
-      <form method="post" action="{{ url_for('verify') }}">
+      <form class="verdict" method="post" action="{{ url_for('verify') }}">
         <input type="hidden" name="manuscript" value="{{ manuscript }}">
         <input type="hidden" name="index" value="{{ index }}">
         <input type="hidden" name="target" value="{{ c.id }}">
