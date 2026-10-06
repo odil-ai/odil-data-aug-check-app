@@ -136,22 +136,32 @@ def load_results() -> dict[ResultKey, str]:
 def append_result(key: ResultKey, verdict: str) -> None:
     """Append a timestamped verdict at the end of :data:`RESULTS_TSV`.
 
-    The file is an append-only log: a new verdict on an already checked pair adds a new
-    row, so the history is kept. The header is written when the file is created or empty.
-    The matching score of the pair is taken from :data:`SCORES`.
+    The file is a log: a new verdict on an already checked pair adds a new row, so the
+    history is kept in chronological order. The header is written when the file is
+    created or empty. The matching score of the pair is taken from :data:`SCORES`.
+
+    The existing rows and the new one are written to a temporary file which then
+    replaces the TSV file. This only needs write access to the directory, not to the
+    file itself (``git pull`` may recreate it with another owner than the app's user),
+    and the file is never left half-written.
 
     :param key: ``(manuscript, source, target)`` of the pair.
     :param verdict: ``valid`` or ``not_valid``.
     :return: None
     :rtype: None
     """
-    new_file = not RESULTS_TSV.exists() or RESULTS_TSV.stat().st_size == 0
+    rows = RESULTS_TSV.read_text() if RESULTS_TSV.exists() else ""
+    if rows and not rows.endswith("\n"):
+        rows += "\n"
     timestamp = datetime.now().astimezone().isoformat(timespec="seconds")
-    with RESULTS_TSV.open("a", newline="") as f:
+    tmp = RESULTS_TSV.with_suffix(".tmp")
+    with tmp.open("w", newline="") as f:
+        f.write(rows)
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
-        if new_file:
+        if not rows:
             writer.writerow(FIELDS)
         writer.writerow([*key, SCORES.get(key, ""), verdict, timestamp])
+    tmp.replace(RESULTS_TSV)
 
 
 CONFIG = load_config()
