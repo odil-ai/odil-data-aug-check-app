@@ -33,6 +33,7 @@ from typing import Any
 
 import yaml
 from flask import Flask, abort, redirect, render_template, request, session, url_for
+from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.wrappers import Response
 
 # A JSON object: folio entry, folio metadata or IIIF canvas.
@@ -54,6 +55,17 @@ SOURCE_IIIF = "https://iiif.chartes.psl.eu/images/ahloma_images"
 EXTENSIONS = [".jpg", ".jpeg", ".jpg2", ".jp2", ".png", ".tif", ".tiff"]
 
 app = Flask(__name__)
+
+app.wsgi_app = ProxyFix(
+    app.wsgi_app,
+    x_for=1,
+    x_proto=1,
+    x_host=1,
+    x_prefix=1,
+)
+
+app.config["APPLICATION_ROOT"] = "/odil-data-aug-check-app"
+
 # Serialises writes to the TSV file between request threads.
 lock = threading.Lock()
 
