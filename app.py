@@ -54,7 +54,6 @@ SOURCE_IIIF = "https://iiif.chartes.psl.eu/images/ahloma_images"
 EXTENSIONS = [".jpg", ".jpeg", ".jpg2", ".jp2", ".png", ".tif", ".tiff"]
 
 app = Flask(__name__)
-app.with_url_prefix = "/odil-data-aug-check-app" 
 # Serialises writes to the TSV file between request threads.
 lock = threading.Lock()
 
@@ -394,4 +393,6 @@ def verify() -> Response:
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, 
+            host="0.0.0.0", 
+            port=5000)
