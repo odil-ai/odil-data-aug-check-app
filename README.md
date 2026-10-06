@@ -25,7 +25,9 @@ Puis ouvrir <http://127.0.0.1:5000>.
 
 ## Résultats
 
-Les vérifications sont écrites dans `verifications.tsv` :
+Chaque validation est ajoutée à la fin de `verifications.tsv`, qui garde donc tout
+l'historique dans l'ordre chronologique : pour une paire validée plusieurs fois, c'est
+la dernière ligne qui compte.
 
 | colonne        | contenu                                  |
 |----------------|------------------------------------------|
@@ -34,6 +36,9 @@ Les vérifications sont écrites dans `verifications.tsv` :
 | `target`       | `@id` du canvas IIIF candidat            |
 | `score`        | score d'appariement (`matchResult.score`), vide s'il n'y en a pas |
 | `verification` | `valid` ou `not_valid`                   |
+| `timestamp`    | date et heure de la validation (ISO 8601, ex. `2026-10-06T10:56:02+02:00`) |
+
+Pour repartir de zéro, ne garder que la ligne d'en-tête du fichier puis relancer l'app.
 
 ## Dev
 

@@ -8,9 +8,10 @@ canvases that were automatically reconciled with them. The app shows each source
 next to its candidate canvases and lets the user mark every pair as ``valid`` or
 ``not_valid``.
 
-Verdicts are stored in ``verifications.tsv`` with the columns ``manuscript``,
-``source``, ``target``, ``score`` (matching score from the JSON files, empty if unknown)
-and ``verification`` (one row per pair, the latest verdict wins).
+Verdicts are appended to ``verifications.tsv`` with the columns ``manuscript``,
+``source``, ``target``, ``score`` (matching score from the JSON files, empty if unknown),
+``verification`` and ``timestamp``. The file keeps the whole history in chronological
+order: the last row of a pair gives its current verdict.
 
 Access is protected by a single username / password pair read from ``config.yml``,
 together with the secret key used to sign the session cookie (see
@@ -20,14 +21,14 @@ Usage::
 
     uv run flask --app app run --debug
 
-Verdicts are kept in memory and the TSV file is rewritten on each change, so the app
-must run in a single process.
+The current verdicts are kept in memory, so the app must run in a single process.
 """
 
 import csv
 import hmac
 import json
 import threading
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -47,7 +48,7 @@ BASE_DIR = Path(__file__).parent
 CONFIG_FILE = BASE_DIR / "config.yml"
 DATA_DIR = BASE_DIR / "manuscript_folios"
 RESULTS_TSV = BASE_DIR / "verifications.tsv"
-FIELDS = ["manuscript", "source", "target", "score", "verification"]
+FIELDS = ["manuscript", "source", "target", "score", "verification", "timestamp"]
 VERDICTS = {"valid", "not_valid"}
 
 SOURCE_IIIF = "https://iiif.chartes.psl.eu/images/ahloma_images"
@@ -56,6 +57,7 @@ EXTENSIONS = [".jpg", ".jpeg", ".jpg2", ".jp2", ".png", ".tif", ".tiff"]
 
 app = Flask(__name__)
 
+# Behind the reverse proxy, the URL prefix comes from the X-Forwarded-Prefix header.
 app.wsgi_app = ProxyFix(
     app.wsgi_app,
     x_for=1,
@@ -64,7 +66,10 @@ app.wsgi_app = ProxyFix(
     x_prefix=1,
 )
 
-app.config["APPLICATION_ROOT"] = "/odil-data-aug-check-app"
+# The session cookie keeps the default path "/" so that it is sent back whatever the URL
+# prefix (direct access or behind the proxy); a specific name avoids clashing with the
+# cookie of another Flask app on the same domain.
+app.config["SESSION_COOKIE_NAME"] = "odil_session"
 
 # Serialises writes to the TSV file between request threads.
 lock = threading.Lock()
@@ -115,10 +120,10 @@ def load_scores() -> dict[ResultKey, float]:
 
 
 def load_results() -> dict[ResultKey, str]:
-    """Load the verdicts already saved in :data:`RESULTS_TSV`.
+    """Load the current verdicts from the history saved in :data:`RESULTS_TSV`.
 
-    :return: Verdict (``valid`` or ``not_valid``) keyed by ``(manuscript, source,
-        target)``; empty if the file does not exist yet.
+    :return: Latest verdict (``valid`` or ``not_valid``) of each pair, keyed by
+        ``(manuscript, source, target)``; empty if the file does not exist yet.
     :rtype: dict[ResultKey, str]
     """
     if not RESULTS_TSV.exists():
@@ -128,23 +133,25 @@ def load_results() -> dict[ResultKey, str]:
         return {(r["manuscript"], r["source"], r["target"]): r["verification"] for r in rows}
 
 
-def save_results() -> None:
-    """Write all verdicts to :data:`RESULTS_TSV`, sorted by key.
+def append_result(key: ResultKey, verdict: str) -> None:
+    """Append a timestamped verdict at the end of :data:`RESULTS_TSV`.
 
-    The matching score of each pair is taken from :data:`SCORES`. The rows are written
-    to a temporary file which then replaces the TSV file, so that
-    it is never left half-written.
+    The file is an append-only log: a new verdict on an already checked pair adds a new
+    row, so the history is kept. The header is written when the file is created or empty.
+    The matching score of the pair is taken from :data:`SCORES`.
 
+    :param key: ``(manuscript, source, target)`` of the pair.
+    :param verdict: ``valid`` or ``not_valid``.
     :return: None
     :rtype: None
     """
-    tmp = RESULTS_TSV.with_suffix(".tmp")
-    with tmp.open("w", newline="") as f:
+    new_file = not RESULTS_TSV.exists() or RESULTS_TSV.stat().st_size == 0
+    timestamp = datetime.now().astimezone().isoformat(timespec="seconds")
+    with RESULTS_TSV.open("a", newline="") as f:
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
-        writer.writerow(FIELDS)
-        for key, verdict in sorted(RESULTS.items()):
-            writer.writerow([*key, SCORES.get(key, ""), verdict])
-    tmp.replace(RESULTS_TSV)
+        if new_file:
+            writer.writerow(FIELDS)
+        writer.writerow([*key, SCORES.get(key, ""), verdict, timestamp])
 
 
 CONFIG = load_config()
@@ -396,15 +403,14 @@ def verify() -> Response:
     if verdict not in VERDICTS or target not in {c["@id"] for c in item["canvases"]}:
         abort(400)
     was_done = is_done(manuscript, item)
+    key = (manuscript, item["folio"]["id"], target)
     with lock:
-        RESULTS[(manuscript, item["folio"]["id"], target)] = verdict
-        save_results()
+        RESULTS[key] = verdict
+        append_result(key, verdict)
     if not was_done and is_done(manuscript, item) and (todo := next_todo(manuscript, index)):
         manuscript, index = todo
     return redirect(url_for("folio", manuscript=manuscript, index=index))
 
 
 if __name__ == "__main__":
-    app.run(debug=False, 
-            host="0.0.0.0", 
-            port=5000)
+    app.run(debug=False, host="0.0.0.0", port=5000)
