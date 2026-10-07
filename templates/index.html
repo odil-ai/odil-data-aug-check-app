@@ -11,9 +11,12 @@
                 without candidate), pairs (source/target pairs), done (pairs checked)
                 and counts (number of pairs by verdict, see totals).
     todo     -- (manuscript, index) of the next folio to check, or None if all are checked.
-    hide_empty  -- True when the folios without candidate are hidden.
+    hide_empty  -- True when the folios without candidate are hidden (always the case when
+                   only the pairs with a score are kept).
+    scored_only -- True when only the pairs with a matching score are kept.
     manuscripts -- number of manuscripts in the list.
-    hidden      -- number of manuscripts left out of the list (all folios without candidate).
+    hidden      -- number of manuscripts left out of the list (no candidate, or no pair with
+                   a score when only these are kept).
     folios      -- number of folios of the listed manuscripts (without candidate excluded
                    when hidden).
     empty       -- number of folios without candidate overall.
@@ -26,7 +29,7 @@
 #}
 {% block content %}
 {# Number with a narrow no-break space as thousands separator, e.g. 31 960. #}
-{% macro num(n) %}{{ "{:,}".format(n)|replace(",", " ") }}{% endmacro %}
+{% macro num(n) %}{{ "{:,}".format(n)|replace(",", "\u202f") }}{% endmacro %}
 {# Share of n in total, as a percentage with one decimal (e.g. 12,5 %); a share that
    would round to 0 or 100 without being so is shown as "< 0,1 %" or "> 99,9 %". #}
 {% macro pct(n, total) -%}
@@ -47,7 +50,7 @@
 <h1>O.D.I.L Vérification des appariements</h1>
 <h3>École nationale des chartes - PSL</h3>
 <p>
-  {{ num(done) }} / {{ num(total) }} paires vérifiées —
+  {{ num(done) }} / {{ num(total) }} paires{{ ' avec score' if scored_only }} vérifiées —
   {% if todo %}
   <a class="button" href="{{ url_for('folio', manuscript=todo[0], index=todo[1]) }}">Continuer</a>
   {% else %}
@@ -61,11 +64,28 @@
     <p class="table-count">
       <strong id="row-count">{{ num(rows|length) }}</strong> manuscrits affichés<span id="row-total" hidden> sur {{ num(rows|length) }}</span>
     </p>
-    <a class="switch" role="switch" aria-checked="{{ 'false' if hide_empty else 'true' }}"
-       href="{{ url_for('index', empty='show' if hide_empty else 'hide') }}">
-      <span class="switch-track"><span class="switch-thumb"></span></span>
-      Afficher les folios sans candidat
-    </a>
+    <div class="switches">
+      {% if scored_only %}
+      {# Without effect while only the pairs with a score are kept: they all have a candidate. #}
+      <span class="switch disabled" role="switch" aria-checked="false" aria-disabled="true"
+            title="Sans effet : les paires avec score ont toutes un candidat">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        Afficher les folios sans candidat
+      </span>
+      {% else %}
+      <a class="switch" role="switch" aria-checked="{{ 'false' if hide_empty else 'true' }}"
+         href="{{ url_for('index', empty='show' if hide_empty else 'hide') }}">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        Afficher les folios sans candidat
+      </a>
+      {% endif %}
+      {# Keeps only the pairs with a matching score, on this page and for "Continuer". #}
+      <a class="switch" role="switch" aria-checked="{{ 'true' if scored_only else 'false' }}"
+         href="{{ url_for('index', scored='all' if scored_only else 'only') }}">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        Afficher les paires avec "score" uniquement
+      </a>
+    </div>
   </div>
   {# Statistics panel, beside the list and as high as it; its button folds it to the left
      into a thin strip, so that the list gets the room. #}
@@ -81,12 +101,20 @@
         <div class="stat">
           <span>Manuscrits</span>
           <strong>{{ num(manuscripts) }}</strong>
-          <span class="share">{{ num(hidden) ~ ' masqués (aucun candidat)' if hide_empty else 'dans la liste' }}</span>
+          <span class="share">
+            {%- if scored_only %}{{ num(hidden) }} masqués (aucune paire avec score)
+            {%- elif hide_empty %}{{ num(hidden) }} masqués (aucun candidat)
+            {%- else %}dans la liste{% endif -%}
+          </span>
         </div>
         <div class="stat">
           <span>Folios</span>
           <strong>{{ num(folios) }}</strong>
-          <span class="share">{{ 'hors sans candidat' if hide_empty else 'sans candidat compris' }}</span>
+          <span class="share">
+            {%- if scored_only %}avec une paire avec score
+            {%- elif hide_empty %}hors sans candidat
+            {%- else %}sans candidat compris{% endif -%}
+          </span>
         </div>
         <div class="stat">
           <span>Sans candidat</span>
@@ -96,7 +124,7 @@
         <div class="stat">
           <span>Paires</span>
           <strong>{{ num(total) }}</strong>
-          <span class="share">à valider</span>
+          <span class="share">{{ 'avec score' if scored_only else 'à valider' }}</span>
         </div>
       </div>
       {# Pairs by verdict: a ring-shaped pie chart (share of checked pairs in the middle)

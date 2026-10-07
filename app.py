@@ -289,21 +289,41 @@ def label(canvas: Json) -> str:
     return " — ".join(map(str, value)) if isinstance(value, list) else str(value)
 
 
-def is_done(manuscript: str, item: Json) -> bool:
-    """Tell whether every candidate of a folio has a verdict.
+def candidates(item: Json, scored_only: bool = False) -> list[Json]:
+    """Return the candidate canvases of a folio that are taken into account.
+
+    :param item: Folio entry (``folio`` and ``canvases``).
+    :type item: Json
+    :param scored_only: True to keep only the candidates with a matching score.
+    :type scored_only: bool
+    :return: The candidate canvases, all of them or only those with a score.
+    :rtype: list[Json]
+    """
+    if scored_only:
+        return [c for c in item["canvases"] if match_score(c) is not None]
+    return item["canvases"]
+
+
+def is_done(manuscript: str, item: Json, scored_only: bool = False) -> bool:
+    """Tell whether every candidate of a folio taken into account has a verdict.
 
     :param manuscript: Manuscript name.
     :type manuscript: str
     :param item: Folio entry (``folio`` and ``canvases``).
     :type item: Json
-    :return: True if all pairs are checked (always True for a folio without candidate).
+    :param scored_only: True to take into account only the candidates with a score.
+    :type scored_only: bool
+    :return: True if all these pairs are checked (always True for a folio without such
+        candidate).
     :rtype: bool
     """
     source = item["folio"]["id"]
-    return all((manuscript, source, c["@id"]) in RESULTS for c in item["canvases"])
+    return all((manuscript, source, c["@id"]) in RESULTS for c in candidates(item, scored_only))
 
 
-def next_todo(manuscript: str, index: int = -1) -> tuple[str, int] | None:
+def next_todo(
+    manuscript: str, index: int = -1, scored_only: bool = False
+) -> tuple[str, int] | None:
     """Find the next folio to check, after ``index`` in this manuscript, then in the next ones.
 
     :param manuscript: Manuscript to start from.
@@ -311,6 +331,8 @@ def next_todo(manuscript: str, index: int = -1) -> tuple[str, int] | None:
     :param index: Position of the current folio; the search starts right after it
         (``-1`` to start at the first folio).
     :type index: int
+    :param scored_only: True to look only for pairs with a score left to check.
+    :type scored_only: bool
     :return: ``(manuscript, index)`` of the next folio to check, or None if all are checked.
     :rtype: tuple[str, int] | None
     """
@@ -320,7 +342,7 @@ def next_todo(manuscript: str, index: int = -1) -> tuple[str, int] | None:
         items = MANUSCRIPTS[name]
         first = index + 1 if name == manuscript else 0
         for i in range(first, len(items)):
-            if not is_done(name, items[i]):
+            if not is_done(name, items[i], scored_only):
                 return name, i
     return None
 
@@ -476,41 +498,48 @@ def index() -> str:
     (no verdict yet), overall and for each manuscript.
 
     The query parameter ``empty`` (``show`` or ``hide``) shows or hides the folios without
-    candidate, and the choice is kept in the session. Once hidden, they are left out of
-    the folio counts, and the manuscripts whose folios all lack candidates are left out
-    of the list.
+    candidate. Once hidden, they are left out of the folio counts, and the manuscripts
+    whose folios all lack candidates are left out of the list.
+
+    The query parameter ``scored`` (``only`` or ``all``) keeps only the pairs with a
+    matching score, or all of them: the counts, the list and the "Continuer" link then
+    take into account only these pairs (and the folios without candidate are hidden, as
+    they have none). Both choices are kept in the session.
 
     :return: Rendered ``index.html`` page.
     :rtype: str
     """
     if "empty" in request.args:
         session["hide_empty"] = request.args["empty"] == "hide"
-    hide_empty = session.get("hide_empty", False)
+    if "scored" in request.args:
+        session["scored_only"] = request.args["scored"] == "only"
+    scored_only = session.get("scored_only", False)
+    hide_empty = session.get("hide_empty", False) or scored_only
     rows = []
     for name, items in MANUSCRIPTS.items():
-        empty = sum(not it["canvases"] for it in items)
-        folios = len(items) - empty if hide_empty else len(items)
-        if not folios:
+        kept = [it for it in items if candidates(it, scored_only)] if hide_empty else items
+        if not kept:
             continue
-        pairs = [(it["folio"]["id"], c["@id"]) for it in items for c in it["canvases"]]
+        pairs = [(it["folio"]["id"], c["@id"]) for it in kept for c in candidates(it, scored_only)]
         counts = Counter(RESULTS.get((name, s, t), "unresolved") for s, t in pairs)
         rows.append(
             {
                 "name": name,
-                "folios": folios,
-                "empty": empty,
+                "folios": len(kept),
+                "empty": sum(not it["canvases"] for it in items),
                 "pairs": len(pairs),
                 "done": counts["valid"] + counts["not_valid"],
                 "counts": counts,
             }
         )
-    todo = next_todo(next(iter(MANUSCRIPTS))) if MANUSCRIPTS else None
+    todo = next_todo(next(iter(MANUSCRIPTS)), scored_only=scored_only) if MANUSCRIPTS else None
     totals = sum((r["counts"] for r in rows), Counter())
     return render_template(
         "index.html",
         rows=rows,
         todo=todo,
         hide_empty=hide_empty,
+        scored_only=scored_only,
         manuscripts=len(rows),
         hidden=len(MANUSCRIPTS) - len(rows),
         folios=sum(r["folios"] for r in rows),
@@ -527,6 +556,8 @@ def index() -> str:
 def manuscript(manuscript: str) -> Response:
     """Open a manuscript at its first folio left to check (its first folio if all are done).
 
+    Only the pairs with a score are taken into account when the home page keeps only them.
+
     :param manuscript: Manuscript name.
     :type manuscript: str
     :return: Redirection to the folio page.
@@ -534,7 +565,8 @@ def manuscript(manuscript: str) -> Response:
     :raises NotFound: If the manuscript does not exist.
     """
     items = MANUSCRIPTS.get(manuscript) or abort(404)
-    index = next((i for i, it in enumerate(items) if not is_done(manuscript, it)), 0)
+    scored_only = session.get("scored_only", False)
+    index = next((i for i, it in enumerate(items) if not is_done(manuscript, it, scored_only)), 0)
     return redirect(url_for("folio", manuscript=manuscript, index=index))
 
 
@@ -581,7 +613,8 @@ def verify() -> Response:
 
     Expects the form fields ``manuscript``, ``index``, ``target`` and ``verification``.
     When this verdict completes the folio, the next page is the next folio to check;
-    otherwise (or when correcting an already checked folio) it is the same page.
+    otherwise (or when correcting an already checked folio) it is the same page. When the
+    home page keeps only the pairs with a score, only these pairs are taken into account.
 
     :return: For the page's JavaScript, JSON ``{"verdict": ..., "next": ...}`` where
         ``next`` is the URL of the next folio, or null to stay on the page; otherwise a
@@ -597,13 +630,18 @@ def verify() -> Response:
     items, item = get_item(manuscript, index)
     if verdict not in VERDICTS or target not in {c["@id"] for c in item["canvases"]}:
         abort(400)
-    was_done = is_done(manuscript, item)
+    scored_only = session.get("scored_only", False)
+    was_done = is_done(manuscript, item, scored_only)
     key = (manuscript, item["folio"]["id"], target)
     with lock:
         RESULTS[key] = verdict
         append_result(key, verdict)
     next_url = None
-    if not was_done and is_done(manuscript, item) and (todo := next_todo(manuscript, index)):
+    if (
+        not was_done
+        and is_done(manuscript, item, scored_only)
+        and (todo := next_todo(manuscript, index, scored_only))
+    ):
         next_url = url_for("folio", manuscript=todo[0], index=todo[1])
     if wants_json():
         return jsonify(verdict=verdict, next=next_url)

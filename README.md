@@ -14,9 +14,13 @@ et les canvases IIIF candidats listés dans `manuscript_folios/*.json`.
   (`valid` / `not_valid`). Un folio à 3 candidats donne 3 paires.
 - **Non résolu** : une paire sans verdict.
 
-La page d'accueil affiche ces chiffres et permet de masquer les folios sans candidat :
-ils sortent alors des comptes de folios, et les manuscrits qui n'ont que des folios
-sans candidat disparaissent de la liste.
+La page d'accueil affiche ces chiffres et propose deux filtres, mémorisés pour la session :
+
+- **masquer les folios sans candidat** : ils sortent des comptes de folios, et les
+  manuscrits qui n'ont que des folios sans candidat disparaissent de la liste ;
+- **ne garder que les paires avec score** (`matchResult.score`) : les comptes, la liste,
+  le bouton « Continuer » et le passage automatique au folio suivant ne tiennent plus
+  compte que de ces paires.
 
 ## Configuration
 

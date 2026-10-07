@@ -92,6 +92,8 @@
     .switch[aria-checked="true"] .switch-track { background: #0b5394; }
     .switch[aria-checked="true"] .switch-thumb { left: 1.25rem; }
     .switch:focus-visible .switch-track { outline: 2px solid #0b5394; outline-offset: 2px; }
+    .switch.disabled { opacity: .45; cursor: not-allowed; }
+    .switches { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
 
     /* List of manuscripts. Its rows are laid out as grids rather than table rows, so that
        the browser only lays out the rows on screen (content-visibility): this keeps the
