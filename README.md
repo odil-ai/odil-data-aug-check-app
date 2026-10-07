@@ -3,6 +3,21 @@
 Application Flask pour vérifier les appariements entre les images sources (ahloma)
 et les canvases IIIF candidats listés dans `manuscript_folios/*.json`.
 
+## Vocabulaire
+
+- **Manuscrit** : un fichier JSON de `manuscript_folios/`, nommé d'après l'identifiant
+  du manuscrit (ex. `Q100486`, parfois deux identifiants réunis comme `Q90255|Q90256`).
+- **Folio** : une image source d'un manuscrit (`ahloma_…`, folio `12V` par exemple). Un
+  folio a zéro, un ou plusieurs canvas IIIF candidats.
+- **Sans candidat** : un folio pour lequel aucun canvas n'a été trouvé ; rien à valider.
+- **Paire** : un folio associé à l'un de ses candidats, l'unité que l'on valide
+  (`valid` / `not_valid`). Un folio à 3 candidats donne 3 paires.
+- **Non résolu** : une paire sans verdict.
+
+La page d'accueil affiche ces chiffres et permet de masquer les folios sans candidat :
+ils sortent alors des comptes de folios, et les manuscrits qui n'ont que des folios
+sans candidat disparaissent de la liste.
+
 ## Configuration
 
 L'accès est protégé par un identifiant et un mot de passe uniques, définis dans

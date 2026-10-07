@@ -30,6 +30,7 @@ process.
 """
 
 import csv
+import gzip
 import hmac
 import json
 import threading
@@ -110,6 +111,7 @@ def match_score(canvas: Json) -> float | None:
     """Return the matching score of a candidate canvas.
 
     :param canvas: IIIF Presentation 2 canvas, possibly with a ``matchResult`` entry.
+    :type canvas: Json
     :return: The score of the automatic matching, or None if the canvas has none.
     :rtype: float | None
     """
@@ -167,7 +169,9 @@ def append_result(key: ResultKey, verdict: str) -> None:
     and the file is never left half-written.
 
     :param key: ``(manuscript, source, target)`` of the pair.
+    :type key: ResultKey
     :param verdict: ``valid`` or ``not_valid``.
+    :type verdict: str
     :return: None
     :rtype: None
     """
@@ -227,7 +231,9 @@ def check_credentials(username: str, password: str) -> bool:
     """Compare submitted credentials with the ones of :data:`CONFIG_FILE`.
 
     :param username: Submitted username.
+    :type username: str
     :param password: Submitted password.
+    :type password: str
     :return: True if both the username and the password match.
     :rtype: bool
     """
@@ -243,6 +249,7 @@ def source_tiles(folio: Json) -> list[TileSource]:
     :data:`EXTENSIONS`, starting with the one of the folio filename (if any).
 
     :param folio: Folio metadata (``id``, ``filename``, ...).
+    :type folio: Json
     :return: info.json URLs to try in order.
     :rtype: list[TileSource]
     """
@@ -255,6 +262,7 @@ def target_tiles(canvas: Json) -> list[TileSource]:
     """Build the OpenSeadragon tile sources of a candidate canvas.
 
     :param canvas: IIIF Presentation 2 canvas.
+    :type canvas: Json
     :return: Tile sources to try in order: the IIIF image service, then the raw image
         and the thumbnail as simple images.
     :rtype: list[TileSource]
@@ -273,6 +281,7 @@ def label(canvas: Json) -> str:
     """Return the label of a canvas as text.
 
     :param canvas: IIIF Presentation 2 canvas.
+    :type canvas: Json
     :return: The label; values of a multi-valued label are joined with a dash.
     :rtype: str
     """
@@ -284,7 +293,9 @@ def is_done(manuscript: str, item: Json) -> bool:
     """Tell whether every candidate of a folio has a verdict.
 
     :param manuscript: Manuscript name.
+    :type manuscript: str
     :param item: Folio entry (``folio`` and ``canvases``).
+    :type item: Json
     :return: True if all pairs are checked (always True for a folio without candidate).
     :rtype: bool
     """
@@ -296,8 +307,10 @@ def next_todo(manuscript: str, index: int = -1) -> tuple[str, int] | None:
     """Find the next folio to check, after ``index`` in this manuscript, then in the next ones.
 
     :param manuscript: Manuscript to start from.
+    :type manuscript: str
     :param index: Position of the current folio; the search starts right after it
         (``-1`` to start at the first folio).
+    :type index: int
     :return: ``(manuscript, index)`` of the next folio to check, or None if all are checked.
     :rtype: tuple[str, int] | None
     """
@@ -316,12 +329,49 @@ def folio_index(manuscript: str, source: str) -> int | None:
     """Find the position of a folio in its manuscript.
 
     :param manuscript: Manuscript name.
+    :type manuscript: str
     :param source: Source image id of the folio.
+    :type source: str
     :return: Position of the folio (0-based), or None if it is not in the data anymore.
     :rtype: int | None
     """
     items = MANUSCRIPTS.get(manuscript, [])
     return next((i for i, it in enumerate(items) if it["folio"]["id"] == source), None)
+
+
+def pie_slices(counts: Counter, total: int) -> list[dict[str, Any]]:
+    """Build the slices of the pie chart of the pairs by verdict.
+
+    Each non-empty verdict gets a slice sized after its share of the pairs, in percent of
+    the circle; a share under 0.5 % is drawn at 0.5 % so that it stays visible (the exact
+    figures are given by the legend).
+
+    :param counts: Number of pairs by verdict (``valid``, ``not_valid``, ``unresolved``).
+    :type counts: Counter
+    :param total: Number of pairs.
+    :type total: int
+    :return: Slices in the order of :data:`VERDICT_LABELS`, with ``key``, ``label``,
+        ``count``, ``start`` and ``size`` (both in percent of the circle).
+    :rtype: list[dict[str, Any]]
+    """
+    if not total:
+        return []
+    sizes = {key: max(100 * counts[key] / total, 0.5) for key in VERDICT_LABELS if counts[key]}
+    scale = 100 / sum(sizes.values())
+    slices, start = [], 0.0
+    for key, size in sizes.items():
+        size *= scale
+        slices.append(
+            {
+                "key": key,
+                "label": VERDICT_LABELS[key],
+                "count": counts[key],
+                "start": round(start, 3),
+                "size": round(size, 3),
+            }
+        )
+        start += size
+    return slices
 
 
 def wants_json() -> bool:
@@ -340,7 +390,9 @@ def get_item(manuscript: str, index: int) -> tuple[list[Json], Json]:
     """Get a folio entry, aborting with a 404 error if it does not exist.
 
     :param manuscript: Manuscript name.
+    :type manuscript: str
     :param index: Position of the folio in the manuscript (0-based).
+    :type index: int
     :return: All folio entries of the manuscript and the requested one.
     :rtype: tuple[list[Json], Json]
     :raises NotFound: If the manuscript or the folio does not exist.
@@ -361,6 +413,31 @@ def require_login() -> Response | None:
     if not session.get("logged_in") and request.endpoint not in ("login", "static"):
         return redirect(url_for("login"))
     return None
+
+
+@app.after_request
+def compress(response: Response) -> Response:
+    """Compress HTML pages with gzip when the browser accepts it.
+
+    The home page weighs about 1.4 MB of HTML (thousands of rows) but less than 60 KB once
+    compressed, which makes a large difference on a remote connection. A response that is
+    already encoded (e.g. by a reverse proxy) is left as is.
+
+    :param response: Response about to be sent.
+    :type response: Response
+    :return: The response, compressed if possible.
+    :rtype: Response
+    """
+    if (
+        response.mimetype == "text/html"
+        and not response.direct_passthrough
+        and "Content-Encoding" not in response.headers
+        and "gzip" in request.headers.get("Accept-Encoding", "")
+    ):
+        response.set_data(gzip.compress(response.get_data(), compresslevel=6))
+        response.headers["Content-Encoding"] = "gzip"
+        response.vary.add("Accept-Encoding")
+    return response
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -393,23 +470,35 @@ def logout() -> Response:
 
 @app.route("/")
 def index() -> str:
-    """Home page: overall progress and verification progress of each manuscript.
+    """Home page: corpus figures, pairs by verdict and the list of manuscripts.
 
     Pairs are counted by current verdict: ``valid``, ``not_valid`` or ``unresolved``
     (no verdict yet), overall and for each manuscript.
 
+    The query parameter ``empty`` (``show`` or ``hide``) shows or hides the folios without
+    candidate, and the choice is kept in the session. Once hidden, they are left out of
+    the folio counts, and the manuscripts whose folios all lack candidates are left out
+    of the list.
+
     :return: Rendered ``index.html`` page.
     :rtype: str
     """
+    if "empty" in request.args:
+        session["hide_empty"] = request.args["empty"] == "hide"
+    hide_empty = session.get("hide_empty", False)
     rows = []
     for name, items in MANUSCRIPTS.items():
+        empty = sum(not it["canvases"] for it in items)
+        folios = len(items) - empty if hide_empty else len(items)
+        if not folios:
+            continue
         pairs = [(it["folio"]["id"], c["@id"]) for it in items for c in it["canvases"]]
         counts = Counter(RESULTS.get((name, s, t), "unresolved") for s, t in pairs)
         rows.append(
             {
                 "name": name,
-                "folios": len(items),
-                "empty": sum(not it["canvases"] for it in items),
+                "folios": folios,
+                "empty": empty,
                 "pairs": len(pairs),
                 "done": counts["valid"] + counts["not_valid"],
                 "counts": counts,
@@ -421,10 +510,16 @@ def index() -> str:
         "index.html",
         rows=rows,
         todo=todo,
+        hide_empty=hide_empty,
+        manuscripts=len(rows),
+        hidden=len(MANUSCRIPTS) - len(rows),
+        folios=sum(r["folios"] for r in rows),
+        empty=sum(not it["canvases"] for items in MANUSCRIPTS.values() for it in items),
         done=totals["valid"] + totals["not_valid"],
         total=sum(r["pairs"] for r in rows),
         totals=totals,
         verdicts=VERDICT_LABELS,
+        slices=pie_slices(totals, sum(r["pairs"] for r in rows)),
     )
 
 
@@ -433,6 +528,7 @@ def manuscript(manuscript: str) -> Response:
     """Open a manuscript at its first folio left to check (its first folio if all are done).
 
     :param manuscript: Manuscript name.
+    :type manuscript: str
     :return: Redirection to the folio page.
     :rtype: Response
     :raises NotFound: If the manuscript does not exist.
@@ -447,7 +543,9 @@ def folio(manuscript: str, index: int) -> str:
     """Comparison page: the source image of a folio next to its candidate canvases.
 
     :param manuscript: Manuscript name.
+    :type manuscript: str
     :param index: Position of the folio in the manuscript (0-based).
+    :type index: int
     :return: Rendered ``folio.html`` page.
     :rtype: str
     :raises NotFound: If the manuscript or the folio does not exist.

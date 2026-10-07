@@ -1,20 +1,32 @@
 {% extends "base.html" %}
 {#
-  Home page: overall progress and the list of manuscripts.
+  Home page: overall progress, then two columns of the same height. On the left, a panel
+  (open by default, folded to the left by its button) with the corpus figures, a pie chart
+  of the pairs by verdict and a glossary of these terms; on the right, the list of
+  manuscripts, under the number of manuscripts shown and a switch that shows or hides the
+  folios without candidate.
 
   Context:
     rows     -- one dict per manuscript: name, folios (number of folios), empty (folios
                 without candidate), pairs (source/target pairs), done (pairs checked)
                 and counts (number of pairs by verdict, see totals).
     todo     -- (manuscript, index) of the next folio to check, or None if all are checked.
+    hide_empty  -- True when the folios without candidate are hidden.
+    manuscripts -- number of manuscripts in the list.
+    hidden      -- number of manuscripts left out of the list (all folios without candidate).
+    folios      -- number of folios of the listed manuscripts (without candidate excluded
+                   when hidden).
+    empty       -- number of folios without candidate overall.
     done     -- number of pairs checked overall.
     total    -- number of pairs overall.
     totals   -- number of pairs by verdict overall: valid, not_valid and unresolved.
     verdicts -- label of each verdict, in display order.
+    slices   -- slices of the pie chart: key, label, count, start and size (in percent of
+                the circle).
 #}
 {% block content %}
 {# Number with a narrow no-break space as thousands separator, e.g. 31 960. #}
-{% macro num(n) %}{{ "{:,}".format(n)|replace(",", " ") }}{% endmacro %}
+{% macro num(n) %}{{ "{:,}".format(n)|replace(",", " ") }}{% endmacro %}
 {# Share of n in total, as a percentage with one decimal (e.g. 12,5 %); a share that
    would round to 0 or 100 without being so is shown as "< 0,1 %" or "> 99,9 %". #}
 {% macro pct(n, total) -%}
@@ -42,32 +54,205 @@
   tout est vérifié.
   {% endif %}
 </p>
-{# Overall breakdown of the pairs by verdict: one tile per verdict, then the bar. #}
-<div class="stats">
-  {% for key, label in verdicts.items() %}
-  <div class="stat">
-    <span class="swatch {{ key }}"></span><span>{{ label }}</span>
-    <strong>{{ num(totals[key]) }}</strong>
-    <span class="share">{{ pct(totals[key], total) }}</span>
+<div class="layout" id="layout">
+  {# Number of manuscripts shown and switch for the folios without candidate, above the
+     list; the switch updates the corpus figures and the list. #}
+  <div class="list-header">
+    <p class="table-count">
+      <strong id="row-count">{{ num(rows|length) }}</strong> manuscrits affichés<span id="row-total" hidden> sur {{ num(rows|length) }}</span>
+    </p>
+    <a class="switch" role="switch" aria-checked="{{ 'false' if hide_empty else 'true' }}"
+       href="{{ url_for('index', empty='show' if hide_empty else 'hide') }}">
+      <span class="switch-track"><span class="switch-thumb"></span></span>
+      Afficher les folios sans candidat
+    </a>
   </div>
-  {% endfor %}
+  {# Statistics panel, beside the list and as high as it; its button folds it to the left
+     into a thin strip, so that the list gets the room. #}
+  <aside class="panel" aria-label="Statistiques">
+    <div class="panel-head">
+      <h2 class="panel-title">Statistiques</h2>
+      <button type="button" class="panel-toggle" id="panel-toggle" aria-expanded="true"
+              aria-controls="panel-body" title="Replier le panneau">«</button>
+    </div>
+    <div class="panel-body" id="panel-body">
+      <h2 class="stats-title">Corpus</h2>
+      <div class="stats">
+        <div class="stat">
+          <span>Manuscrits</span>
+          <strong>{{ num(manuscripts) }}</strong>
+          <span class="share">{{ num(hidden) ~ ' masqués (aucun candidat)' if hide_empty else 'dans la liste' }}</span>
+        </div>
+        <div class="stat">
+          <span>Folios</span>
+          <strong>{{ num(folios) }}</strong>
+          <span class="share">{{ 'hors sans candidat' if hide_empty else 'sans candidat compris' }}</span>
+        </div>
+        <div class="stat">
+          <span>Sans candidat</span>
+          <strong>{{ num(empty) }}</strong>
+          <span class="share">{{ 'masqués' if hide_empty else pct(empty, folios) ~ ' des folios' }}</span>
+        </div>
+        <div class="stat">
+          <span>Paires</span>
+          <strong>{{ num(total) }}</strong>
+          <span class="share">à valider</span>
+        </div>
+      </div>
+      {# Pairs by verdict: a ring-shaped pie chart (share of checked pairs in the middle)
+         and its legend with the exact figures. Each slice is a circle whose dash covers
+         its share of the circumference (r = 15.9155, so the circumference is 100); it
+         starts at the top and goes clockwise. #}
+      <h2 class="stats-title">Paires par verdict</h2>
+      <div class="pie-chart">
+        <svg class="pie" viewBox="0 0 42 42" role="img"
+             aria-label="Paires par verdict :{% for key, label in verdicts.items() %} {{ label }} {{ num(totals[key]) }} ({{ pct(totals[key], total) }}){{ ',' if not loop.last }}{% endfor %}">
+          <circle class="track" cx="21" cy="21" r="15.9155"></circle>
+          {% for s in slices %}
+          <circle class="{{ s.key }}" cx="21" cy="21" r="15.9155"
+                  stroke-dasharray="{{ s.size }} {{ 100 - s.size }}" stroke-dashoffset="{{ 25 - s.start }}">
+            <title>{{ s.label }} : {{ num(s.count) }} ({{ pct(s.count, total) }})</title>
+          </circle>
+          {% endfor %}
+          <text x="21" y="21.5" class="pie-value">{{ pct(done, total) }}</text>
+          <text x="21" y="26.5" class="pie-label">vérifiées</text>
+        </svg>
+        <ul class="legend">
+          {% for key, label in verdicts.items() %}
+          <li>
+            <span class="swatch {{ key }}"></span>
+            <span>{{ label }}</span>
+            <strong>{{ num(totals[key]) }}</strong>
+            <span class="share">{{ pct(totals[key], total) }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {# What the figures count, folded by default. #}
+      <details class="glossary">
+        <summary>Définitions : manuscrit, folio, paire…</summary>
+        <dl>
+          <dt>Manuscrit</dt>
+          <dd>Un fichier du dossier <code>manuscript_folios/</code>, nommé d'après l'identifiant du
+            manuscrit (ex. Q100486, parfois deux identifiants réunis comme Q90255|Q90256). Il
+            contient la liste de ses folios.</dd>
+          <dt>Folio</dt>
+          <dd>Une image source du manuscrit (identifiant <code>ahloma_…</code>, folio 12V par
+            exemple) : l'image affichée à gauche sur la page de vérification. Un folio a zéro, un
+            ou plusieurs canvas IIIF candidats.</dd>
+          <dt>Sans candidat</dt>
+          <dd>Un folio pour lequel aucun canvas IIIF n'a été trouvé : il n'y a rien à valider.</dd>
+          <dt>Paire</dt>
+          <dd>Un folio associé à l'un de ses canvas candidats : c'est ce que l'on valide (Valid /
+            Not valid). Un folio avec 3 candidats donne 3 paires, un folio sans candidat n'en donne
+            aucune ; il peut donc y avoir plus de paires que de folios.</dd>
+          <dt>Non résolu</dt>
+          <dd>Une paire qui n'a pas encore de verdict.</dd>
+        </dl>
+      </details>
+    </div>
+  </aside>
+  <script>
+    /**
+     * Fold the statistics panel to the left, or unfold it, and remember the choice in
+     * the browser for the next visits.
+     *
+     * @param {boolean} folded - True to fold the panel.
+     * @returns {void}
+     */
+    function foldPanel(folded) {
+      document.getElementById("layout").classList.toggle("folded", folded);
+      const button = document.getElementById("panel-toggle");
+      button.setAttribute("aria-expanded", String(!folded));
+      button.textContent = folded ? "»" : "«";
+      button.title = folded ? "Déplier le panneau" : "Replier le panneau";
+      try {
+        localStorage.setItem("stats-panel", folded ? "closed" : "open");
+      } catch {
+        // Storage unavailable (private browsing...): the choice is just not kept.
+      }
+    }
+
+    // Restore the last choice (before the page is drawn), then fold on each click.
+    try {
+      if (localStorage.getItem("stats-panel") === "closed") foldPanel(true);
+    } catch {
+      // Storage unavailable: the panel is open by default.
+    }
+    document.getElementById("panel-toggle").addEventListener("click", () => {
+      foldPanel(!document.getElementById("layout").classList.contains("folded"));
+    });
+  </script>
+  {# List of manuscripts: scrollable with a sticky header, filtered on the manuscript
+     name by the field of the first column (see the script below). #}
+  <div class="table-wrap">
+    <table class="manuscripts {{ 'no-empty' if hide_empty }}" id="manuscripts">
+      <thead>
+        <tr>
+          <th>
+            Manuscrit
+            <input type="search" id="name-filter" class="name-filter" placeholder="Filtrer…"
+                   aria-label="Filtrer les manuscrits par nom" autocomplete="off">
+          </th>
+          <th class="num">Folios</th>
+          {% if not hide_empty %}<th class="num">Sans candidat</th>{% endif %}
+          <th class="num">Paires vérifiées</th>
+          <th class="bar-cell">Répartition</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for r in rows %}
+        {# A manuscript is shown as done (✓) once all its pairs are checked. #}
+        {% set done_all = r.pairs and r.done == r.pairs %}
+        <tr data-name="{{ r.name|lower }}" class="{{ 'done' if done_all }}">
+          <td><a href="{{ url_for('manuscript', manuscript=r.name) }}">{{ r.name }}</a></td>
+          <td class="num">{{ num(r.folios) }}</td>
+          {% if not hide_empty %}<td class="num">{{ num(r.empty) if r.empty }}</td>{% endif %}
+          <td class="num">{{ '✓ ' if done_all }}{{ num(r.done) }} / {{ num(r.pairs) }}</td>
+          <td class="bar-cell">{{ verdict_bar(r.counts, r.pairs) }}</td>
+        </tr>
+      {% endfor %}
+        <tr id="no-match" hidden><td colspan="5" class="no-match">Aucun manuscrit ne correspond au filtre.</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-{{ verdict_bar(totals, total) }}
-<table>
-  <thead>
-    <tr><th>Manuscrit</th><th>Folios</th><th>Sans candidat</th><th>Paires vérifiées</th><th>Répartition</th></tr>
-  </thead>
-  <tbody>
-  {% for r in rows %}
-    {# A manuscript is shown as done once all its pairs are checked. #}
-    <tr class="{{ 'done' if r.pairs and r.done == r.pairs }}">
-      <td><a href="{{ url_for('manuscript', manuscript=r.name) }}">{{ r.name }}</a></td>
-      <td>{{ r.folios }}</td>
-      <td>{{ r.empty or '' }}</td>
-      <td>{{ r.done }} / {{ r.pairs }}</td>
-      <td>{{ verdict_bar(r.counts, r.pairs) }}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<script>
+  /**
+   * Filter the list of manuscripts on the text typed in the "Manuscrit" column header.
+   *
+   * Matching is case-insensitive, on any part of the name. The text is kept in the
+   * browser for the session, so that it survives a reload of the page (e.g. when the
+   * folios without candidate are shown or hidden).
+   *
+   * @returns {void}
+   */
+  function filterManuscripts() {
+    const input = document.getElementById("name-filter");
+    const text = input.value.trim().toLowerCase();
+    let shown = 0;
+    for (const row of document.querySelectorAll("#manuscripts tbody tr[data-name]")) {
+      row.hidden = !row.dataset.name.includes(text);
+      shown += !row.hidden;
+    }
+    const rows = document.querySelectorAll("#manuscripts tbody tr[data-name]").length;
+    document.getElementById("row-count").textContent = shown.toLocaleString("fr-FR");
+    document.getElementById("row-total").hidden = shown === rows;
+    document.getElementById("no-match").hidden = shown > 0;
+    try {
+      sessionStorage.setItem("name-filter", input.value);
+    } catch {
+      // Storage unavailable (private browsing...): the filter is just not kept.
+    }
+  }
+
+  // Restore the text of the last filter, then filter on each keystroke.
+  try {
+    document.getElementById("name-filter").value = sessionStorage.getItem("name-filter") || "";
+  } catch {
+    // Storage unavailable: start with an empty filter.
+  }
+  document.getElementById("name-filter").addEventListener("input", filterManuscripts);
+  filterManuscripts();
+</script>
 {% endblock %}

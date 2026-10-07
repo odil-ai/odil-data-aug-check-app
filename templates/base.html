@@ -20,26 +20,106 @@
     .button { padding: .3rem .8rem; background: #0b5394; color: #fff; border-radius: 4px; text-decoration: none; }
     .meta { font-size: .85rem; color: #666; margin: 0 0 .5rem; word-break: break-all; }
 
-    /* Home page: list of manuscripts */
+    /* Simple tables (bookmarks page) */
     table { border-collapse: collapse; }
     th, td { padding: .25rem .75rem; border-bottom: 1px solid #ddd; text-align: left; }
-    tr.done td { color: #2e7d32; }
 
-    /* Home page: pairs by verdict (tiles and stacked bars). Colours checked for
-       colour-blind separation; labels and tooltips always name the verdicts. */
-    .stats { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 .75rem; }
-    .stat { display: grid; grid-template-columns: auto 1fr; column-gap: .5rem; align-items: center;
-            min-width: 9rem; padding: .6rem .9rem; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
-    .stat strong { grid-column: 1 / -1; font-size: 1.6rem; }
-    .stat .share { grid-column: 1 / -1; color: #666; font-size: .9rem; }
+    /* Home page layout: the list header above the list, then the statistics panel and
+       the list side by side, as high as each other. Folded, the panel becomes a thin
+       strip on the left (vertical title and button), leaving the room to the list. */
+    .layout { display: grid; grid-template-columns: 22rem minmax(0, 1fr); grid-template-rows: auto 75vh; gap: .6rem 1.5rem; }
+    .layout.folded { grid-template-columns: 2.75rem minmax(0, 1fr); }
+    .list-header { grid-column: 2; grid-row: 1; }
+    .panel { grid-column: 1; grid-row: 2; overflow: auto; padding: .6rem 1rem 1rem; background: #fff;
+             border: 1px solid #ddd; border-radius: 6px; }
+    .table-wrap { grid-column: 2; grid-row: 2; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+    .panel-title { margin: 0; font-size: 1rem; white-space: nowrap; }
+    .panel-toggle { flex: none; width: 1.9rem; height: 1.9rem; padding: 0; font-size: 1.1rem; line-height: 1;
+                    color: #0b5394; background: #f1f4f8; border: 1px solid #d5dbe3; }
+    .panel-toggle:hover { background: #e3eaf3; }
+    .layout.folded .panel { overflow: hidden; padding: .5rem 0; }
+    .layout.folded .panel-head { flex-direction: column-reverse; justify-content: flex-end; gap: .8rem; }
+    .layout.folded .panel-title { writing-mode: vertical-rl; transform: rotate(180deg); }
+    .layout.folded .panel-body { display: none; }
+
+    /* Statistics panel: corpus tiles, pie chart of the pairs by verdict and glossary.
+       Verdict colours were checked for colour-blind separation; the legend and the
+       tooltips always name the verdicts and give the figures. */
+    .stats-title { margin: 1rem 0 .4rem; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; color: #666; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .stat { display: grid; padding: .5rem .7rem; background: #f5f7fa; border-radius: 6px; font-size: .9rem; }
+    .stat strong { font-size: 1.3rem; }
+    .stat .share, .legend .share { color: #666; font-size: .8rem; }
+    .pie-chart { display: flex; align-items: center; gap: 1rem; }
+    .pie { flex: 0 0 7.5rem; width: 7.5rem; height: 7.5rem; }
+    .pie circle { fill: none; stroke-width: 6; }
+    .pie circle:hover { stroke-width: 7; }
+    .pie .track { stroke: #eee; }
+    .pie .valid { stroke: #1b5e20; }
+    .pie .not_valid { stroke: #ef5350; }
+    .pie .unresolved { stroke: #bdbdbd; }
+    .pie text { text-anchor: middle; fill: #222; }
+    .pie .pie-value { font-size: 6px; font-weight: 700; }
+    .pie .pie-label { font-size: 3.4px; fill: #666; }
+    .legend { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; font-size: .9rem; }
+    .legend li { display: grid; grid-template-columns: auto 1fr auto; column-gap: .4rem; align-items: center; white-space: nowrap; }
+    .legend .share { grid-column: 2 / -1; }
     .swatch { width: .75rem; height: .75rem; border-radius: 2px; }
-    .verdict-bar { display: flex; gap: 2px; height: 1rem; max-width: 40rem; margin-bottom: 1.5rem;
-                   border-radius: 4px; overflow: hidden; }
+    .swatch.valid { background: #1b5e20; }
+    .swatch.not_valid { background: #ef5350; }
+    .swatch.unresolved { background: #bdbdbd; }
+    .glossary { margin-top: 1rem; font-size: .85rem; }
+    .glossary summary { font-weight: 600; cursor: pointer; }
+    .glossary dl { margin: .5rem 0 0; }
+    .glossary dt { margin-top: .5rem; font-weight: 600; }
+    .glossary dd { margin: .1rem 0 0; }
+
+    /* Home page: header of the list (number of manuscripts shown, switch) and the box in
+       which the list scrolls under its sticky header */
+    .list-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 1rem; }
+    .list-header p { margin: 0; }
+    .table-count { color: #222; font-size: 1rem; }
+    .table-count strong { font-size: 1.35rem; }
+    .table-wrap { overflow: auto; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+
+    /* On / off switch (a link to the other state of the filter) */
+    .switch { display: inline-flex; align-items: center; gap: .55rem; color: #222; text-decoration: none; }
+    .switch-track { position: relative; flex: none; width: 2.4rem; height: 1.3rem; background: #b8bec6;
+                    border-radius: 1rem; transition: background .15s; }
+    .switch-thumb { position: absolute; top: .15rem; left: .15rem; width: 1rem; height: 1rem; background: #fff;
+                    border-radius: 50%; box-shadow: 0 1px 2px rgba(0, 0, 0, .3); transition: left .15s; }
+    .switch[aria-checked="true"] .switch-track { background: #0b5394; }
+    .switch[aria-checked="true"] .switch-thumb { left: 1.25rem; }
+    .switch:focus-visible .switch-track { outline: 2px solid #0b5394; outline-offset: 2px; }
+
+    /* List of manuscripts. Its rows are laid out as grids rather than table rows, so that
+       the browser only lays out the rows on screen (content-visibility): this keeps the
+       filter and the panel fast with thousands of rows. */
+    table.manuscripts { display: block; min-width: 40rem; font-variant-numeric: tabular-nums; }
+    .manuscripts thead, .manuscripts tbody { display: block; }
+    .manuscripts thead { position: sticky; top: 0; z-index: 1; background: #f1f4f8; border-bottom: 1px solid #d5dbe3; }
+    .manuscripts tr { display: grid; grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 8rem 9rem minmax(8rem, 3fr); align-items: center; }
+    .manuscripts.no-empty tr { grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 9rem minmax(8rem, 3fr); }
+    .manuscripts tbody tr { content-visibility: auto; contain-intrinsic-size: auto 39px; border-bottom: 1px solid #eee; }
+    .manuscripts tr[hidden] { display: none; }
+    .manuscripts th, .manuscripts td { display: block; overflow: hidden; padding: .5rem .9rem; border: 0; text-align: left;
+                                       text-overflow: ellipsis; white-space: nowrap; }
+    .manuscripts th { align-self: stretch; display: flex; overflow: visible; flex-direction: column; justify-content: flex-end;
+                      font-size: .85rem; }
+    .manuscripts th.num { align-items: flex-end; }
+    .manuscripts tbody tr:hover { background: #eef4fb; }
+    .manuscripts .num { text-align: right; }
+    .manuscripts tr.done td { color: #2e7d32; }
+    .manuscripts #no-match td { grid-column: 1 / -1; }
+    .name-filter { box-sizing: border-box; display: block; width: 100%; min-width: 9rem; margin-top: .35rem; padding: .3rem .5rem;
+                   font: inherit; font-weight: normal; border: 1px solid #c8ced6; border-radius: 4px; }
+    .no-match { padding: 1.5rem; color: #666; text-align: center; }
+    .verdict-bar { display: flex; gap: 2px; height: .6rem; border-radius: 4px; overflow: hidden; }
     .verdict-bar span { flex-basis: 0; min-width: 3px; }
-    td .verdict-bar { width: 10rem; height: .6rem; margin: 0; }
-    .verdict-bar .valid, .swatch.valid { background: #1b5e20; }
-    .verdict-bar .not_valid, .swatch.not_valid { background: #ef5350; }
-    .verdict-bar .unresolved, .swatch.unresolved { background: #bdbdbd; }
+    .verdict-bar .valid { background: #1b5e20; }
+    .verdict-bar .not_valid { background: #ef5350; }
+    .verdict-bar .unresolved { background: #bdbdbd; }
 
     /* Folio page: the source image (sticky) next to the candidates */
     .compare { display: flex; gap: 1.5rem; align-items: flex-start; }
@@ -77,6 +157,23 @@
     .login input { padding: .5rem; font-size: 1rem; }
     .error { color: #c62828; margin: 0; }
     .topbar { position: absolute; top: 1rem; right: 2rem; font-size: .9rem; }
+
+    /* Medium screens: one column, the statistics panel (folding upwards) above the list */
+    @media (max-width: 900px) {
+      .layout, .layout.folded { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+      .list-header, .panel, .table-wrap { grid-column: 1; grid-row: auto; }
+      .panel { order: -1; }
+      .table-wrap { max-height: 75vh; }
+      .layout.folded .panel { padding: .5rem 1rem; }
+      .layout.folded .panel-head { flex-direction: row; justify-content: space-between; }
+      .layout.folded .panel-title { writing-mode: horizontal-tb; transform: none; }
+    }
+
+    /* Narrow screens: smaller margins, links above the title */
+    @media (max-width: 700px) {
+      body { margin: .75rem 1rem; }
+      .topbar { position: static; margin-bottom: .5rem; text-align: right; }
+    }
   </style>
   {% block head %}{% endblock %}
 </head>
