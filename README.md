@@ -18,9 +18,17 @@ La page d'accueil affiche ces chiffres et propose deux filtres, mémorisés pour
 
 - **masquer les folios sans candidat** : ils sortent des comptes de folios, et les
   manuscrits qui n'ont que des folios sans candidat disparaissent de la liste ;
-- **ne garder que les paires avec score** (`matchResult.score`) : les comptes, la liste,
-  le bouton « Continuer » et le passage automatique au folio suivant ne tiennent plus
-  compte que de ces paires.
+- **ne garder que les paires avec score** (`matchResult.score`), activé par défaut : les
+  comptes, la liste, le bouton « Continuer » et le passage automatique au folio suivant
+  ne tiennent compte que de ces paires. Ce filtre vaut aussi pour la page Marque-pages.
+
+Sur la page de vérification, le lien « feuilleter le manuscrit » d'un candidat ouvre son
+manifeste IIIF dans [Mirador](https://projectmirador.org/), directement sur la page du
+candidat, pour parcourir tout le manuscrit.
+
+La page « Non valides » affiche en mosaïque les paires avec score vérifiées
+`not_valid`, des scores les plus élevés aux plus bas ; un clic sur une paire ouvre sa
+page de vérification.
 
 ## Configuration
 
@@ -63,7 +71,8 @@ Pour repartir de zéro, ne garder que la ligne d'en-tête du fichier puis relanc
 
 Sur la page de vérification, le bouton « Mettre de côté » ajoute le folio (avec une
 note facultative) à `bookmarks.tsv`, sans le retirer du parcours de vérification. La
-page « Marque-pages » liste les folios mis de côté.
+page « Marque-pages » liste les folios mis de côté, avec le meilleur score de leurs
+candidats ; le filtre « paires avec score » n'y garde que les folios qui en ont une.
 
 | colonne      | contenu                                     |
 |--------------|---------------------------------------------|

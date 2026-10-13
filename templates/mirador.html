@@ -1,0 +1,40 @@
+{#-
+  Mirador viewer on the IIIF manifest of a candidate, opened at its canvas, so that the
+  whole manuscript can be leafed through (thumbnails at the bottom). Standalone full-page
+  layout: it is shown in a dialog box of the folio page, or in its own tab.
+
+  Context:
+    manifest -- URL of the IIIF manifest of the candidate.
+    canvas   -- @id of the candidate canvas, the page shown first.
+    title    -- page title (manuscript, folio and candidate label).
+-#}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mirador — {{ title }}</title>
+  <style>
+    html, body { height: 100%; margin: 0; background: #fff; }
+    #mirador { position: relative; width: 100%; height: 100%; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mirador@4.3.0/dist/mirador.min.js"></script>
+</head>
+<body>
+<div id="mirador"></div>
+<script>
+  // One window on the manifest, at the candidate's page, with the thumbnails of all the
+  // pages at the bottom; no workspace controls, as only this manuscript is shown.
+  Mirador.viewer({
+    id: "mirador",
+    windows: [{
+      manifestId: {{ manifest|tojson }},
+      canvasId: {{ canvas|tojson }},
+      thumbnailNavigationPosition: "far-bottom",
+    }],
+    window: { allowClose: false, allowMaximize: false, sideBarOpen: false },
+    workspaceControlPanel: { enabled: false },
+  });
+</script>
+</body>
+</html>

@@ -1,20 +1,34 @@
 {% extends "base.html" %}
 {#
-  Bookmarks page: the folios set aside as special cases, the most recent last.
+  Bookmarks page: the folios set aside as special cases, the most recent last. The
+  "pairs with a score only" switch (shared with the home page) keeps only the folios with
+  at least one candidate with a score.
 
   Context:
-    rows -- one dict per bookmark: manuscript, source, folio, note, timestamp and index
-            (position of the folio in the manuscript, or None if it is not in the data
-            anymore).
+    rows        -- one dict per bookmark shown: manuscript, source, folio, note, timestamp,
+                   index (position of the folio in the manuscript, or None if it is not in
+                   the data anymore) and score (best score of its candidates, or None).
+    total       -- number of bookmarks overall.
+    scored_only -- True when only the folios with a candidate with a score are shown.
 #}
 {% block title %}Marque-pages{% endblock %}
 {% block content %}
 <nav><a href="{{ url_for('index') }}">← Manuscrits</a></nav>
 <h1>Marque-pages</h1>
+<div class="list-header">
+  <p class="table-count">
+    <strong>{{ rows|length }}</strong> marque-pages affichés{% if rows|length != total %} sur {{ total }}{% endif %}
+  </p>
+  <a class="switch" role="switch" aria-checked="{{ 'true' if scored_only else 'false' }}"
+     href="{{ url_for('bookmarks', scored='all' if scored_only else 'only') }}">
+    <span class="switch-track"><span class="switch-thumb"></span></span>
+    Afficher les paires avec "score" uniquement
+  </a>
+</div>
 {% if rows %}
-<table>
+<table class="bookmarks">
   <thead>
-    <tr><th>Manuscrit</th><th>Folio</th><th>Source</th><th>Note</th><th>Date</th></tr>
+    <tr><th>Manuscrit</th><th>Folio</th><th>Source</th><th class="num">Score</th><th>Note</th><th>Date</th></tr>
   </thead>
   <tbody>
   {% for r in rows %}
@@ -28,12 +42,15 @@
         {% endif %}
       </td>
       <td class="meta">{{ r.source }}</td>
+      <td class="num">{{ '%.3f'|format(r.score) if r.score is not none else '—' }}</td>
       <td>{{ r.note }}</td>
       <td class="meta">{{ r.timestamp }}</td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
+{% elif total %}
+<p>Aucun des folios mis de côté n'a de paire avec score.</p>
 {% else %}
 <p>Aucun folio mis de côté.</p>
 {% endif %}

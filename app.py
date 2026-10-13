@@ -67,6 +67,8 @@ BOOKMARK_FIELDS = ["manuscript", "source", "folio", "note", "timestamp"]
 SOURCE_IIIF = "https://iiif.chartes.psl.eu/images/ahloma_images"
 # Extensions tried in order when the source image cannot be found.
 EXTENSIONS = [".jpg", ".jpeg", ".jpg2", ".jp2", ".png", ".tif", ".tiff"]
+# Size of the images of the mosaic of the pairs not valid (IIIF Image API size parameter).
+THUMB_SIZE = "!300,300"
 
 app = Flask(__name__)
 
@@ -242,20 +244,44 @@ def check_credentials(username: str, password: str) -> bool:
     return same_user and same_password
 
 
-def source_tiles(folio: Json) -> list[TileSource]:
-    """Build the OpenSeadragon tile sources of a source image.
-
-    The image is looked up on :data:`SOURCE_IIIF` with each extension of
-    :data:`EXTENSIONS`, starting with the one of the folio filename (if any).
+def source_extensions(folio: Json) -> list[str]:
+    """Return the extensions to try for a source image on :data:`SOURCE_IIIF`.
 
     :param folio: Folio metadata (``id``, ``filename``, ...).
     :type folio: Json
-    :return: info.json URLs to try in order.
-    :rtype: list[TileSource]
+    :return: The extensions of :data:`EXTENSIONS`, starting with the one of the folio
+        filename (if any).
+    :rtype: list[str]
     """
     ext = Path(folio["filename"]).suffix
-    exts = [e for e in dict.fromkeys([ext, *EXTENSIONS]) if e]
-    return [f"{SOURCE_IIIF}/{folio['id']}{e}/info.json" for e in exts]
+    return [e for e in dict.fromkeys([ext, *EXTENSIONS]) if e]
+
+
+def source_tiles(folio: Json) -> list[TileSource]:
+    """Build the OpenSeadragon tile sources of a source image.
+
+    :param folio: Folio metadata (``id``, ``filename``, ...).
+    :type folio: Json
+    :return: info.json URLs to try in order, one per extension (see
+        :func:`source_extensions`).
+    :rtype: list[TileSource]
+    """
+    return [f"{SOURCE_IIIF}/{folio['id']}{e}/info.json" for e in source_extensions(folio)]
+
+
+def source_thumbnails(folio: Json) -> list[str]:
+    """Build the URLs of a small version of a source image.
+
+    :param folio: Folio metadata (``id``, ``filename``, ...).
+    :type folio: Json
+    :return: Image URLs (size :data:`THUMB_SIZE`) to try in order, one per extension (see
+        :func:`source_extensions`).
+    :rtype: list[str]
+    """
+    return [
+        f"{SOURCE_IIIF}/{folio['id']}{e}/full/{THUMB_SIZE}/0/default.jpg"
+        for e in source_extensions(folio)
+    ]
 
 
 def target_tiles(canvas: Json) -> list[TileSource]:
@@ -275,6 +301,25 @@ def target_tiles(canvas: Json) -> list[TileSource]:
         if url:
             tiles.append({"type": "image", "url": url})
     return tiles
+
+
+def target_thumbnails(canvas: Json) -> list[str]:
+    """Build the URLs of a small version of the image of a candidate canvas.
+
+    :param canvas: IIIF Presentation 2 canvas.
+    :type canvas: Json
+    :return: Image URLs to try in order: the IIIF image service at :data:`THUMB_SIZE`
+        (Image API 2, then 1.1), the thumbnail of the canvas, then its raw image.
+    :rtype: list[str]
+    """
+    resource = canvas["images"][0]["resource"]
+    urls = []
+    if service := resource.get("service", {}).get("@id"):
+        urls += [
+            f"{service}/full/{THUMB_SIZE}/0/{quality}.jpg" for quality in ("default", "native")
+        ]
+    urls += [u for u in ((canvas.get("thumbnail") or {}).get("@id"), resource.get("@id")) if u]
+    return urls
 
 
 def label(canvas: Json) -> str:
@@ -396,6 +441,21 @@ def pie_slices(counts: Counter, total: int) -> list[dict[str, Any]]:
     return slices
 
 
+def scored_filter() -> bool:
+    """Read the "pairs with a score only" filter for the current request.
+
+    The query parameter ``scored`` (``only`` or ``all``) sets the filter, which is then
+    kept in the session; otherwise the value of the session is used, the filter being on
+    by default. It applies to the home page, the bookmarks and the verification flow.
+
+    :return: True when only the pairs with a matching score are taken into account.
+    :rtype: bool
+    """
+    if "scored" in request.args:
+        session["scored_only"] = request.args["scored"] == "only"
+    return session.get("scored_only", True)
+
+
 def wants_json() -> bool:
     """Tell whether the current request comes from the folio page's JavaScript.
 
@@ -504,16 +564,15 @@ def index() -> str:
     The query parameter ``scored`` (``only`` or ``all``) keeps only the pairs with a
     matching score, or all of them: the counts, the list and the "Continuer" link then
     take into account only these pairs (and the folios without candidate are hidden, as
-    they have none). Both choices are kept in the session.
+    they have none). Both choices are kept in the session; only the pairs with a score
+    are kept by default (see :func:`scored_filter`).
 
     :return: Rendered ``index.html`` page.
     :rtype: str
     """
     if "empty" in request.args:
         session["hide_empty"] = request.args["empty"] == "hide"
-    if "scored" in request.args:
-        session["scored_only"] = request.args["scored"] == "only"
-    scored_only = session.get("scored_only", False)
+    scored_only = scored_filter()
     hide_empty = session.get("hide_empty", False) or scored_only
     rows = []
     for name, items in MANUSCRIPTS.items():
@@ -565,7 +624,7 @@ def manuscript(manuscript: str) -> Response:
     :raises NotFound: If the manuscript does not exist.
     """
     items = MANUSCRIPTS.get(manuscript) or abort(404)
-    scored_only = session.get("scored_only", False)
+    scored_only = scored_filter()
     index = next((i for i, it in enumerate(items) if not is_done(manuscript, it, scored_only)), 0)
     return redirect(url_for("folio", manuscript=manuscript, index=index))
 
@@ -630,7 +689,7 @@ def verify() -> Response:
     items, item = get_item(manuscript, index)
     if verdict not in VERDICTS or target not in {c["@id"] for c in item["canvases"]}:
         abort(400)
-    scored_only = session.get("scored_only", False)
+    scored_only = scored_filter()
     was_done = is_done(manuscript, item, scored_only)
     key = (manuscript, item["folio"]["id"], target)
     with lock:
@@ -690,11 +749,90 @@ def bookmark() -> Response:
 def bookmarks() -> str:
     """Bookmarks page: the folios set aside, the most recent last.
 
+    With the "pairs with a score only" filter (see :func:`scored_filter`), only the folios
+    with at least one candidate with a score are listed.
+
     :return: Rendered ``bookmarks.html`` page.
     :rtype: str
     """
-    rows = [{**b, "index": folio_index(b["manuscript"], b["source"])} for b in BOOKMARKS.values()]
-    return render_template("bookmarks.html", rows=rows)
+    scored_only = scored_filter()
+    rows = []
+    for b in BOOKMARKS.values():
+        index = folio_index(b["manuscript"], b["source"])
+        canvases = MANUSCRIPTS[b["manuscript"]][index]["canvases"] if index is not None else []
+        scores = [score for c in canvases if (score := match_score(c)) is not None]
+        if scored_only and not scores:
+            continue
+        rows.append({**b, "index": index, "score": max(scores, default=None)})
+    return render_template(
+        "bookmarks.html", rows=rows, total=len(BOOKMARKS), scored_only=scored_only
+    )
+
+
+@app.route("/rejected")
+def rejected() -> str:
+    """Mosaic of the pairs with a score checked as not valid, the highest scores first.
+
+    Each tile shows the source image next to the candidate and links to the folio page,
+    on that candidate.
+
+    :return: Rendered ``rejected.html`` page.
+    :rtype: str
+    """
+    tiles = []
+    for name, items in MANUSCRIPTS.items():
+        for index, item in enumerate(items):
+            for position, canvas in enumerate(item["canvases"]):
+                score = match_score(canvas)
+                key = (name, item["folio"]["id"], canvas["@id"])
+                if score is None or RESULTS.get(key) != "not_valid":
+                    continue
+                tiles.append(
+                    {
+                        "manuscript": name,
+                        "index": index,
+                        "position": position,
+                        "folio": item["folio"]["folio"],
+                        "label": label(canvas),
+                        "score": score,
+                        "source": source_thumbnails(item["folio"]),
+                        "target": target_thumbnails(canvas),
+                    }
+                )
+    tiles.sort(key=lambda tile: tile["score"], reverse=True)
+    return render_template("rejected.html", tiles=tiles)
+
+
+@app.route("/<manuscript>/<int:index>/<int:position>/mirador")
+def mirador(manuscript: str, index: int, position: int) -> str:
+    """Mirador viewer on the IIIF manifest of a candidate, opened at its canvas.
+
+    The whole digitised manuscript can then be leafed through, starting from the page
+    matched with the source image.
+
+    :param manuscript: Manuscript name.
+    :type manuscript: str
+    :param index: Position of the folio in the manuscript (0-based).
+    :type index: int
+    :param position: Position of the candidate among the candidates of the folio.
+    :type position: int
+    :return: Rendered ``mirador.html`` page.
+    :rtype: str
+    :raises NotFound: If the folio or the candidate does not exist, or if the candidate
+        has no manifest.
+    """
+    _, item = get_item(manuscript, index)
+    if not 0 <= position < len(item["canvases"]):
+        abort(404)
+    canvas = item["canvases"][position]
+    if not canvas.get("manifest_url"):
+        abort(404)
+    return render_template(
+        "mirador.html",
+        manifest=canvas["manifest_url"],
+        canvas=canvas["@id"],
+        title=f"{manuscript} — {item['folio']['folio']} — {label(canvas)}",
+    )
 
 
 if __name__ == "__main__":

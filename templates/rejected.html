@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{#
+  Mosaic of the pairs with a score checked as not valid, the highest scores first. Each
+  tile shows the source image next to the candidate and links to the folio page, on that
+  candidate, for the detail.
+
+  Context:
+    tiles -- one dict per pair: manuscript, index (position of the folio), position (of
+             the candidate), folio, label (of the candidate), score, source and target
+             (image URLs to try in order).
+#}
+{% block title %}Non valides{% endblock %}
+{% block head %}
+<script>
+  /**
+   * Show the next URL of an image that failed to load, or a message once none is left.
+   *
+   * @param {HTMLImageElement} img - Image with a `data-fallbacks` attribute (JSON array).
+   * @returns {void}
+   */
+  function nextImage(img) {
+    const urls = JSON.parse(img.dataset.fallbacks);
+    if (urls.length) {
+      img.dataset.fallbacks = JSON.stringify(urls.slice(1));
+      img.src = urls[0];
+    } else {
+      img.replaceWith(Object.assign(document.createElement("span"), {
+        className: "no-image", textContent: "Image introuvable",
+      }));
+    }
+  }
+</script>
+{% endblock %}
+{% block content %}
+{# Image tried in order over its URLs, loaded only when it comes near the screen. #}
+{% macro image(urls, alt) -%}
+  <img src="{{ urls[0] }}" data-fallbacks='{{ urls[1:]|tojson }}' onerror="nextImage(this)"
+       alt="{{ alt }}" loading="lazy">
+{%- endmacro %}
+<nav><a href="{{ url_for('index') }}">← Manuscrits</a></nav>
+<h1>Paires non valides</h1>
+<p class="table-count">
+  <strong>{{ tiles|length }}</strong> paires avec score vérifiées « Not valid », des scores
+  les plus élevés aux plus bas. Source à gauche, candidat à droite ; un clic ouvre le détail.
+</p>
+{% if tiles %}
+<div class="mosaic">
+  {% for t in tiles %}
+  <a class="tile" href="{{ url_for('folio', manuscript=t.manuscript, index=t.index) }}#candidate-{{ t.position }}">
+    <div class="tile-images">
+      {{ image(t.source, "Source " ~ t.folio) }}
+      {{ image(t.target, "Candidat " ~ t.label) }}
+    </div>
+    <div class="tile-meta">
+      <strong>{{ t.manuscript }}</strong> · {{ t.folio }} → {{ t.label }}
+      <span class="score-badge">score {{ '%.3f'|format(t.score) }}</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p>Aucune paire avec score n'a encore été vérifiée « Not valid ».</p>
+{% endif %}
+{% endblock %}

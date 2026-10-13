@@ -160,6 +160,35 @@
     .error { color: #c62828; margin: 0; }
     .topbar { position: absolute; top: 1rem; right: 2rem; font-size: .9rem; }
 
+    /* Bookmarks page */
+    table.bookmarks { margin-top: .75rem; }
+    .bookmarks .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* Mosaic of the pairs not valid: the source and the candidate side by side in each
+       tile; only the tiles near the screen are drawn (content-visibility) */
+    .mosaic { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .tile { display: block; overflow: hidden; color: inherit; text-decoration: none; background: #fff;
+            border: 1px solid #ddd; border-radius: 6px; content-visibility: auto; contain-intrinsic-size: auto 15rem; }
+    .tile:hover, .tile:focus-visible { border-color: #0b5394; box-shadow: 0 2px 8px rgba(11, 83, 148, .2); }
+    .tile-images { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 2px;
+                   height: 11rem; overflow: hidden; background: #222; }
+    .tile-images img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+    .tile-images .no-image { display: grid; place-items: center; color: #ccc; font-size: .8rem; }
+    .tile-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem .5rem;
+                 padding: .5rem .7rem; font-size: .85rem; }
+    .score-badge { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    /* Folio page: candidate reached from another page (#candidate-N), Mirador dialog box */
+    .candidate:target { box-shadow: 0 0 0 3px #0b5394; }
+    .mirador-dialog { width: 95vw; height: 92vh; max-width: none; max-height: none; padding: 0; overflow: hidden;
+                      border: 0; border-radius: 8px; }
+    .mirador-dialog[open] { display: flex; flex-direction: column; }
+    .mirador-dialog::backdrop { background: rgba(0, 0, 0, .5); }
+    .dialog-bar { display: flex; align-items: center; gap: 1rem; padding: .5rem 1rem; background: #f1f4f8;
+                  border-bottom: 1px solid #d5dbe3; }
+    .dialog-bar button { flex: none; margin-left: auto; padding: .3rem .8rem; font-size: .9rem; }
+    .mirador-dialog iframe { flex: 1; width: 100%; border: 0; }
+
     /* Medium screens: one column, the statistics panel (folding upwards) above the list */
     @media (max-width: 900px) {
       .layout, .layout.folded { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
@@ -183,6 +212,7 @@
 {% if session.logged_in %}
 <div class="topbar">
   <a href="{{ url_for('bookmarks') }}">★ Marque-pages</a> ·
+  <a href="{{ url_for('rejected') }}">✕ Non valides</a> ·
   <a href="{{ url_for('logout') }}">Se déconnecter</a>
 </div>
 {% endif %}

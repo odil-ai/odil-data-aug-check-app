@@ -3,7 +3,9 @@
   Comparison page of one folio: the source image on the left, the candidate canvases on
   the right, each with its matching score and its "Valid" / "Not valid" buttons.
   Verdicts and bookmarks are sent in the background and the page is updated in place;
-  without JavaScript, the forms are submitted normally and the page is reloaded.
+  without JavaScript, the forms are submitted normally and the page is reloaded. The
+  manuscript of a candidate can be leafed through in Mirador, opened in a dialog box at
+  the candidate's page.
 
   Context:
     manuscript   -- manuscript name.
@@ -145,10 +147,55 @@
     setTimeout(() => form.classList.remove("saved"), 1000);
   }
 
-  // Once the DOM is ready, start a viewer for every image and send the forms in the
-  // background.
+  /**
+   * Open the Mirador page of a link in the dialog box rather than in a new tab.
+   *
+   * @param {MouseEvent} event - Click on a "feuilleter le manuscrit" link.
+   * @returns {void}
+   */
+  function openMirador(event) {
+    event.preventDefault();
+    const url = event.currentTarget.href;
+    document.getElementById("mirador-frame").src = url;
+    document.getElementById("mirador-tab").href = url;
+    document.getElementById("mirador-dialog").showModal();
+  }
+
+  /**
+   * Close the Mirador dialog box and unload Mirador to free the memory.
+   *
+   * @returns {void}
+   */
+  function closeMirador() {
+    document.getElementById("mirador-dialog").close();
+    document.getElementById("mirador-frame").src = "about:blank";
+  }
+
+  // Once the DOM is ready, start a viewer for every image, send the forms in the
+  // background and open Mirador in the dialog box.
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".viewer").forEach(viewer);
+    for (const link of document.querySelectorAll(".mirador-link")) {
+      link.addEventListener("click", openMirador);
+    }
+    const dialog = document.getElementById("mirador-dialog");
+    document.getElementById("mirador-close").addEventListener("click", closeMirador);
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();  // Escape key: close and unload as with the button.
+      closeMirador();
+    });
+    // A click on the darkened background around the box closes it too.
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closeMirador();
+    });
+    // Mirador keeps the focus inside its frame, where the Escape key does not reach the
+    // dialog box: listen to it in the frame (same origin). Mirador's own menus stop the
+    // key when they use it, so it only closes the box otherwise.
+    document.getElementById("mirador-frame").addEventListener("load", (event) => {
+      event.target.contentWindow.addEventListener("keydown", (key) => {
+        if (key.key === "Escape") closeMirador();
+      });
+    });
     for (const form of document.querySelectorAll("form.verdict")) {
       form.addEventListener("submit", saveVerdict);
     }
@@ -186,14 +233,18 @@
   </section>
   <section class="candidates">
   {% for c in candidates %}
-    <article class="candidate {{ c.verdict or '' }}">
+    {# The id lets other pages link to a candidate (e.g. the mosaic of the pairs not valid). #}
+    <article class="candidate {{ c.verdict or '' }}" id="candidate-{{ loop.index0 }}">
       <h2>
         {{ c.label }}
         <span class="score">— {{ 'score %.3f'|format(c.score) if c.score is not none else 'sans score' }}</span>
       </h2>
       <p class="meta">
         <a href="{{ c.id }}" target="_blank">canvas</a>
-        {% if c.manifest %} · <a href="{{ c.manifest }}" target="_blank">manifeste</a>{% endif %}
+        {% if c.manifest %} · <a href="{{ c.manifest }}" target="_blank">manifeste</a>
+        · <a class="mirador-link" target="_blank"
+             href="{{ url_for('mirador', manuscript=manuscript, index=index, position=loop.index0) }}">feuilleter le manuscrit</a>
+        {% endif %}
       </p>
       <div class="viewer" data-sources='{{ c.tiles|tojson }}'></div>
       {# One form per candidate: the clicked button sends the verdict. #}
@@ -210,4 +261,13 @@
   {% endfor %}
   </section>
 </main>
+{# Dialog box in which Mirador shows the whole manuscript of a candidate. #}
+<dialog id="mirador-dialog" class="mirador-dialog" aria-label="Manuscrit dans Mirador">
+  <div class="dialog-bar">
+    <strong>Feuilleter le manuscrit</strong>
+    <a id="mirador-tab" target="_blank">ouvrir dans un nouvel onglet</a>
+    <button type="button" id="mirador-close">Fermer ✕</button>
+  </div>
+  <iframe id="mirador-frame" title="Mirador"></iframe>
+</dialog>
 {% endblock %}
