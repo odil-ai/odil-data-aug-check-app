@@ -5,7 +5,8 @@
   Verdicts and bookmarks are sent in the background and the page is updated in place;
   without JavaScript, the forms are submitted normally and the page is reloaded. The
   manuscript of a candidate can be leafed through in Mirador, opened in a dialog box at
-  the candidate's page.
+  the candidate's page. When no candidate is right (or there is none), a page found by
+  hand in a IIIF manifest, leafed through in Mirador, can be added as a candidate.
 
   Context:
     manuscript   -- manuscript name.
@@ -14,11 +15,22 @@
     folio        -- folio metadata (id, folio, alhoma_id, filename).
     source_tiles -- OpenSeadragon tile sources of the source image, tried in order.
     candidates   -- candidate canvases: id, label, tiles (tile sources), manifest,
-                    score (matching score or None) and verdict (saved verdict or None).
+                    score (matching score or None), verdict (saved verdict or None),
+                    annotation (saved kind of image or None) and manual (True for a
+                    candidate added by hand).
     bookmark     -- bookmark of the folio (note, timestamp, ...), or None.
+    source_image -- IIIF identifier of the source image sent with its annotation (the
+                    viewer replaces it with the one it actually opens).
+    source_annotation -- saved kind of the source image, or None.
+    annotation_labels -- kinds of image (plain, detail, double_page) and their
+                         labels.
+    manifests    -- IIIF manifests of the candidates of the manuscript, the most frequent
+                    first, proposed to add a candidate by hand.
 #}
 {# OpenSeadragon build (script and control icons) served by jsDelivr. #}
 {% set osd = "https://cdn.jsdelivr.net/npm/openseadragon@6.1.1/build/openseadragon" %}
+{# Mirador build, loaded only when a candidate is added by hand. #}
+{% set mirador_js = "https://cdn.jsdelivr.net/npm/mirador@4.3.0/dist/mirador.min.js" %}
 {% block title %}{{ manuscript }} — {{ folio.folio }}{% endblock %}
 {% block head %}
 <script src="{{ osd }}/openseadragon.min.js"></script>
@@ -29,16 +41,18 @@
    * The tile sources are read from the element's `data-sources` attribute (a JSON
    * array) and tried in order: whenever one fails to open, the next one is opened.
    * If none works, or if the server does not answer within 30 s, the viewer is
-   * replaced by an error message.
+   * replaced by an error message. When the element has a `data-image-input` attribute,
+   * the IIIF identifier of the image opened is written in the input with that id.
    *
    * @param {HTMLElement} element - Container with a `data-sources` attribute.
    * @returns {void}
    */
   function viewer(element) {
     const sources = JSON.parse(element.dataset.sources);
+    let current = sources.shift();
     const osd = OpenSeadragon({
       element,
-      tileSources: sources.shift(),
+      tileSources: current,
       prefixUrl: "{{ osd }}/images/",
       // The WebGL drawer cannot draw images served without CORS headers.
       drawer: "canvas",
@@ -61,10 +75,15 @@
     // A server that does not answer at all (e.g. unreachable Gallica) never triggers
     // "open-failed": give up after 30 s.
     const timer = setTimeout(() => fail("Image introuvable (le serveur ne répond pas)"), 30000);
-    osd.addHandler("open", () => clearTimeout(timer));
+    osd.addHandler("open", () => {
+      clearTimeout(timer);
+      const input = document.getElementById(element.dataset.imageInput);
+      if (input && typeof current === "string") input.value = current.replace(/\/info\.json$/, "");
+    });
     osd.addHandler("open-failed", () => {
       if (sources.length) {
-        osd.open(sources.shift());
+        current = sources.shift();
+        osd.open(current);
       } else {
         fail("Image introuvable");
       }
@@ -148,6 +167,29 @@
   }
 
   /**
+   * Save the kind of a candidate image as soon as one of its boxes changes. An image has
+   * one kind at most: checking a box unchecks the other ones, unchecking it removes the
+   * annotation. The boxes are then set from the answer of the server.
+   *
+   * @param {Event} event - Change of a box of an annotation form.
+   * @returns {Promise<void>}
+   */
+  async function saveAnnotation(event) {
+    const form = event.currentTarget;
+    const boxes = form.querySelectorAll("input[name=annotation]");
+    for (const box of boxes) {
+      if (box !== event.target) box.checked = false;
+    }
+    const result = await send(form, null);
+    if (!result) return;
+    for (const box of boxes) {
+      box.checked = box.value === result.annotation;
+    }
+    form.classList.add("saved");
+    setTimeout(() => form.classList.remove("saved"), 1000);
+  }
+
+  /**
    * Open the Mirador page of a link in the dialog box rather than in a new tab.
    *
    * @param {MouseEvent} event - Click on a "feuilleter le manuscrit" link.
@@ -169,6 +211,119 @@
   function closeMirador() {
     document.getElementById("mirador-dialog").close();
     document.getElementById("mirador-frame").src = "about:blank";
+  }
+
+  /**
+   * Load the Mirador script, once, when a candidate is first added by hand.
+   *
+   * @returns {Promise<void>} Resolved once Mirador can be used.
+   */
+  function loadMirador() {
+    if (window.Mirador) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const script = Object.assign(document.createElement("script"), { src: "{{ mirador_js }}" });
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+  }
+
+  /**
+   * Read a canvas of a IIIF manifest, Presentation 2 or 3: its label, the identifier of its
+   * image service and its size.
+   *
+   * @param {Object} manifest - Manifest, as JSON.
+   * @param {string} canvasId - Identifier of the canvas.
+   * @returns {Object} The `label`, `image`, `width` and `height` found, as strings
+   *   (empty for what is not found).
+   */
+  function readCanvas(manifest, canvasId) {
+    const canvases = manifest.items || manifest.sequences?.[0]?.canvases || [];
+    const canvas = canvases.find((c) => (c.id || c["@id"]) === canvasId) || {};
+    const resource = canvas.images?.[0]?.resource || canvas.items?.[0]?.items?.[0]?.body || {};
+    const service = [resource.service].flat()[0] || {};
+    let label = canvas.label ?? "";
+    if (label && typeof label === "object" && !Array.isArray(label)) label = Object.values(label).flat();
+    label = [label].flat().map((value) => value?.["@value"] ?? value).join(" — ");
+    return {
+      label,
+      image: service.id || service["@id"] || resource.id || resource["@id"] || "",
+      width: String(canvas.width ?? ""),
+      height: String(canvas.height ?? ""),
+    };
+  }
+
+  // Page shown in the Mirador of the manual addition: {canvas, manifest, label, image,
+  // width, height}, or null before a page is shown.
+  let manualPage = null;
+
+  /**
+   * Show the page currently displayed by the Mirador of the manual addition, and enable
+   * its button when there is one.
+   *
+   * @returns {void}
+   */
+  function showManualPage() {
+    document.getElementById("manual-label").textContent = manualPage ? manualPage.label || manualPage.canvas : "—";
+    document.getElementById("manual-button").disabled = !manualPage;
+  }
+
+  /**
+   * Open a IIIF manifest in the Mirador of the manual addition, in single page view, and
+   * follow the page shown: whenever it changes (previous / next, thumbnails...), its
+   * canvas becomes the one that the "Ajouter cette page" button adds.
+   *
+   * @param {string} manifestId - URL of the IIIF manifest.
+   * @returns {Promise<void>}
+   */
+  async function openManifest(manifestId) {
+    try {
+      await loadMirador();
+    } catch (error) {
+      alert("Mirador n'a pas pu être chargé.");
+      return;
+    }
+    // A new element for each manifest, Mirador taking over the one it is given.
+    const old = document.getElementById("manual-viewer");
+    old.replaceWith(Object.assign(old.cloneNode(false), { id: "manual-viewer" }));
+    const mirador = Mirador.viewer({
+      id: "manual-viewer",
+      windows: [{ manifestId, view: "single", thumbnailNavigationPosition: "far-bottom" }],
+      window: { allowClose: false, allowMaximize: false, sideBarOpen: false, defaultView: "single" },
+      workspaceControlPanel: { enabled: false },
+    });
+    manualPage = null;
+    showManualPage();
+    mirador.store.subscribe(() => {
+      const state = mirador.store.getState();
+      const canvasId = Object.values(state.windows)[0]?.canvasId;
+      const manifest = state.manifests[manifestId]?.json;
+      if (!canvasId || !manifest || manualPage?.canvas === canvasId) return;
+      manualPage = { canvas: canvasId, manifest: manifestId, ...readCanvas(manifest, canvasId) };
+      showManualPage();
+    });
+  }
+
+  /**
+   * Add the page shown in Mirador as a candidate of the folio (a valid pair, with the kind
+   * of image checked), then reload the page to show it among the candidates.
+   *
+   * @param {SubmitEvent} event - Submission of the manual addition form.
+   * @returns {Promise<void>}
+   */
+  async function addManual(event) {
+    event.preventDefault();
+    if (!manualPage) return;
+    const form = event.currentTarget;
+    const known = [...document.querySelectorAll("form.verdict input[name=target]")].map((input) => input.value);
+    if (known.includes(manualPage.canvas)) {
+      alert("Cette page est déjà un candidat de ce folio.");
+      return;
+    }
+    for (const name of ["canvas", "manifest", "label", "image", "width", "height"]) {
+      form.elements[name].value = manualPage[name];
+    }
+    if (await send(form, null)) location.reload();
   }
 
   // Once the DOM is ready, start a viewer for every image, send the forms in the
@@ -202,10 +357,50 @@
     for (const form of document.querySelectorAll("form.bookmark")) {
       form.addEventListener("submit", saveBookmark);
     }
+    for (const form of document.querySelectorAll("form.annotation")) {
+      form.addEventListener("change", saveAnnotation);
+    }
+    // Manual addition: open the manifest asked (at once if the panel is open from the
+    // start, as for a folio without candidate), keep one kind of image at most, add.
+    const panel = document.getElementById("manual");
+    const manifestForm = document.getElementById("manifest-form");
+    const openAsked = () => {
+      const url = manifestForm.elements.manifest.value.trim();
+      if (url) openManifest(url);
+    };
+    manifestForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      openAsked();
+    });
+    panel.addEventListener("toggle", () => {
+      if (panel.open && !manualPage) openAsked();
+    }, { once: true });
+    if (panel.open) openAsked();
+    const addForm = document.getElementById("manual-add");
+    addForm.addEventListener("change", (event) => {
+      for (const box of addForm.querySelectorAll("input[name=annotation]")) {
+        if (box !== event.target) box.checked = false;
+      }
+    });
+    addForm.addEventListener("submit", addManual);
   });
 </script>
 {% endblock %}
 {% block content %}
+{# Kind of an image (source or candidate), one at most, saved as soon as a box changes
+   (with the button when JavaScript is off). It belongs to the image, so it is shown on
+   every folio having this image. The caller adds the field naming the image. #}
+{% macro annotation_form(current) -%}
+<form class="annotation" method="post" action="{{ url_for('annotate') }}">
+  <input type="hidden" name="manuscript" value="{{ manuscript }}">
+  <input type="hidden" name="index" value="{{ index }}">
+  {{ caller() }}
+  {% for key, label in annotation_labels.items() %}
+  <label><input type="checkbox" name="annotation" value="{{ key }}" {{ 'checked' if current == key }}> {{ label }}</label>
+  {% endfor %}
+  <noscript><button>Enregistrer</button></noscript>
+</form>
+{%- endmacro %}
 {# Navigation between the folios of the manuscript. #}
 <nav>
   <a href="{{ url_for('index') }}">← Manuscrits</a>
@@ -229,7 +424,10 @@
       <button name="action" value="add" class="if-marked">Mettre à jour</button>
       <button name="action" value="remove" class="if-marked">Retirer</button>
     </form>
-    <div class="viewer" data-sources='{{ source_tiles|tojson }}'></div>
+    <div class="viewer" data-sources='{{ source_tiles|tojson }}' data-image-input="source-image"></div>
+    {% call annotation_form(source_annotation) %}
+    <input type="hidden" name="image" id="source-image" value="{{ source_image }}">
+    {% endcall %}
   </section>
   <section class="candidates">
   {% for c in candidates %}
@@ -238,6 +436,7 @@
       <h2>
         {{ c.label }}
         <span class="score">— {{ 'score %.3f'|format(c.score) if c.score is not none else 'sans score' }}</span>
+        {% if c.manual %}<span class="manual-badge">ajouté à la main</span>{% endif %}
       </h2>
       <p class="meta">
         <a href="{{ c.id }}" target="_blank">canvas</a>
@@ -247,6 +446,9 @@
         {% endif %}
       </p>
       <div class="viewer" data-sources='{{ c.tiles|tojson }}'></div>
+      {% call annotation_form(c.annotation) %}
+      <input type="hidden" name="target" value="{{ c.id }}">
+      {% endcall %}
       {# One form per candidate: the clicked button sends the verdict. #}
       <form class="verdict" method="post" action="{{ url_for('verify') }}">
         <input type="hidden" name="manuscript" value="{{ manuscript }}">
@@ -255,10 +457,50 @@
         <button name="verification" value="valid" class="{{ 'selected' if c.verdict == 'valid' }}">Valid</button>
         <button name="verification" value="not_valid" class="{{ 'selected' if c.verdict == 'not_valid' }}">Not valid</button>
       </form>
+      {% if c.manual %}
+      {# A candidate added by hand can be taken away (its verdicts stay in their file). #}
+      <form class="manual-remove" method="post" action="{{ url_for('remove_manual') }}">
+        <input type="hidden" name="manuscript" value="{{ manuscript }}">
+        <input type="hidden" name="index" value="{{ index }}">
+        <input type="hidden" name="canvas" value="{{ c.id }}">
+        <button>Retirer ce candidat ajouté à la main</button>
+      </form>
+      {% endif %}
     </article>
   {% else %}
     <p class="empty">Aucun canvas candidat pour ce folio.</p>
   {% endfor %}
+    {# Manual addition: leaf through a IIIF manifest in Mirador and add the page shown as a
+       candidate (valid pair) with the kind of its image. Open from the start when the
+       folio has no candidate. #}
+    <details class="manual" id="manual" {{ 'open' if not candidates }}>
+      <summary>Ajouter un candidat manuellement</summary>
+      <p class="meta">
+        Feuilletez un manifeste IIIF : la page affichée par Mirador peut être ajoutée comme
+        candidat de ce folio (paire validée), avec le type de son image.
+      </p>
+      <form class="manifest-form" id="manifest-form">
+        <input name="manifest" value="{{ manifests[0] if manifests }}" list="known-manifests"
+               placeholder="URL d'un manifeste IIIF" aria-label="URL du manifeste IIIF">
+        <datalist id="known-manifests">
+          {% for url in manifests %}<option value="{{ url }}">{% endfor %}
+        </datalist>
+        <button>Ouvrir</button>
+      </form>
+      <div class="manual-viewer" id="manual-viewer"></div>
+      <form class="manual-add" id="manual-add" method="post" action="{{ url_for('add_manual') }}">
+        <input type="hidden" name="manuscript" value="{{ manuscript }}">
+        <input type="hidden" name="index" value="{{ index }}">
+        {% for name in ["canvas", "manifest", "label", "image", "width", "height"] %}
+        <input type="hidden" name="{{ name }}">
+        {% endfor %}
+        <span class="manual-current">Page affichée : <strong id="manual-label">—</strong></span>
+        {% for key, label in annotation_labels.items() %}
+        <label><input type="checkbox" name="annotation" value="{{ key }}"> {{ label }}</label>
+        {% endfor %}
+        <button id="manual-button" disabled>Ajouter cette page comme candidat</button>
+      </form>
+    </details>
   </section>
 </main>
 {# Dialog box in which Mirador shows the whole manuscript of a candidate. #}

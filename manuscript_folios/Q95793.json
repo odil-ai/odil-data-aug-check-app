@@ -40,11 +40,46 @@
           "width": 106,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 518,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/canvas/p0520",
+        "@type": "sc:Canvas",
+        "label": "255v",
+        "width": 2517,
+        "height": 3503,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/res/anno0520",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/res/img0520",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.853/Vat.lat.853_0520_fa_0255v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2517,
+              "height": 3503
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/canvas/p0520"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.853/thumb/Vat.lat.853_0520_fa_0255v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 107,
+          "height": 150
+        },
+        "canvas_index": 519,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.853/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

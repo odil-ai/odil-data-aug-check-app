@@ -1,0 +1,50 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_007492266008942382_4a025e",
+      "folio": "107V",
+      "alhoma_id": "REG_17586",
+      "filename": "ahloma_007492266008942382_4a025e.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1839/canvas/p0218",
+        "@type": "sc:Canvas",
+        "label": "107v",
+        "width": 1397,
+        "height": 2003,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1839/res/anno0218",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1839/res/img0218",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1839/Reg.lat.1839_0218_fa_0107v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1397,
+              "height": 2003
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1839/canvas/p0218"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1839/thumb/Reg.lat.1839_0218_fa_0107v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 108,
+          "height": 150
+        },
+        "sequence_index": 0,
+        "canvas_index": 217,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1839/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

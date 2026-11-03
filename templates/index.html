@@ -8,15 +8,20 @@
 
   Context:
     rows     -- one dict per manuscript: name, folios (number of folios), empty (folios
-                without candidate), pairs (source/target pairs), done (pairs checked)
-                and counts (number of pairs by verdict, see totals).
+                without candidate), pairs (source/target pairs), done (pairs checked),
+                counts (number of pairs by verdict, see totals) and to_annotate (images
+                without annotation: left, total, sources_left, sources, candidates_left,
+                candidates).
     todo     -- (manuscript, index) of the next folio to check, or None if all are checked.
     hide_empty  -- True when the folios without candidate are hidden (always the case when
                    only the pairs with a score are kept).
     scored_only -- True when only the pairs with a matching score are kept.
+    hide_vatican -- True when the manuscripts of the Vatican Library are hidden.
+    images_annotated, images_total -- annotated images out of all the images (source
+                   images and distinct candidate images) of the manuscripts listed.
     manuscripts -- number of manuscripts in the list.
-    hidden      -- number of manuscripts left out of the list (no candidate, or no pair with
-                   a score when only these are kept).
+    hidden      -- number of manuscripts left out of the list by the filters (no candidate,
+                   no pair with a score when only these are kept, Vatican Library).
     folios      -- number of folios of the listed manuscripts (without candidate excluded
                    when hidden).
     empty       -- number of folios without candidate overall.
@@ -26,6 +31,9 @@
     verdicts -- label of each verdict, in display order.
     slices   -- slices of the pie chart: key, label, count, start and size (in percent of
                 the circle).
+    annotations -- follow-up of the annotations of the images: kinds (key, label, source
+                   and candidate counts), totals source and candidate, and numbers of
+                   images source_images and candidate_images.
 #}
 {% block content %}
 {# Number with a narrow no-break space as thousands separator, e.g. 31 960. #}
@@ -63,6 +71,8 @@
   <div class="list-header">
     <p class="table-count">
       <strong id="row-count">{{ num(rows|length) }}</strong> manuscrits affichés<span id="row-total" hidden> sur {{ num(rows|length) }}</span>
+      · <strong id="images-annotated" data-all="{{ num(images_annotated) }}">{{ num(images_annotated) }}</strong>
+      / <span id="images-total" data-all="{{ num(images_total) }}">{{ num(images_total) }}</span> images annotées
     </p>
     <div class="switches">
       {% if scored_only %}
@@ -85,6 +95,12 @@
         <span class="switch-track"><span class="switch-thumb"></span></span>
         Afficher les paires avec "score" uniquement
       </a>
+      {# Hides the manuscripts of the Vatican Library (list, counts and "Continuer"). #}
+      <a class="switch" role="switch" aria-checked="{{ 'false' if hide_vatican else 'true' }}"
+         href="{{ url_for('index', vatican='show' if hide_vatican else 'hide') }}">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        Afficher les manuscrits de la Vaticane
+      </a>
     </div>
   </div>
   {# Statistics panel, beside the list and as high as it; its button folds it to the left
@@ -102,8 +118,7 @@
           <span>Manuscrits</span>
           <strong>{{ num(manuscripts) }}</strong>
           <span class="share">
-            {%- if scored_only %}{{ num(hidden) }} masqués (aucune paire avec score)
-            {%- elif hide_empty %}{{ num(hidden) }} masqués (aucun candidat)
+            {%- if hidden %}{{ num(hidden) }} masqués par les filtres
             {%- else %}dans la liste{% endif -%}
           </span>
         </div>
@@ -156,6 +171,31 @@
           {% endfor %}
         </ul>
       </div>
+      {# Annotations of the images (plain, detail, double page), for the source images and
+         the candidate images, with their coverage; they ignore the filters. #}
+      <h2 class="stats-title">Annotations des images</h2>
+      <table class="annotation-stats">
+        <thead>
+          <tr><th></th><th class="num">Sources</th><th class="num">Candidats</th></tr>
+        </thead>
+        <tbody>
+          {% for k in annotations.kinds %}
+          <tr><td>{{ k.label }}</td><td class="num">{{ num(k.source) }}</td><td class="num">{{ num(k.candidate) }}</td></tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr><td>Total</td><td class="num">{{ num(annotations.source) }}</td><td class="num">{{ num(annotations.candidate) }}</td></tr>
+          <tr class="coverage">
+            <td>Couverture</td>
+            <td class="num">{{ pct(annotations.source, annotations.source_images) }}</td>
+            <td class="num">{{ pct(annotations.candidate, annotations.candidate_images) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="share annotation-note">
+        sur {{ num(annotations.source_images) }} images sources et {{ num(annotations.candidate_images) }}
+        images candidates, quels que soient les filtres
+      </p>
       {# What the figures count, folded by default. #}
       <details class="glossary">
         <summary>Définitions : manuscrit, folio, paire…</summary>
@@ -225,6 +265,7 @@
           <th class="num">Folios</th>
           {% if not hide_empty %}<th class="num">Sans candidat</th>{% endif %}
           <th class="num">Paires vérifiées</th>
+          <th class="num" title="Images (sources et candidats) annotées Plain, Détail ou Double page, sur le total d'images du manuscrit, selon les filtres">Images annotées</th>
           <th class="bar-cell">Répartition</th>
         </tr>
       </thead>
@@ -232,11 +273,19 @@
       {% for r in rows %}
         {# A manuscript is shown as done (✓) once all its pairs are checked. #}
         {% set done_all = r.pairs and r.done == r.pairs %}
-        <tr data-name="{{ r.name|lower }}" class="{{ 'done' if done_all }}">
+        <tr data-name="{{ r.name|lower }}" class="{{ 'done' if done_all }}"
+            data-annotated="{{ r.to_annotate.total - r.to_annotate.left }}" data-images="{{ r.to_annotate.total }}">
           <td><a href="{{ url_for('manuscript', manuscript=r.name) }}">{{ r.name }}</a></td>
           <td class="num">{{ num(r.folios) }}</td>
           {% if not hide_empty %}<td class="num">{{ num(r.empty) if r.empty }}</td>{% endif %}
           <td class="num">{{ '✓ ' if done_all }}{{ num(r.done) }} / {{ num(r.pairs) }}</td>
+          {# Images annotated out of all the images; the tooltip details the source and
+             candidate images, and what is left to annotate. #}
+          {% set a = r.to_annotate %}
+          <td class="num" title="{{ num(a.sources - a.sources_left) }} sources annotées sur {{ num(a.sources) }}, {{ num(a.candidates - a.candidates_left) }} candidats sur {{ num(a.candidates) }} ; {{ num(a.left) }} images restent à annoter">
+            {%- if a.total and not a.left %}<span class="all-annotated">✓ </span>{% endif -%}
+            {{ num(a.total - a.left) }} / {{ num(a.total) }}
+          </td>
           <td class="bar-cell">{{ verdict_bar(r.counts, r.pairs) }}</td>
         </tr>
       {% endfor %}
@@ -266,6 +315,18 @@
     const rows = document.querySelectorAll("#manuscripts tbody tr[data-name]").length;
     document.getElementById("row-count").textContent = shown.toLocaleString("fr-FR");
     document.getElementById("row-total").hidden = shown === rows;
+    // Images annotated in the rows shown: the exact count of the server without a filter,
+    // otherwise the sum of the rows shown (an image shared by two manuscripts shown is
+    // then counted twice).
+    let annotated = 0, images = 0;
+    for (const row of document.querySelectorAll("#manuscripts tbody tr[data-name]:not([hidden])")) {
+      annotated += Number(row.dataset.annotated);
+      images += Number(row.dataset.images);
+    }
+    for (const [id, value] of [["images-annotated", annotated], ["images-total", images]]) {
+      const element = document.getElementById(id);
+      element.textContent = text ? value.toLocaleString("fr-FR") : element.dataset.all;
+    }
     document.getElementById("no-match").hidden = shown > 0;
     try {
       sessionStorage.setItem("name-filter", input.value);

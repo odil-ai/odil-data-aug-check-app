@@ -41,7 +41,6 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 112,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.2093/Reg.lat.2093_0113_fa_0054r.jp2",
@@ -56,9 +55,21 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      112
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json": [
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117
+      ]
+    }
   },
   {
     "folio": {
@@ -102,13 +113,12 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 115,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.2093/Reg.lat.2093_0116_fa_0055v.jp2",
-          "score": 0.921486268174475,
+          "score": 0.9188405797101449,
           "bbox": [
-            139,
+            140,
             168,
             672,
             567
@@ -117,9 +127,21 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      115
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ]
+    }
   },
   {
     "folio": {
@@ -163,11 +185,10 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 9,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.2093/Reg.lat.2093_0010_fa_0002v.jp2",
-          "score": 0.88,
+          "score": 0.8928571428571428,
           "bbox": [
             181,
             664,
@@ -178,8 +199,20 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      9
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Reg.lat.2093/manifest.json": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
   }
 ]

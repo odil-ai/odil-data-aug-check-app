@@ -8,6 +8,42 @@
     },
     "canvases": [
       {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/canvas/p0019",
+        "@type": "sc:Canvas",
+        "label": "8r",
+        "width": 2232,
+        "height": 3156,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/res/anno0019",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/res/img0019",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1787/Vat.lat.1787_0019_fa_0008r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2232,
+              "height": 3156
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/canvas/p0019"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.1787/thumb/Vat.lat.1787_0019_fa_0008r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 112,
+          "height": 150
+        },
+        "canvas_index": 18,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/manifest.json"
+      },
+      {
         "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/canvas/p0020",
         "@type": "sc:Canvas",
         "label": "8v",
@@ -40,12 +76,11 @@
           "width": 112,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 19,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1787/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -55,6 +90,6 @@
       "filename": "ahloma_011523165013753455_7fb9e3.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

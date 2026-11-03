@@ -42,11 +42,10 @@
         },
         "viewingHint": "non-paged",
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 7,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.145/Urb.lat.145_0008_cy_0003v.jp2",
-          "score": 0.9341337907375643,
+          "score": 0.9373737373737374,
           "bbox": [
             39,
             199,
@@ -57,18 +56,25 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      552
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        552,
+        553,
+        10,
+        11,
+        12
+      ]
+    }
   },
   {
     "folio": {
@@ -112,24 +118,36 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 10,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.145/Urb.lat.145_0011_fa_0002r.jp2",
-          "score": 0.8847290640394089,
+          "score": 0.8805970149253731,
           "bbox": [
             253,
             259,
             503,
-            443
+            444
           ],
           "from_label_identification": true
         }
       }
     ],
-    "testedCanvasesIndices": [
-      10
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
   },
   {
     "folio": {
@@ -173,11 +191,10 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 72,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.145/Urb.lat.145_0073_fa_0033r.jp2",
-          "score": 0.9291338582677166,
+          "score": 0.9308641975308641,
           "bbox": [
             76,
             405,
@@ -188,8 +205,20 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      72
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Urb.lat.145/manifest.json": [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ]
+    }
   }
 ]

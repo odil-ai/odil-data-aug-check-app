@@ -32,12 +32,11 @@
             "on": "https://arca.irht.cnrs.fr/iiif/80601/canvas/canvas-1367781"
           }
         ],
-        "sequence_index": 0,
         "canvas_index": 47,
         "manifest_url": "https://api.irht.cnrs.fr/ark:/63955/fg5lwgwi0bma/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -46,8 +45,37 @@
       "alhoma_id": "fiche_sans_image110",
       "filename": "null"
     },
-    "canvases": [],
-    "testedCanvasesIndices": []
+    "canvases": [
+      {
+        "@id": "https://arca.irht.cnrs.fr/iiif/80601/canvas/canvas-1367798",
+        "@type": "sc:Canvas",
+        "label": "f. 134v",
+        "height": 2752,
+        "width": 1832,
+        "images": [
+          {
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://iiif.irht.cnrs.fr/iiif/ark:/63955/vbl1oogxtfps/full/full/0/default.jpg",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "height": 2752,
+              "width": 1832,
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://iiif.irht.cnrs.fr/iiif/ark:/63955/vbl1oogxtfps",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              }
+            },
+            "on": "https://arca.irht.cnrs.fr/iiif/80601/canvas/canvas-1367798"
+          }
+        ],
+        "canvas_index": 64,
+        "manifest_url": "https://api.irht.cnrs.fr/ark:/63955/fg5lwgwi0bma/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -57,7 +85,7 @@
       "filename": "null"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -67,7 +95,7 @@
       "filename": "null"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -77,7 +105,7 @@
       "filename": "null"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -87,6 +115,6 @@
       "filename": "null"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

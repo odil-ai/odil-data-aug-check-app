@@ -1,0 +1,66 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_012112909014457343_c8f899",
+      "folio": "1R",
+      "alhoma_id": "VAT_21462",
+      "filename": "ahloma_012112909014457343_c8f899.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1518/canvas/p0007",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 1812,
+        "height": 2627,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1518/res/anno0007",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1518/res/img0007",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1518/Vat.lat.1518_0007_fa_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1812,
+              "height": 2627
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1518/canvas/p0007"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.1518/thumb/Vat.lat.1518_0007_fa_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 103,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1518/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 6,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1518/Vat.lat.1518_0007_fa_0001r.jp2",
+          "score": 0.8814814814814815,
+          "bbox": [
+            45,
+            46,
+            347,
+            271
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      2,
+      422,
+      6
+    ]
+  }
+]

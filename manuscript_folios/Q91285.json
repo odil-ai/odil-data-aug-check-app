@@ -8,6 +8,42 @@
     },
     "canvases": [
       {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0007",
+        "@type": "sc:Canvas",
+        "label": "IIIr",
+        "width": 2280,
+        "height": 3235,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0007",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0007",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0007_cr_0003r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2280,
+              "height": 3235
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0007"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0007_cr_0003r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 105,
+          "height": 150
+        },
+        "canvas_index": 6,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
         "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0008",
         "@type": "sc:Canvas",
         "label": "IIIv",
@@ -40,12 +76,11 @@
           "width": 106,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 7,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -89,8 +124,43 @@
           "height": 150
         },
         "viewingHint": "non-paged",
-        "sequence_index": 0,
         "canvas_index": 16,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0018",
+        "@type": "sc:Canvas",
+        "label": "1v",
+        "width": 2292,
+        "height": 3235,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0018",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0018",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0018_fa_0001v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2292,
+              "height": 3235
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0018"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0018_fa_0001v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 106,
+          "height": 150
+        },
+        "canvas_index": 17,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       },
       {
@@ -127,12 +197,47 @@
           "height": 150
         },
         "viewingHint": "non-paged",
-        "sequence_index": 0,
         "canvas_index": 664,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0666",
+        "@type": "sc:Canvas",
+        "label": "1v",
+        "width": 2262,
+        "height": 3233,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0666",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0666",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0666_sy_0001v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2262,
+              "height": 3233
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0666"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0666_sy_0001v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 104,
+          "height": 150
+        },
+        "canvas_index": 665,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -175,8 +280,43 @@
           "width": 106,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 18,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0020",
+        "@type": "sc:Canvas",
+        "label": "2v",
+        "width": 2292,
+        "height": 3235,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0020",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0020",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0020_fa_0002v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2292,
+              "height": 3235
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0020"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0020_fa_0002v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 106,
+          "height": 150
+        },
+        "canvas_index": 19,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       },
       {
@@ -212,12 +352,48 @@
           "width": 104,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 666,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0668",
+        "@type": "sc:Canvas",
+        "label": "2v",
+        "width": 2330,
+        "height": 3323,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0668",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0668",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0668_sy_0002v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2330,
+              "height": 3323
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0668"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0668_sy_0002v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 105,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "canvas_index": 667,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -227,6 +403,42 @@
       "filename": "ahloma_014421076017212252_066892.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0067",
+        "@type": "sc:Canvas",
+        "label": "26r",
+        "width": 2292,
+        "height": 3235,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0067",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0067",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0067_fa_0026r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2292,
+              "height": 3235
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0067"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0067_fa_0026r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 106,
+          "height": 150
+        },
+        "canvas_index": 66,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0068",
         "@type": "sc:Canvas",
@@ -260,12 +472,11 @@
           "width": 106,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 67,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -275,6 +486,42 @@
       "filename": "ahloma_017056541020357807_d2747a.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0617",
+        "@type": "sc:Canvas",
+        "label": "301r",
+        "width": 2245,
+        "height": 3232,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0617",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0617",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0617_fa_0301r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2245,
+              "height": 3232
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0617"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0617_fa_0301r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 104,
+          "height": 150
+        },
+        "canvas_index": 616,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0618",
         "@type": "sc:Canvas",
@@ -308,12 +555,11 @@
           "width": 105,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 617,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -356,12 +602,47 @@
           "width": 104,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 344,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0346",
+        "@type": "sc:Canvas",
+        "label": "165v",
+        "width": 2211,
+        "height": 3230,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0346",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0346",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0346_fa_0165v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2211,
+              "height": 3230
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0346"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0346_fa_0165v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 345,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -371,6 +652,42 @@
       "filename": "ahloma_009401339011220953_327223.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0439",
+        "@type": "sc:Canvas",
+        "label": "212r",
+        "width": 2268,
+        "height": 3234,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/anno0439",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/res/img0439",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.24/Urb.lat.24_0439_fa_0212r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2268,
+              "height": 3234
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0439"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.24/thumb/Urb.lat.24_0439_fa_0212r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 105,
+          "height": 150
+        },
+        "canvas_index": 438,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/canvas/p0440",
         "@type": "sc:Canvas",
@@ -404,11 +721,10 @@
           "width": 104,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 439,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.24/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

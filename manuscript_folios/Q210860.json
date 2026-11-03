@@ -8,6 +8,36 @@
     },
     "canvases": [
       {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/2ed5982f-fae3-4b7c-abde-e0423964f866.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 1r",
+        "width": 6339,
+        "height": 8293,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/2ed5982f-fae3-4b7c-abde-e0423964f866.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/2ed5982f-fae3-4b7c-abde-e0423964f866.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/2ed5982f-fae3-4b7c-abde-e0423964f866",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 6339,
+              "height": 8293,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/2ed5982f-fae3-4b7c-abde-e0423964f866",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 10,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
+      },
+      {
         "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/42cdc984-023c-45f7-aea3-eddde09209f2.json",
         "@type": "sc:Canvas",
         "label": "fol. 001v",
@@ -34,7 +64,6 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 1,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       },
@@ -65,7 +94,6 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 11,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       },
@@ -96,12 +124,11 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 0,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -138,8 +165,37 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 15,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/6ac6eeca-5545-42b9-873b-507ccc4b4615.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 3r",
+        "width": 6279,
+        "height": 8293,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/6ac6eeca-5545-42b9-873b-507ccc4b4615.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/6ac6eeca-5545-42b9-873b-507ccc4b4615.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/6ac6eeca-5545-42b9-873b-507ccc4b4615",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 6279,
+              "height": 8293,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/6ac6eeca-5545-42b9-873b-507ccc4b4615",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 14,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       },
       {
@@ -169,12 +225,11 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 2,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -211,7 +266,6 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 11,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/eb0735a3-e8ee-4104-b111-51d18a13b78b.json"
       },
@@ -242,9 +296,98 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 3,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/1bfd0fe5-3680-4207-b5c5-385eab653e03.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 10v",
+        "width": 6377,
+        "height": 8335,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/1bfd0fe5-3680-4207-b5c5-385eab653e03.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/1bfd0fe5-3680-4207-b5c5-385eab653e03.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/1bfd0fe5-3680-4207-b5c5-385eab653e03",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 6377,
+              "height": 8335,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/1bfd0fe5-3680-4207-b5c5-385eab653e03",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 29,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/7364e055-9edd-4e69-ab66-de07104c8e1e.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 010v",
+        "width": 2650,
+        "height": 4019,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/7364e055-9edd-4e69-ab66-de07104c8e1e.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/7364e055-9edd-4e69-ab66-de07104c8e1e.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/7364e055-9edd-4e69-ab66-de07104c8e1e",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 2650,
+              "height": 4019,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/7364e055-9edd-4e69-ab66-de07104c8e1e",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 13,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/eb0735a3-e8ee-4104-b111-51d18a13b78b.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/d103cd86-b919-4aa9-a43a-8d66287a2357.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 010v",
+        "width": 3997,
+        "height": 2661,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/d103cd86-b919-4aa9-a43a-8d66287a2357.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/d103cd86-b919-4aa9-a43a-8d66287a2357.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/d103cd86-b919-4aa9-a43a-8d66287a2357",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 3997,
+              "height": 2661,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/d103cd86-b919-4aa9-a43a-8d66287a2357",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 12,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/eb0735a3-e8ee-4104-b111-51d18a13b78b.json"
       },
       {
         "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/ddc67318-426f-447f-882e-86c3fefc6938.json",
@@ -273,12 +416,11 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 28,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -315,7 +457,6 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 7,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       },
@@ -346,12 +487,71 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 45,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/6154b016-6961-4f79-aefc-f1c5b328e999.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 18r",
+        "width": 6364,
+        "height": 8293,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/6154b016-6961-4f79-aefc-f1c5b328e999.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/6154b016-6961-4f79-aefc-f1c5b328e999.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/6154b016-6961-4f79-aefc-f1c5b328e999",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 6364,
+              "height": 8293,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/6154b016-6961-4f79-aefc-f1c5b328e999",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 44,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/a58f76fa-8dcb-44e6-ace0-66d4c34c5af8.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 018r",
+        "width": 4155,
+        "height": 2765,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/a58f76fa-8dcb-44e6-ace0-66d4c34c5af8.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/a58f76fa-8dcb-44e6-ace0-66d4c34c5af8.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/a58f76fa-8dcb-44e6-ace0-66d4c34c5af8",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 4155,
+              "height": 2765,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/a58f76fa-8dcb-44e6-ace0-66d4c34c5af8",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 22,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/eb0735a3-e8ee-4104-b111-51d18a13b78b.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -388,9 +588,68 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 8,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/3672b844-1b38-4f1c-98e7-330b90b89f13.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 020v",
+        "width": 2632,
+        "height": 4002,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/3672b844-1b38-4f1c-98e7-330b90b89f13.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/3672b844-1b38-4f1c-98e7-330b90b89f13.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/3672b844-1b38-4f1c-98e7-330b90b89f13",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 2632,
+              "height": 4002,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/3672b844-1b38-4f1c-98e7-330b90b89f13",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 23,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/eb0735a3-e8ee-4104-b111-51d18a13b78b.json"
+      },
+      {
+        "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/5e0e671a-d2c0-469f-91e6-ef918d7777d2.json",
+        "@type": "sc:Canvas",
+        "label": "fol. 20v",
+        "width": 6393,
+        "height": 8335,
+        "images": [
+          {
+            "@id": "https://iiif.bodleian.ox.ac.uk/iiif/annotation/5e0e671a-d2c0-469f-91e6-ef918d7777d2.json",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "on": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/5e0e671a-d2c0-469f-91e6-ef918d7777d2.json",
+            "resource": {
+              "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/5e0e671a-d2c0-469f-91e6-ef918d7777d2",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "width": 6393,
+              "height": 8335,
+              "service": {
+                "@id": "https://iiif.bodleian.ox.ac.uk/iiif/image/5e0e671a-d2c0-469f-91e6-ef918d7777d2",
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "profile": "http://iiif.io/api/image/2/level1.json"
+              }
+            }
+          }
+        ],
+        "otherContent": [],
+        "canvas_index": 49,
+        "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       },
       {
         "@id": "https://iiif.bodleian.ox.ac.uk/iiif/canvas/8b174d13-d701-4cf8-a9fc-30ddd3d62541.json",
@@ -419,12 +678,11 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 48,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -461,7 +719,6 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 61,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/faeff7fb-f8a7-44b5-95ed-cff9a9ffd198.json"
       },
@@ -492,12 +749,11 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 13,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -534,11 +790,10 @@
           }
         ],
         "otherContent": [],
-        "sequence_index": 0,
         "canvas_index": 14,
         "manifest_url": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/05f663d9-1fcb-4750-9ce3-03d0eb687648.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

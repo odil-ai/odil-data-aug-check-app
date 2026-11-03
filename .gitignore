@@ -6,4 +6,12 @@ config.yml
 .vscode/
 *.tmp
 verifications.tsv
+.tsv.lock
+verifications_snapshot.tsv
+verifications_paul.tsv.bak
+annotations.tsv
 bookmarks.tsv
+training/
+# Data written by the app: only the directory is versioned (with its .keepfile).
+storage/*
+!storage/.keepfile

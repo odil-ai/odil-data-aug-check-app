@@ -23,7 +23,8 @@
 <body>
 <div id="mirador"></div>
 <script>
-  // One window on the manifest, at the candidate's page, with the thumbnails of all the
+  // One window on the manifest, at the candidate's page, in single page view (Mirador
+  // would choose the book view for "paged" manifests), with the thumbnails of all the
   // pages at the bottom; no workspace controls, as only this manuscript is shown.
   Mirador.viewer({
     id: "mirador",
@@ -31,8 +32,9 @@
       manifestId: {{ manifest|tojson }},
       canvasId: {{ canvas|tojson }},
       thumbnailNavigationPosition: "far-bottom",
+      view: "single",
     }],
-    window: { allowClose: false, allowMaximize: false, sideBarOpen: false },
+    window: { allowClose: false, allowMaximize: false, sideBarOpen: false, defaultView: "single" },
     workspaceControlPanel: { enabled: false },
   });
 </script>

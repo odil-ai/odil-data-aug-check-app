@@ -35,9 +35,70 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f7.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 6,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f8",
+        "label": "1v",
+        "height": 3865,
+        "width": 2442,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f8",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f8"
+              },
+              "height": 3865,
+              "width": 2442,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f8/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f8.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 7,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f10",
+        "label": "1v",
+        "height": 3968,
+        "width": 2587,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f10",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f10"
+              },
+              "height": 3968,
+              "width": 2587,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f10/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f10.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 9,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f9",
@@ -67,12 +128,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f9.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 8,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -82,6 +142,37 @@
       "filename": "ahloma_004517692005392084_3e65a2.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f10",
+        "label": "2v",
+        "height": 3865,
+        "width": 2442,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f10",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f10"
+              },
+              "height": 3865,
+              "width": 2442,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f10/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f10.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 9,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f9",
         "label": "2r",
@@ -110,7 +201,6 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f9.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 8,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
@@ -142,12 +232,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f11.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 10,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f12",
+        "label": "2v",
+        "height": 3968,
+        "width": 2587,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f12",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f12"
+              },
+              "height": 3968,
+              "width": 2587,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f12/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f12.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 11,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -185,8 +305,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f39.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 38,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f40",
+        "label": "17v",
+        "height": 3858,
+        "width": 2406,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f40",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f40"
+              },
+              "height": 3858,
+              "width": 2406,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f40/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f40.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 39,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -217,12 +367,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f41.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 40,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f42",
+        "label": "17v",
+        "height": 3968,
+        "width": 2538,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f42",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f42"
+              },
+              "height": 3968,
+              "width": 2538,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f42/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f42.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 41,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -260,8 +440,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f73.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 72,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f74",
+        "label": "34v",
+        "height": 3876,
+        "width": 2333,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f74",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f74"
+              },
+              "height": 3876,
+              "width": 2333,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f74/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f74.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 73,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -292,12 +502,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f75.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 74,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f76",
+        "label": "34v",
+        "height": 3949,
+        "width": 2511,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f76",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f76"
+              },
+              "height": 3949,
+              "width": 2511,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f76/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f76.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 75,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -335,8 +575,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f131.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 130,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f132",
+        "label": "63v",
+        "height": 3883,
+        "width": 2371,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f132",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f132"
+              },
+              "height": 3883,
+              "width": 2371,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f132/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f132.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 131,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -367,12 +637,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f133.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 132,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f134",
+        "label": "63v",
+        "height": 4010,
+        "width": 2475,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f134",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f134"
+              },
+              "height": 4010,
+              "width": 2475,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f134/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f134.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 133,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -382,6 +682,37 @@
       "filename": "ahloma_004517692005392084_438a81.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f133",
+        "label": "64r",
+        "height": 3889,
+        "width": 2383,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f133",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f133"
+              },
+              "height": 3889,
+              "width": 2383,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f133/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f133.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 132,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f134",
         "label": "64v",
@@ -410,9 +741,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f134.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 133,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f135",
+        "label": "64r",
+        "height": 4073,
+        "width": 2564,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f135",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f135"
+              },
+              "height": 4073,
+              "width": 2564,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f135/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f135.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 134,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f136",
@@ -442,12 +803,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f136.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 135,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -457,6 +817,37 @@
       "filename": "ahloma_004517692005392084_ea7ed8.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f145",
+        "label": "70r",
+        "height": 3882,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f145",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f145"
+              },
+              "height": 3882,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f145/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f145.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 144,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f146",
         "label": "70v",
@@ -485,9 +876,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f146.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 145,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f147",
+        "label": "70r",
+        "height": 4023,
+        "width": 2501,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f147",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f147"
+              },
+              "height": 4023,
+              "width": 2501,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f147/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f147.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 146,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f148",
@@ -517,12 +938,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f148.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 147,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -532,6 +952,37 @@
       "filename": "ahloma_004517692005392084_cff5c0.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f165",
+        "label": "80r",
+        "height": 3881,
+        "width": 2404,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f165",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f165"
+              },
+              "height": 3881,
+              "width": 2404,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f165/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f165.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 164,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f166",
         "label": "80v",
@@ -560,9 +1011,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f166.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 165,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f167",
+        "label": "80r",
+        "height": 3983,
+        "width": 2559,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f167",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f167"
+              },
+              "height": 3983,
+              "width": 2559,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f167/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f167.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 166,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f168",
@@ -592,12 +1073,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f168.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 167,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -635,8 +1115,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f183.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 182,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f184",
+        "label": "89v",
+        "height": 3882,
+        "width": 2403,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f184",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f184"
+              },
+              "height": 3882,
+              "width": 2403,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f184/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f184.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 183,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -667,12 +1177,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f185.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 184,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f186",
+        "label": "89v",
+        "height": 3815,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f186",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f186"
+              },
+              "height": 3815,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f186/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f186.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 185,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -710,8 +1250,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f187.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 186,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f188",
+        "label": "91v",
+        "height": 3888,
+        "width": 2424,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f188",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f188"
+              },
+              "height": 3888,
+              "width": 2424,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f188/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f188.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 187,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -742,12 +1312,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f189.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 188,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f190",
+        "label": "91v",
+        "height": 3815,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f190",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f190"
+              },
+              "height": 3815,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f190/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f190.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 189,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -785,8 +1385,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f191.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 190,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f192",
+        "label": "93v",
+        "height": 3898,
+        "width": 2442,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f192",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f192"
+              },
+              "height": 3898,
+              "width": 2442,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f192/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f192.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 191,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -817,12 +1447,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f193.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 192,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f194",
+        "label": "93v",
+        "height": 3815,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f194",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f194"
+              },
+              "height": 3815,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f194/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f194.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 193,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -860,8 +1520,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f199.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 198,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f200",
+        "label": "97v",
+        "height": 3889,
+        "width": 2412,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f200",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f200"
+              },
+              "height": 3889,
+              "width": 2412,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f200/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f200.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 199,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -892,12 +1582,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f201.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 200,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f202",
+        "label": "97v",
+        "height": 3815,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f202",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f202"
+              },
+              "height": 3815,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f202/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f202.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 201,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -935,8 +1655,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f203.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 202,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f204",
+        "label": "99v",
+        "height": 3912,
+        "width": 2420,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f204",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f204"
+              },
+              "height": 3912,
+              "width": 2420,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f204/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f204.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 203,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -967,12 +1717,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f205.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 204,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f206",
+        "label": "99v",
+        "height": 3815,
+        "width": 2394,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f206",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f206"
+              },
+              "height": 3815,
+              "width": 2394,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f206/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f206.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 205,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -982,6 +1762,37 @@
       "filename": "ahloma_004517692005392084_b1151b.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f205",
+        "label": "100r",
+        "height": 3893,
+        "width": 2424,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f205",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f205"
+              },
+              "height": 3893,
+              "width": 2424,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f205/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f205.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 204,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f206",
         "label": "100v",
@@ -1010,9 +1821,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f206.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 205,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f207",
+        "label": "100r",
+        "height": 3983,
+        "width": 2543,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f207",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f207"
+              },
+              "height": 3983,
+              "width": 2543,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f207/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f207.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 206,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f208",
@@ -1042,12 +1883,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f208.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 207,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1057,6 +1897,37 @@
       "filename": "ahloma_004517692005392084_c40965.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f209",
+        "label": "102r",
+        "height": 3886,
+        "width": 2430,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f209",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f209"
+              },
+              "height": 3886,
+              "width": 2430,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f209/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f209.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 208,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f210",
         "label": "102v",
@@ -1085,9 +1956,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f210.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 209,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f211",
+        "label": "102r",
+        "height": 3983,
+        "width": 2543,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f211",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f211"
+              },
+              "height": 3983,
+              "width": 2543,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f211/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f211.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 210,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f212",
@@ -1117,12 +2018,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f212.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 211,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1132,6 +2032,37 @@
       "filename": "ahloma_004517692005392084_4ee47a.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f215",
+        "label": "105r",
+        "height": 3894,
+        "width": 2430,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f215",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f215"
+              },
+              "height": 3894,
+              "width": 2430,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f215/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f215.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 214,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f216",
         "label": "105v",
@@ -1160,9 +2091,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f216.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 215,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f217",
+        "label": "105r",
+        "height": 3983,
+        "width": 2543,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f217",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f217"
+              },
+              "height": 3983,
+              "width": 2543,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f217/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f217.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 216,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f218",
@@ -1192,12 +2153,11 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f218.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 217,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1235,8 +2195,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f227.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 226,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f228",
+        "label": "111v",
+        "height": 3904,
+        "width": 2442,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f228",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f228"
+              },
+              "height": 3904,
+              "width": 2442,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f228/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f228.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 227,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1267,12 +2257,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f229.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 228,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f230",
+        "label": "111v",
+        "height": 3815,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f230",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f230"
+              },
+              "height": 3815,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f230/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f230.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 229,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1310,8 +2330,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f235.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 234,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f236",
+        "label": "115v",
+        "height": 3900,
+        "width": 2436,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f236",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f236"
+              },
+              "height": 3900,
+              "width": 2436,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f236/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f236.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 235,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1342,12 +2392,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f237.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 236,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f238",
+        "label": "115v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f238",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f238"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f238/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f238.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 237,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1385,8 +2465,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f239.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 238,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f240",
+        "label": "117v",
+        "height": 3882,
+        "width": 2436,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f240",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f240"
+              },
+              "height": 3882,
+              "width": 2436,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f240/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f240.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 239,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1417,12 +2527,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f241.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 240,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f242",
+        "label": "117v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f242",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f242"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f242/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f242.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 241,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1460,8 +2600,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f243.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 242,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f244",
+        "label": "119v",
+        "height": 3882,
+        "width": 2437,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f244",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f244"
+              },
+              "height": 3882,
+              "width": 2437,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f244/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f244.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 243,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1492,12 +2662,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f245.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 244,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f246",
+        "label": "119v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f246",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f246"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f246/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f246.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 245,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1535,8 +2735,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f247.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 246,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f248",
+        "label": "121v",
+        "height": 3863,
+        "width": 2431,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f248",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f248"
+              },
+              "height": 3863,
+              "width": 2431,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f248/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f248.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 247,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1567,12 +2797,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f249.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 248,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f250",
+        "label": "121v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f250",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f250"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f250/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f250.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 249,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1610,8 +2870,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f251.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 250,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f252",
+        "label": "123v",
+        "height": 3906,
+        "width": 2443,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f252",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f252"
+              },
+              "height": 3906,
+              "width": 2443,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f252/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f252.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 251,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1642,12 +2932,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f253.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 252,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f254",
+        "label": "123v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f254",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f254"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f254/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f254.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 253,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1685,8 +3005,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f255.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 254,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f256",
+        "label": "125v",
+        "height": 3902,
+        "width": 2436,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f256",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f256"
+              },
+              "height": 3902,
+              "width": 2436,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f256/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f256.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 255,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1717,12 +3067,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f257.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 256,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f258",
+        "label": "125v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f258",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f258"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f258/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f258.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 257,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1760,8 +3140,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f259.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 258,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f260",
+        "label": "127v",
+        "height": 3894,
+        "width": 2432,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f260",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f260"
+              },
+              "height": 3894,
+              "width": 2432,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f260/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f260.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 259,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1792,12 +3202,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f261.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 260,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f262",
+        "label": "127v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f262",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f262"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f262/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f262.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 261,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1835,8 +3275,38 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f263.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 262,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f264",
+        "label": "129v",
+        "height": 3896,
+        "width": 2448,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f264",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f264"
+              },
+              "height": 3896,
+              "width": 2448,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f264/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f264.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 263,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
       },
       {
@@ -1867,12 +3337,42 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f265.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 264,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f266",
+        "label": "129v",
+        "height": 3866,
+        "width": 2459,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f266",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f266"
+              },
+              "height": 3866,
+              "width": 2459,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f266/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f266.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 265,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -1882,6 +3382,37 @@
       "filename": "ahloma_004517692005392084_f50048.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f265",
+        "label": "130r",
+        "height": 3870,
+        "width": 2423,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f265",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f265"
+              },
+              "height": 3870,
+              "width": 2423,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/f265/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f265.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 264,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/canvas/f266",
         "label": "130v",
@@ -1910,9 +3441,39 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8447296x/f266.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 265,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8447296x/manifest.json"
+      },
+      {
+        "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f267",
+        "label": "130r",
+        "height": 4005,
+        "width": 2582,
+        "images": [
+          {
+            "motivation": "sc:painting",
+            "on": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f267",
+            "resource": {
+              "format": "image/jpeg",
+              "service": {
+                "profile": "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2",
+                "@context": "http://iiif.io/api/image/1/context.json",
+                "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f267"
+              },
+              "height": 4005,
+              "width": 2582,
+              "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/f267/full/full/0/native.jpg",
+              "@type": "dctypes:Image"
+            },
+            "@type": "oa:Annotation"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f267.thumbnail"
+        },
+        "@type": "sc:Canvas",
+        "canvas_index": 266,
+        "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       },
       {
         "@id": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/canvas/f268",
@@ -1942,11 +3503,10 @@
           "@id": "https://gallica.bnf.fr/ark:/12148/btv1b8452762k/f268.thumbnail"
         },
         "@type": "sc:Canvas",
-        "sequence_index": 0,
         "canvas_index": 267,
         "manifest_url": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8452762k/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

@@ -1,0 +1,51 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_004180753004989931_7c1811",
+      "folio": "44V",
+      "alhoma_id": "3324",
+      "filename": "ahloma_004180753004989931_7c1811.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/bav_pal_lat_39/canvas/p0096",
+        "@type": "sc:Canvas",
+        "label": "44v",
+        "width": 1584,
+        "height": 2271,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/bav_pal_lat_39/res/anno0096",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/bav_pal_lat_39/res/img0096",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/bav_pal_lat_39/Pal.lat.39.f.044v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1584,
+              "height": 2271
+            },
+            "on": "https://digi.vatlib.it/iiif/bav_pal_lat_39/canvas/p0096"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/bav_pal_lat_39/thumb/Pal.lat.39.f.044v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 110,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "sequence_index": 0,
+        "canvas_index": 95,
+        "manifest_url": "https://digi.vatlib.it/iiif/bav_pal_lat_39/manifest.json"
+      }
+    ],
+    "testedCanvasesIndices": []
+  }
+]

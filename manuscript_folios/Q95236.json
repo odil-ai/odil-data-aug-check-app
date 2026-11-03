@@ -42,11 +42,10 @@
         },
         "viewingHint": "non-paged",
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.297/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 6,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.297/Vat.lat.297_0007_fa_0001r.jp2",
-          "score": 0.8301886792452831,
+          "score": 0.8291139240506329,
           "bbox": [
             -2,
             56,
@@ -57,11 +56,23 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      104,
-      2,
-      6
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Vat.lat.297/manifest.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        104,
+        105,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
   },
   {
     "folio": {
@@ -105,11 +116,10 @@
           "height": 150
         },
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.297/manifest.json",
-        "sequence_index": 0,
         "canvas_index": 41,
         "matchResult": {
           "source": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.297/Vat.lat.297_0042_fa_0018v.jp2",
-          "score": 0.8833802816901408,
+          "score": 0.8958823529411765,
           "bbox": [
             32,
             281,
@@ -120,8 +130,20 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      41
-    ]
+    "testedCanvasesIndices": {
+      "https://digi.vatlib.it/iiif/MSS_Vat.lat.297/manifest.json": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    }
   }
 ]
