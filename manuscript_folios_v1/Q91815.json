@@ -1,0 +1,88 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_006949239008294253_3723f7",
+      "folio": "1R",
+      "alhoma_id": "URB_13461",
+      "filename": "ahloma_006949239008294253_3723f7.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.641/canvas/p0008",
+        "@type": "sc:Canvas",
+        "label": "3v",
+        "width": 1585,
+        "height": 2341,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.641/res/anno0008",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.641/res/img0008",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.641/Urb.lat.641_0008_cy_0003v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1585,
+              "height": 2341
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.641/canvas/p0008"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.641/thumb/Urb.lat.641_0008_cy_0003v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 101,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.641/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 7,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.641/Urb.lat.641_0008_cy_0003v.jp2",
+          "score": 0.9239024390243903,
+          "bbox": [
+            31,
+            233,
+            675,
+            718
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335
+    ]
+  }
+]

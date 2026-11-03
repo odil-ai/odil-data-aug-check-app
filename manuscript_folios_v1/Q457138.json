@@ -1,0 +1,66 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_029919185035709995_98e42a",
+      "folio": "1R",
+      "alhoma_id": "URB_15021",
+      "filename": "ahloma_029919185035709995_98e42a.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1182/canvas/p0009",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 1414,
+        "height": 2033,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1182/res/anno0009",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1182/res/img0009",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.1182/Urb.lat.1182_0009_fa_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1414,
+              "height": 2033
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1182/canvas/p0009"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.1182/thumb/Urb.lat.1182_0009_fa_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 108,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.1182/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 8,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.1182/Urb.lat.1182_0009_fa_0001r.jp2",
+          "score": 0.9292253521126761,
+          "bbox": [
+            60,
+            311,
+            472,
+            616
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      8,
+      2,
+      314
+    ]
+  }
+]

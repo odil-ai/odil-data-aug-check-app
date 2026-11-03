@@ -7,7 +7,7 @@
       "filename": "ahloma_012612040015053080_161ab2.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -17,7 +17,7 @@
       "filename": "ahloma_011208608013378016_605a9b.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -27,6 +27,43 @@
       "filename": "ahloma_010180834012151318_847300.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/canvas/p0003",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 2355,
+        "height": 3405,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/res/anno0003",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/res/img0003",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1148/Vat.lat.1148_0003_cy_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2355,
+              "height": 3405
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/canvas/p0003"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.1148/thumb/Vat.lat.1148_0003_cy_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 109,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "canvas_index": 2,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/canvas/p0004",
         "@type": "sc:Canvas",
@@ -61,8 +98,44 @@
           "height": 150
         },
         "viewingHint": "non-paged",
-        "sequence_index": 0,
         "canvas_index": 3,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/canvas/p0405",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 2265,
+        "height": 3319,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/res/anno0405",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/res/img0405",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1148/Vat.lat.1148_0405_sy_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2265,
+              "height": 3319
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/canvas/p0405"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.1148/thumb/Vat.lat.1148_0405_sy_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 108,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "canvas_index": 404,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/manifest.json"
       },
       {
@@ -99,12 +172,11 @@
           "height": 150
         },
         "viewingHint": "non-paged",
-        "sequence_index": 0,
         "canvas_index": 405,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.1148/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -114,7 +186,7 @@
       "filename": "ahloma_018073589021571703_092845.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -124,7 +196,7 @@
       "filename": "ahloma_025911350030926450_f8b0b4.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -134,7 +206,7 @@
       "filename": "ahloma_011206624013375648_ec6d94.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -144,7 +216,7 @@
       "filename": "ahloma_012055993014389411_e0654c.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -154,7 +226,7 @@
       "filename": "ahloma_012055993014389411_b603e9.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -164,7 +236,7 @@
       "filename": "ahloma_012055993014389411_9b9752.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -174,7 +246,7 @@
       "filename": "ahloma_012055993014389411_b3036b.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -184,7 +256,7 @@
       "filename": "ahloma_012055993014389411_a5a05b.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -194,7 +266,7 @@
       "filename": "ahloma_014111138016842326_e28142.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -204,6 +276,6 @@
       "filename": "ahloma_034541657041227139_279161.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

@@ -7,7 +7,7 @@
       "filename": "ahloma_013062656015590912_d0551b.jpg"
     },
     "canvases": [],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -17,6 +17,42 @@
       "filename": "ahloma_013062656015590912_f23031.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/canvas/p0179",
+        "@type": "sc:Canvas",
+        "label": "84r",
+        "width": 2053,
+        "height": 3061,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/res/anno0179",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/res/img0179",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Urb.lat.373/Urb.lat.373_0179_fa_0084r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2053,
+              "height": 3061
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/canvas/p0179"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Urb.lat.373/thumb/Urb.lat.373_0179_fa_0084r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 100,
+          "height": 150
+        },
+        "canvas_index": 178,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/canvas/p0180",
         "@type": "sc:Canvas",
@@ -50,11 +86,10 @@
           "width": 99,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 179,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Urb.lat.373/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

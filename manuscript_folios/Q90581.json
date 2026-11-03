@@ -41,12 +41,47 @@
           "height": 150
         },
         "viewingHint": "non-paged",
-        "sequence_index": 0,
         "canvas_index": 86,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0088",
+        "@type": "sc:Canvas",
+        "label": "39v",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0088",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0088",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0088_fa_0039v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0088"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0088_fa_0039v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 87,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -56,6 +91,42 @@
       "filename": "ahloma_006397873007636171_96b613.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0005",
+        "@type": "sc:Canvas",
+        "label": "2r",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0005",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0005",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0005_cy_0002r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0005"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0005_cy_0002r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 4,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0006",
         "@type": "sc:Canvas",
@@ -89,8 +160,43 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 5,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0011",
+        "@type": "sc:Canvas",
+        "label": "2r",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0011",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0011",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0011_fa_0002r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0011"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0011_fa_0002r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 10,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       },
       {
@@ -126,8 +232,43 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 11,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0127",
+        "@type": "sc:Canvas",
+        "label": "2r",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0127",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0127",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0127_sy_0002r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0127"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0127_sy_0002r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 126,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       },
       {
@@ -163,12 +304,11 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 127,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -211,12 +351,47 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 18,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0020",
+        "@type": "sc:Canvas",
+        "label": "6v",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0020",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0020",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0020_fa_0006v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0020"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0020_fa_0006v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 19,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -259,12 +434,47 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 62,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0064",
+        "@type": "sc:Canvas",
+        "label": "28v",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0064",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0064",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0064_fa_0028v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0064"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0064_fa_0028v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 63,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   },
   {
     "folio": {
@@ -274,6 +484,42 @@
       "filename": "ahloma_006397873007636171_caeb42.jpg"
     },
     "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0075",
+        "@type": "sc:Canvas",
+        "label": "34r",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0075",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0075",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0075_fa_0034r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0075"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0075_fa_0034r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 74,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
       {
         "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0076",
         "@type": "sc:Canvas",
@@ -307,11 +553,82 @@
           "width": 102,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 75,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0077",
+        "@type": "sc:Canvas",
+        "label": "35r",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0077",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0077",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0077_fa_0035r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0077"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0077_fa_0035r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 76,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0078",
+        "@type": "sc:Canvas",
+        "label": "35v",
+        "width": 1287,
+        "height": 1977,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/anno0078",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/res/img0078",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.1075/Reg.lat.1075_0078_fa_0035v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1287,
+              "height": 1977
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/canvas/p0078"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.1075/thumb/Reg.lat.1075_0078_fa_0035v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 102,
+          "height": 150
+        },
+        "canvas_index": 77,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.1075/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

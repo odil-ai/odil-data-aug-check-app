@@ -40,11 +40,46 @@
           "width": 109,
           "height": 150
         },
-        "sequence_index": 0,
         "canvas_index": 200,
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/manifest.json"
+      },
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/canvas/p0202",
+        "@type": "sc:Canvas",
+        "label": "89v",
+        "width": 2107,
+        "height": 3042,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/res/anno0202",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/res/img0202",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Vat.lat.2146/Vat.lat.2146_0202_fa_0089v.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 2107,
+              "height": 3042
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/canvas/p0202"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Vat.lat.2146/thumb/Vat.lat.2146_0202_fa_0089v.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 109,
+          "height": 150
+        },
+        "canvas_index": 201,
         "manifest_url": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2146/manifest.json"
       }
     ],
-    "testedCanvasesIndices": []
+    "testedCanvasesIndices": {}
   }
 ]

@@ -69,6 +69,13 @@
     .swatch.valid { background: #1b5e20; }
     .swatch.not_valid { background: #ef5350; }
     .swatch.unresolved { background: #bdbdbd; }
+    .annotation-stats { width: 100%; border-collapse: collapse; font-size: .85rem; font-variant-numeric: tabular-nums; }
+    .annotation-stats th, .annotation-stats td { padding: .2rem .4rem; border-bottom: 1px solid #eee; }
+    .annotation-stats th { font-weight: 600; color: #666; }
+    .annotation-stats .num { text-align: right; }
+    .annotation-stats tfoot td { font-weight: 600; border-bottom: 0; }
+    .annotation-stats .coverage td { color: #666; font-weight: normal; }
+    .annotation-note { margin: .2rem 0 0; color: #666; font-size: .8rem; }
     .glossary { margin-top: 1rem; font-size: .85rem; }
     .glossary summary { font-weight: 600; cursor: pointer; }
     .glossary dl { margin: .5rem 0 0; }
@@ -98,11 +105,12 @@
     /* List of manuscripts. Its rows are laid out as grids rather than table rows, so that
        the browser only lays out the rows on screen (content-visibility): this keeps the
        filter and the panel fast with thousands of rows. */
-    table.manuscripts { display: block; min-width: 40rem; font-variant-numeric: tabular-nums; }
+    table.manuscripts { display: block; min-width: 47rem; font-variant-numeric: tabular-nums; }
     .manuscripts thead, .manuscripts tbody { display: block; }
     .manuscripts thead { position: sticky; top: 0; z-index: 1; background: #f1f4f8; border-bottom: 1px solid #d5dbe3; }
-    .manuscripts tr { display: grid; grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 8rem 9rem minmax(8rem, 3fr); align-items: center; }
-    .manuscripts.no-empty tr { grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 9rem minmax(8rem, 3fr); }
+    .manuscripts tr { display: grid; grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 8rem 9rem 8rem minmax(8rem, 3fr); align-items: center; }
+    .manuscripts.no-empty tr { grid-template-columns: minmax(9rem, 1.3fr) 5.5rem 9rem 8rem minmax(8rem, 3fr); }
+    .manuscripts .all-annotated { color: #2e7d32; }
     .manuscripts tbody tr { content-visibility: auto; contain-intrinsic-size: auto 39px; border-bottom: 1px solid #eee; }
     .manuscripts tr[hidden] { display: none; }
     .manuscripts th, .manuscripts td { display: block; overflow: hidden; padding: .5rem .9rem; border: 0; text-align: left;
@@ -177,6 +185,27 @@
     .tile-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem .5rem;
                  padding: .5rem .7rem; font-size: .85rem; }
     .score-badge { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    /* Folio page: kind of the source and candidate images (plain, detail, double page) */
+    form.annotation { flex-wrap: wrap; align-items: center; gap: .3rem 1.2rem; padding: .35rem .2rem 0; font-size: .9rem; }
+    .annotation label { display: inline-flex; align-items: center; gap: .3rem; cursor: pointer; }
+    .annotation input { width: 1rem; height: 1rem; margin: 0; accent-color: #0b5394; }
+    .annotation button { flex: none; padding: .2rem .6rem; font-size: .85rem; }
+    form.annotation.saved { outline: 2px solid #2e7d32; outline-offset: 2px; border-radius: 4px; }
+
+    /* Folio page: candidates added by hand, and the panel to add one from a IIIF manifest */
+    .manual-badge { margin-left: .4rem; padding: .1rem .45rem; font-size: .75rem; font-weight: normal;
+                    color: #0b5394; background: #e3eaf3; border-radius: 3px; }
+    form.manual-remove button { flex: none; padding: .3rem .7rem; font-size: .85rem; }
+    .manual { flex: 1 1 100%; padding: .5rem 1rem 1rem; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+    .manual summary { font-weight: 600; cursor: pointer; }
+    .manifest-form input { flex: 1; padding: .35rem .5rem; font: inherit; }
+    .manifest-form button { flex: none; padding: .35rem .9rem; font-size: .9rem; }
+    .manual-viewer { position: relative; height: 70vh; margin-top: .5rem; background: #f5f5f5; }
+    form.manual-add { flex-wrap: wrap; align-items: center; gap: .4rem 1.2rem; font-size: .9rem; }
+    .manual-current { flex: 1 1 100%; }
+    .manual-add label { display: inline-flex; align-items: center; gap: .3rem; }
+    .manual-add button { flex: none; margin-left: auto; padding: .45rem 1rem; }
 
     /* Folio page: candidate reached from another page (#candidate-N), Mirador dialog box */
     .candidate:target { box-shadow: 0 0 0 3px #0b5394; }

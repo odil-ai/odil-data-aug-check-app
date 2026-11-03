@@ -8,53 +8,67 @@
     },
     "canvases": [
       {
-        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/3",
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/6",
         "@type": "sc:Canvas",
-        "label": "(0003)",
+        "label": "(0006)",
         "images": [
           {
-            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/3-1",
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/6-1",
             "@type": "oa:Annotation",
             "motivation": "sc:painting",
             "resource": {
-              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00003/full/full/0/default.jpg",
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00006/full/full/0/default.jpg",
               "@type": "dctypes:Image",
               "format": "image/jpeg",
               "service": {
                 "@context": "http://iiif.io/api/image/2/context.json",
-                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00003",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00006",
                 "profile": "http://iiif.io/api/image/2/level2.json"
               },
-              "width": 4812,
-              "height": 6775
+              "width": 4670,
+              "height": 6768
             },
-            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/3"
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/6"
           }
         ],
-        "width": 4812,
-        "height": 6775,
+        "width": 4670,
+        "height": 6768,
         "seeAlso": {
-          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/3",
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/6",
           "label": "OCR",
           "format": "text/vnd.hocr+html",
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
-        "canvas_index": 2,
+        "canvas_index": 5,
         "matchResult": {
-          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00003",
-          "score": 0.6533333333333333,
-          "bbox": null,
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00006",
+          "score": 0.8083333333333333,
+          "bbox": [
+            104,
+            66,
+            699,
+            835
+          ],
           "from_label_identification": true
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
   },
   {
     "folio": {
@@ -97,30 +111,36 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 6,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00007",
-          "score": 0.8741463414634146,
+          "score": 0.8707692307692307,
           "bbox": [
             15,
-            54,
+            58,
             563,
-            838
+            839
           ],
           "from_label_identification": true
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
   },
   {
     "folio": {
@@ -163,14 +183,13 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 9,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00010",
-          "score": 0.9221238938053097,
+          "score": 0.9277777777777778,
           "bbox": [
             92,
-            25,
+            24,
             670,
             879
           ],
@@ -178,18 +197,25 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
   },
   {
     "folio": {
@@ -232,13 +258,12 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 10,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00011",
-          "score": 0.8704545454545454,
+          "score": 0.8823076923076923,
           "bbox": [
-            4,
+            2,
             72,
             624,
             863
@@ -247,19 +272,26 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
   },
   {
     "folio": {
@@ -302,11 +334,10 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 13,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00014",
-          "score": 0.9114093959731544,
+          "score": 0.9135135135135135,
           "bbox": [
             115,
             67,
@@ -317,22 +348,32 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    }
   },
   {
     "folio": {
@@ -375,14 +416,13 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 14,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00015",
-          "score": 0.7904761904761906,
+          "score": 0.8209677419354839,
           "bbox": [
-            28,
-            68,
+            27,
+            67,
             593,
             833
           ],
@@ -390,23 +430,32 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    }
   },
   {
     "folio": {
@@ -417,85 +466,64 @@
     },
     "canvases": [
       {
-        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/70",
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/43",
         "@type": "sc:Canvas",
-        "label": "(0070)",
+        "label": "(0043)",
         "images": [
           {
-            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/70-1",
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/43-1",
             "@type": "oa:Annotation",
             "motivation": "sc:painting",
             "resource": {
-              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00070/full/full/0/default.jpg",
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00043/full/full/0/default.jpg",
               "@type": "dctypes:Image",
               "format": "image/jpeg",
               "service": {
                 "@context": "http://iiif.io/api/image/2/context.json",
-                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00070",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00043",
                 "profile": "http://iiif.io/api/image/2/level2.json"
               },
-              "width": 4672,
-              "height": 6775
+              "width": 4671,
+              "height": 6823
             },
-            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/70"
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/43"
           }
         ],
-        "width": 4672,
-        "height": 6775,
+        "width": 4671,
+        "height": 6823,
         "seeAlso": {
-          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/70",
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/43",
           "label": "OCR",
           "format": "text/vnd.hocr+html",
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
-        "canvas_index": 69,
+        "canvas_index": 42,
         "matchResult": {
-          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00070",
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00043",
           "score": 0.6533333333333333,
           "bbox": null,
           "from_label_identification": true
         }
       }
     ],
-    "testedCanvasesIndices": [
-      35,
-      36,
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    }
   },
   {
     "folio": {
@@ -503,6 +531,300 @@
       "folio": "42R",
       "alhoma_id": "2659",
       "filename": "ahloma_003475007004147589_753b30.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/87",
+        "@type": "sc:Canvas",
+        "label": "(0087)",
+        "images": [
+          {
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/87-1",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00087/full/full/0/default.jpg",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00087",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 4647,
+              "height": 6784
+            },
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/87"
+          }
+        ],
+        "width": 4647,
+        "height": 6784,
+        "seeAlso": {
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/87",
+          "label": "OCR",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.github.io/hocr-spec/1.2/"
+        },
+        "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
+        "canvas_index": 86,
+        "matchResult": {
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00087",
+          "score": 0.8304932735426009,
+          "bbox": [
+            29,
+            69,
+            571,
+            859
+          ],
+          "from_label_identification": true
+        }
+      },
+      {
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/83",
+        "@type": "sc:Canvas",
+        "label": "(0083)",
+        "images": [
+          {
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/83-1",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00083/full/full/0/default.jpg",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00083",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 4607,
+              "height": 6791
+            },
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/83"
+          }
+        ],
+        "width": 4607,
+        "height": 6791,
+        "seeAlso": {
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/83",
+          "label": "OCR",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.github.io/hocr-spec/1.2/"
+        },
+        "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
+        "canvas_index": 82,
+        "matchResult": {
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00083",
+          "score": 0.6533333333333333,
+          "bbox": null,
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ]
+    }
+  },
+  {
+    "folio": {
+      "id": "ahloma_003475007004147589_a22c9c",
+      "folio": "59V",
+      "alhoma_id": "2660",
+      "filename": "ahloma_003475007004147589_a22c9c.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/122",
+        "@type": "sc:Canvas",
+        "label": "(0122)",
+        "images": [
+          {
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/122-1",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00122/full/full/0/default.jpg",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00122",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 4654,
+              "height": 6789
+            },
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/122"
+          }
+        ],
+        "width": 4654,
+        "height": 6789,
+        "seeAlso": {
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/122",
+          "label": "OCR",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.github.io/hocr-spec/1.2/"
+        },
+        "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
+        "canvas_index": 121,
+        "matchResult": {
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00122",
+          "score": 0.9273159144893112,
+          "bbox": [
+            116,
+            78,
+            650,
+            853
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129
+      ]
+    }
+  },
+  {
+    "folio": {
+      "id": "ahloma_003475007004147589_6bc105",
+      "folio": "60R",
+      "alhoma_id": "2661",
+      "filename": "ahloma_003475007004147589_6bc105.jpg"
     },
     "canvases": [
       {
@@ -538,7 +860,6 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 82,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00083",
@@ -548,62 +869,51 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      36,
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      70,
-      71,
-      72,
-      73,
-      74,
-      75,
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      82
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
+      ]
+    }
   },
   {
     "folio": {
-      "id": "ahloma_003475007004147589_a22c9c",
-      "folio": "59V",
-      "alhoma_id": "2660",
-      "filename": "ahloma_003475007004147589_a22c9c.jpg"
+      "id": "ahloma_003475007004147589_e9001d",
+      "folio": "89V",
+      "alhoma_id": "2662",
+      "filename": "ahloma_003475007004147589_e9001d.jpg"
     },
     "canvases": [
       {
@@ -639,7 +949,6 @@
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
         "canvas_index": 83,
         "matchResult": {
           "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00084",
@@ -649,258 +958,26 @@
         }
       }
     ],
-    "testedCanvasesIndices": [
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      70,
-      71,
-      72,
-      73,
-      74,
-      75,
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      82,
-      83
-    ]
-  },
-  {
-    "folio": {
-      "id": "ahloma_003475007004147589_6bc105",
-      "folio": "60R",
-      "alhoma_id": "2661",
-      "filename": "ahloma_003475007004147589_6bc105.jpg"
-    },
-    "canvases": [
-      {
-        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/123",
-        "@type": "sc:Canvas",
-        "label": "(0123)",
-        "images": [
-          {
-            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/123-1",
-            "@type": "oa:Annotation",
-            "motivation": "sc:painting",
-            "resource": {
-              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00123/full/full/0/default.jpg",
-              "@type": "dctypes:Image",
-              "format": "image/jpeg",
-              "service": {
-                "@context": "http://iiif.io/api/image/2/context.json",
-                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00123",
-                "profile": "http://iiif.io/api/image/2/level2.json"
-              },
-              "width": 4672,
-              "height": 6807
-            },
-            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/123"
-          }
-        ],
-        "width": 4672,
-        "height": 6807,
-        "seeAlso": {
-          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/123",
-          "label": "OCR",
-          "format": "text/vnd.hocr+html",
-          "profile": "http://kba.github.io/hocr-spec/1.2/"
-        },
-        "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
-        "canvas_index": 122,
-        "matchResult": {
-          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00123",
-          "score": 0.9418604651162791,
-          "bbox": [
-            43,
-            90,
-            569,
-            843
-          ],
-          "from_label_identification": true
-        }
-      }
-    ],
-    "testedCanvasesIndices": [
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      70,
-      71,
-      72,
-      73,
-      74,
-      75,
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      82,
-      83,
-      84,
-      85,
-      86,
-      87,
-      88,
-      89,
-      90,
-      91,
-      92,
-      93,
-      94,
-      95,
-      96,
-      97,
-      98,
-      99,
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
-      108,
-      109,
-      110,
-      111,
-      112,
-      113,
-      114,
-      115,
-      116,
-      117,
-      118,
-      119,
-      120,
-      121,
-      122
-    ]
-  },
-  {
-    "folio": {
-      "id": "ahloma_003475007004147589_e9001d",
-      "folio": "89V",
-      "alhoma_id": "2662",
-      "filename": "ahloma_003475007004147589_e9001d.jpg"
-    },
-    "canvases": [
-      {
-        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/120",
-        "@type": "sc:Canvas",
-        "label": "(0120)",
-        "images": [
-          {
-            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/120-1",
-            "@type": "oa:Annotation",
-            "motivation": "sc:painting",
-            "resource": {
-              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00120/full/full/0/default.jpg",
-              "@type": "dctypes:Image",
-              "format": "image/jpeg",
-              "service": {
-                "@context": "http://iiif.io/api/image/2/context.json",
-                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00120",
-                "profile": "http://iiif.io/api/image/2/level2.json"
-              },
-              "width": 4636,
-              "height": 6756
-            },
-            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/120"
-          }
-        ],
-        "width": 4636,
-        "height": 6756,
-        "seeAlso": {
-          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/120",
-          "label": "OCR",
-          "format": "text/vnd.hocr+html",
-          "profile": "http://kba.github.io/hocr-spec/1.2/"
-        },
-        "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
-        "canvas_index": 119,
-        "matchResult": {
-          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00120",
-          "score": 0.6533333333333333,
-          "bbox": null,
-          "from_label_identification": true
-        }
-      }
-    ],
-    "testedCanvasesIndices": [
-      83,
-      84,
-      85,
-      86,
-      87,
-      88,
-      89,
-      90,
-      91,
-      92,
-      93,
-      94,
-      95,
-      96,
-      97,
-      98,
-      99,
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
-      108,
-      109,
-      110,
-      111,
-      112,
-      113,
-      114,
-      115,
-      116,
-      117,
-      118,
-      119
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93
+      ]
+    }
   },
   {
     "folio": {
@@ -911,153 +988,127 @@
     },
     "canvases": [
       {
-        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/183",
+        "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/155",
         "@type": "sc:Canvas",
-        "label": "(0183)",
+        "label": "(0155)",
         "images": [
           {
-            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/183-1",
+            "@id": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/anno/155-1",
             "@type": "oa:Annotation",
             "motivation": "sc:painting",
             "resource": {
-              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00183/full/full/0/default.jpg",
+              "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00155/full/full/0/default.jpg",
               "@type": "dctypes:Image",
               "format": "image/jpeg",
               "service": {
                 "@context": "http://iiif.io/api/image/2/context.json",
-                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00183",
+                "@id": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00155",
                 "profile": "http://iiif.io/api/image/2/level2.json"
               },
-              "width": 4686,
+              "width": 4564,
               "height": 6792
             },
-            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/183"
+            "on": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/canvas/155"
           }
         ],
-        "width": 4686,
+        "width": 4564,
         "height": 6792,
         "seeAlso": {
-          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/183",
+          "@id": "https://api.digitale-sammlungen.de/ocr/bsb00075075/155",
           "label": "OCR",
           "format": "text/vnd.hocr+html",
           "profile": "http://kba.github.io/hocr-spec/1.2/"
         },
         "manifest_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest",
-        "sequence_index": 0,
-        "canvas_index": 182,
+        "canvas_index": 154,
         "matchResult": {
-          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00183",
-          "score": 0.8739130434782608,
-          "bbox": [
-            20,
-            72,
-            560,
-            875
-          ],
+          "source": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb00075075_00155",
+          "score": 0.6533333333333333,
+          "bbox": null,
           "from_label_identification": true
         }
       }
     ],
-    "testedCanvasesIndices": [
-      84,
-      85,
-      86,
-      87,
-      88,
-      89,
-      90,
-      91,
-      92,
-      93,
-      94,
-      95,
-      96,
-      97,
-      98,
-      99,
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
-      108,
-      109,
-      110,
-      111,
-      112,
-      113,
-      114,
-      115,
-      116,
-      117,
-      118,
-      119,
-      120,
-      121,
-      122,
-      123,
-      124,
-      125,
-      126,
-      127,
-      128,
-      129,
-      130,
-      131,
-      132,
-      133,
-      134,
-      135,
-      136,
-      137,
-      138,
-      139,
-      140,
-      141,
-      142,
-      143,
-      144,
-      145,
-      146,
-      147,
-      148,
-      149,
-      150,
-      151,
-      152,
-      153,
-      154,
-      155,
-      156,
-      157,
-      158,
-      159,
-      160,
-      161,
-      162,
-      163,
-      164,
-      165,
-      166,
-      167,
-      168,
-      169,
-      170,
-      171,
-      172,
-      173,
-      174,
-      175,
-      176,
-      177,
-      178,
-      179,
-      180,
-      181,
-      182
-    ]
+    "testedCanvasesIndices": {
+      "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00075075/manifest": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160
+      ]
+    }
   }
 ]

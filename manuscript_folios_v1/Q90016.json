@@ -1,0 +1,127 @@
+[
+  {
+    "folio": {
+      "id": "ahloma_015522630018527010_7caa78",
+      "folio": "1R",
+      "alhoma_id": "REG_02985",
+      "filename": "ahloma_015522630018527010_7caa78.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/canvas/p0005",
+        "@type": "sc:Canvas",
+        "label": "1r",
+        "width": 1567,
+        "height": 2197,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/res/anno0005",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/res/img0005",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.218/Reg.lat.218_0005_fa_0001r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1567,
+              "height": 2197
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/canvas/p0005"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.218/thumb/Reg.lat.218_0005_fa_0001r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 113,
+          "height": 150
+        },
+        "viewingHint": "non-paged",
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 4,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.218/Reg.lat.218_0005_fa_0001r.jp2",
+          "score": 0.9209302325581395,
+          "bbox": [
+            55,
+            74,
+            449,
+            362
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      2,
+      4,
+      111
+    ]
+  },
+  {
+    "folio": {
+      "id": "ahloma_011057731013197937_cfb29c",
+      "folio": "12R",
+      "alhoma_id": "REG_02987",
+      "filename": "ahloma_011057731013197937_cfb29c.jpg"
+    },
+    "canvases": [
+      {
+        "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/canvas/p0027",
+        "@type": "sc:Canvas",
+        "label": "12r",
+        "width": 1567,
+        "height": 2197,
+        "images": [
+          {
+            "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/res/anno0027",
+            "@type": "oa:Annotation",
+            "motivation": "sc:painting",
+            "resource": {
+              "@id": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/res/img0027",
+              "@type": "dctypes:Image",
+              "format": "image/jpeg",
+              "service": {
+                "@context": "http://iiif.io/api/image/2/context.json",
+                "@id": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.218/Reg.lat.218_0027_fa_0012r.jp2",
+                "profile": "http://iiif.io/api/image/2/level2.json"
+              },
+              "width": 1567,
+              "height": 2197
+            },
+            "on": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/canvas/p0027"
+          }
+        ],
+        "thumbnail": {
+          "@id": "https://digi.vatlib.it/pub/digit/MSS_Reg.lat.218/thumb/Reg.lat.218_0027_fa_0012r.tif.jpg",
+          "@type": "dctypes:Image",
+          "format": "image/jpeg",
+          "width": 113,
+          "height": 150
+        },
+        "manifest_url": "https://digi.vatlib.it/iiif/MSS_Reg.lat.218/manifest.json",
+        "sequence_index": 0,
+        "canvas_index": 26,
+        "matchResult": {
+          "source": "https://digi.vatlib.it/iiifimage/MSS_Reg.lat.218/Reg.lat.218_0027_fa_0012r.jp2",
+          "score": 0.9527220630372493,
+          "bbox": [
+            32,
+            112,
+            549,
+            495
+          ],
+          "from_label_identification": true
+        }
+      }
+    ],
+    "testedCanvasesIndices": [
+      26
+    ]
+  }
+]
